@@ -1,8 +1,10 @@
-package org.sopt.kclean;
+package org.sopt.kclean.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+
+import org.sopt.kclean.R;
 
 public class MainActivity extends AppCompatActivity {
     Button home_button;
@@ -15,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
 
 

@@ -4,56 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.sopt.kclean.MainActivity">
-
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginStart="16dp"
-        android:text="홈"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/alarm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="알림"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="484dp" />
-
-    <Button
-        android:id="@+id/account_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="내 계좌"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/setting_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="124dp"
-        android:layout_marginStart="280dp"
-        android:text="설정"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    tools:context="org.sopt.kclean.View.MainActivity">
 
     <Button
         android:id="@+id/create_club_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="동아리 생성"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="394dp" />
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/search_button"
@@ -63,16 +22,27 @@
         android:layout_marginStart="8dp"
         android:text="검색"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="16dp" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/group_list"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.377"
+        tools:layout_editor_absoluteX="0dp"></android.support.v7.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </android.support.constraint.ConstraintLayout>

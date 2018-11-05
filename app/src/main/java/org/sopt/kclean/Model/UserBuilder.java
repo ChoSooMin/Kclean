@@ -12,6 +12,14 @@ public class UserBuilder {
    private String phoneNumber; //핸드폰번호
    private String gender; //성별
    private String birth; //생일
+   private String token;//토큰
+   private Account account;//계좌
+
+    public UserBuilder setToken(final String token)
+    {
+        this.token = token;
+        return this;
+    }
 
    public UserBuilder setId(final String id)
    {
@@ -46,10 +54,16 @@ public class UserBuilder {
        this.birth = birth;
        return this;
    }
+    public UserBuilder setAccount(final Account account)
+    {
+
+        this.account = account;
+        return this;
+    }
    public User build()
    {
        User user;
-       user = new User(id,password,name,phoneNumber,gender,birth);
+       user = new User(id,password,name,phoneNumber,gender,birth,token,account);
        return user;
    }
 
