@@ -21,6 +21,8 @@ public class User  implements Parcelable{
 
     }
     public User(String id, String password, String name, String phoneNumber, String gender, String birth, String token,Account account) {
+
+    }
     public User(String id, String password, String name, String phoneNumber, String gender, String birth) {
         this.id = id;
         this.password = password;
@@ -33,14 +35,14 @@ public class User  implements Parcelable{
     }
     public User(Parcel source)
     {
-    id = source.readString();
-    password = source.readString();
-    name = source.readString();
-    phoneNumber = source.readString();
-    gender = source.readString();
-    birth = source.readString();
-    token = source.readString();
-    account = source.readParcelable(Account.class.getClassLoader());
+        id = source.readString();
+        password = source.readString();
+        name = source.readString();
+        phoneNumber = source.readString();
+        gender = source.readString();
+        birth = source.readString();
+        token = source.readString();
+        account = source.readParcelable(Account.class.getClassLoader());
     }
 
     public void setToken(String token) {
