@@ -12,10 +12,6 @@ public class User {
     String gender;
     String birth;
 
-    public User(){
-
-
-    }
     public User(String id, String password, String name, String phoneNumber, String gender, String birth) {
         this.id = id;
         this.password = password;
