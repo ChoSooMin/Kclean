@@ -1,4 +1,4 @@
-package org.sopt.kclean;
+package org.sopt.kclean.Model;
 
 /**
  * Created by choisunpil on 05/11/2018.
