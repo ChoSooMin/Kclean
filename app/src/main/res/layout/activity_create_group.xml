@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.CreateGroupActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="새 동아리 만들기"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완료"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:textColor="#653bff"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/create_group_groupBackground_btn"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:background="#f1effc"
+        android:text="동아리 소개 배경 사진을\n업로드 해주세요\n:-)"
+        android:textColor="#8c8c8c"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/create_group_groupImage_btn"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="16dp"/>
+
+        <EditText
+            android:id="@+id/create_group_groupName_editTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="동아리 이름을 입력해주세요."
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/create_group_groupImage_btn"
+            android:layout_marginLeft="16dp"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16.5dp"
+        android:layout_marginRight="15.5dp"
+        android:hint="동아리 설명을 작성해주세요."
+        android:layout_marginTop="27dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52.5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공개여부"
+            android:textSize="16sp"
+            android:textColor="#1d1d1d"
+            android:layout_marginLeft="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/create_group_groupPW_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 입력창"
+            android:textSize="16sp"
+            android:textColor="#ff5050"
+            android:layout_marginLeft="16dp"/>
+
+        <EditText
+            android:id="@+id/create_group_groupPW_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15.5dp"
+            android:layout_marginRight="15.5dp"
+            android:layout_marginTop="18dp"
+            android:hint="4자리 비밀번호를 설정해주세요."
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+    
+
+
+
+</LinearLayout>

@@ -1,33 +1,45 @@
 package org.sopt.kclean.View;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
+import org.sopt.kclean.Controller.AdapterGroupList;
+import org.sopt.kclean.Model.Group;
 import org.sopt.kclean.R;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button home_button;
-    Button alarm_button;
-    Button account_button;
-    Button setting_button;
-    Button search_button;
+    Button main_createGroupBtn;
+
 
     // 탭
     TabHost tabHost;
     TabWidget tabWidget;
     FrameLayout frameLayout;
 
+    //
+    RecyclerView recyclerView;
+    AdapterGroupList groupListAdapter;
+    LinearLayoutManager layoutManager;
+    ArrayList<Group> groups;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 탭탭탭~~
         tabHost = (TabHost)findViewById(R.id.tabHost);
 
         tabHost.setup();
@@ -40,6 +52,30 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tab2);
         tabHost.addTab(tab3);
 
+
+        groups = new ArrayList<Group>();
+
+        groups.add(new Group("SOPT_23",484,"류지훈", getDrawable(R.drawable.sopt), getDrawable(R.drawable.sopt), "최효진 최고"));
+
+        recyclerView =  (RecyclerView)findViewById(R.id.recycler_view);
+        layoutManager = new LinearLayoutManager(getApplicationContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        groupListAdapter = new AdapterGroupList(getApplicationContext(), groups);
+        recyclerView.setAdapter(groupListAdapter);
+        // 요까지 탭탭탭~~
+
+        // 동아리 생성 버튼
+        main_createGroupBtn = (Button) findViewById(R.id.main_createGroupBtn);
+        main_createGroupBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // 동아리 생성 화면으로
+                Intent intent=new Intent(MainActivity.this, CreateGroupActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:orientation="horizontal"
+    android:id="@+id/notice_card_linear">
+
+    <ImageView
+        android:id="@+id/notice_card_group_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="15dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:id="@+id/notice_card_groupName_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S.O.P.T 23기"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"/>
+
+        <TextView
+            android:id="@+id/notice_card_noticeContent_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6차 세미나"
+            android:textSize="14sp"
+            android:textColor="#1d1d1d"/>
+
+        <TextView
+            android:id="@+id/notice_card_noticeTime_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11/05 10:14"
+            android:textSize="12sp"
+            android:textColor="#8c8c8c"
+            android:layout_marginTop="2.4dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by choisunpil on 05/11/2018.
  */
 
-public class User  implements Parcelable{
+public class User implements Parcelable {
     String id;
     String password;
     String name;
@@ -20,6 +20,7 @@ public class User  implements Parcelable{
     public User(){
 
     }
+
     public User(String id, String password, String name, String phoneNumber, String gender, String birth, String token,Account account) {
 
     }

@@ -1,13 +1,15 @@
-package org.sopt.kclean;
+package org.sopt.kclean.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GroupBeforeJoinActivity extends AppCompatActivity {
+import org.sopt.kclean.R;
+
+public class CreateGroupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_before_join);
+        setContentView(R.layout.activity_create_group);
     }
 }

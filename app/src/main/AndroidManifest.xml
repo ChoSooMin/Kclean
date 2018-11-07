@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".GroupBeforeJoinActivity"></activity>
+        <activity android:name=".View.GroupBeforeJoinActivity" />
+        <activity android:name=".View.GroupAfterJoinActivity" />
+        <activity android:name=".View.CreateGroupActivity"></activity>
     </application>
 
 </manifest>
