@@ -15,6 +15,8 @@ public class User implements Parcelable {
     String gender;
     String birth;
     String token;
+    String university;
+    String major;
     Account account; //추후 객체로 변경
 
     public User(){
@@ -24,15 +26,15 @@ public class User implements Parcelable {
     public User(String id, String password, String name, String phoneNumber, String gender, String birth, String token,Account account) {
 
     }
-    public User(String id, String password, String name, String phoneNumber, String gender, String birth) {
+    public User(String id, String password, String name, String phoneNumber, String gender, String birth, String university , String major) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.birth = birth;
-        this.token =token;
-        this.account = account;
+        this.university =  university;
+        this.major = major;
     }
     public User(Parcel source)
     {
@@ -43,7 +45,26 @@ public class User implements Parcelable {
         gender = source.readString();
         birth = source.readString();
         token = source.readString();
+        university = source.readString();
+        major = source.readString();
         account = source.readParcelable(Account.class.getClassLoader());
+    }
+
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
     }
 
     public void setToken(String token) {
@@ -124,6 +145,8 @@ public class User implements Parcelable {
         parcel.writeString(gender);
         parcel.writeString(birth);
         parcel.writeString(token);
+        parcel.writeString(university);
+        parcel.writeString(major);
         parcel.writeParcelable(account,PARCELABLE_WRITE_RETURN_VALUE);
 
     }
