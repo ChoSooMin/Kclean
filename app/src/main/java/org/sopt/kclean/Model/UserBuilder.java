@@ -6,14 +6,16 @@ package org.sopt.kclean.Model;
 
 public class UserBuilder {
 
-   private String id;
-   private String password;
-   private String name; //이름
-   private String phoneNumber; //핸드폰번호
-   private String gender; //성별
-   private String birth; //생일
-   private String token;//토큰
-   private Account account;//계좌
+    String id;
+    String password;
+    String name;
+    String phoneNumber;
+    String gender;
+    String birth;
+    String token;
+    String university;
+    String major;
+    Account account; //추후 객체로 변경
 
     public UserBuilder setToken(final String token)
     {
@@ -54,6 +56,22 @@ public class UserBuilder {
        this.birth = birth;
        return this;
    }
+   public UserBuilder setUniversity(final String University)
+   {
+
+       this.university = university;
+       return this;
+
+   }
+
+   public UserBuilder setMajor(final String Major)
+   {
+       this.major = major;
+       return this;
+
+
+   }
+
     public UserBuilder setAccount(final Account account)
     {
 
@@ -63,7 +81,7 @@ public class UserBuilder {
    public User build()
    {
        User user;
-       user = new User(id,password,name,phoneNumber,gender,birth,token,account);
+       user = new User(id,password,name,phoneNumber,gender,birth,university,major);
        return user;
    }
 

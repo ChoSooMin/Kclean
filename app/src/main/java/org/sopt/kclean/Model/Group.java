@@ -10,20 +10,23 @@ import android.os.Parcelable;
 
 public class Group implements Parcelable {
 
-    String groupName;
-    int totalMember;
-    String masterName;
-    Drawable groupImage;
-    Drawable groupBackground;
-    String groupDetail;
 
-    public Group(String groupName, int totalMember, String masterName, Drawable groupImage, Drawable groupBackground, String groupDetail) {
+    private String groupName;
+    private int totalMember;
+    private String masterName;
+    private String groupImage;
+    private String  groupBackground;
+    private String groupDetail;
+    private String groupPassword;
+
+    public Group(String groupName, int totalMember, String masterName, String groupImage, String groupBackground, String groupDetail,String password) {
         this.groupName = groupName;
         this.totalMember = totalMember;
         this.masterName = masterName;
         this.groupImage = groupImage;
         this.groupBackground = groupBackground;
         this.groupDetail = groupDetail;
+        this.groupPassword = password;
     }
 
     public Group(Parcel source)
@@ -31,9 +34,18 @@ public class Group implements Parcelable {
         groupName = source.readString();
         totalMember = source.readInt();
         masterName = source.readString();
-        groupImage = source.readParcelable(Drawable.class.getClassLoader());
-        groupBackground = source.readParcelable(Drawable.class.getClassLoader());
+        groupImage = source.readString();
+        groupBackground = source.readString();
         groupDetail = source.readString();
+        groupPassword = source.readString();
+    }
+
+    public String getGroupPassword() {
+        return groupPassword;
+    }
+
+    public void setGroupPassword(String groupPassword) {
+        this.groupPassword = groupPassword;
     }
 
     public String getGroupName() {
@@ -60,19 +72,19 @@ public class Group implements Parcelable {
         this.masterName = masterName;
     }
 
-    public Drawable getGroupImage() {
+    public String getGroupImage() {
         return groupImage;
     }
 
-    public void setGroupImage(Drawable groupImage) {
+    public void setGroupImage(String groupImage) {
         this.groupImage = groupImage;
     }
 
-    public Drawable getGroupBackground() {
+    public String getGroupBackground() {
         return groupBackground;
     }
 
-    public void setGroupBackground(Drawable groupBackground) {
+    public void setGroupBackground(String groupBackground) {
         this.groupBackground = groupBackground;
     }
 

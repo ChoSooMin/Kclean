@@ -46,8 +46,11 @@ public class GroupBeforeJoinActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Group group = (Group) intent.getSerializableExtra("selectedGroup");
 
-        group_before_groupBackground.setImageDrawable(group.getGroupBackground());
-        group_before_groupImage.setImageDrawable(group.getGroupImage());
+        //이미지는 URL로 가져온다.
+
+
+        //group_before_groupBackground.setImageDrawable(group.getGroupBackground());
+        //group_before_groupImage.setImageDrawable(group.getGroupImage());
         group_before_groupName.setText(group.getGroupName());
         group_before_groupTotalMember.setText(group.getTotalMember());
         group_before_groupMaster.setText(group.getMasterName());

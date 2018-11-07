@@ -2,6 +2,7 @@ package org.sopt.kclean.View;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         groupListAdapter = new AdapterGroupList(getApplicationContext(), groups);
         recyclerView.setAdapter(groupListAdapter);
         // 요까지 탭탭탭~~
+
 
         // 동아리 생성 버튼
         main_createGroupBtn = (Button) findViewById(R.id.main_createGroupBtn);
