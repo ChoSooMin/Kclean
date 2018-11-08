@@ -39,7 +39,7 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.group_card, parent, false);
 
-       return new GroupListViewHolder(view); // 이제되이이이이이이이이이이이
+        return new GroupListViewHolder(view); // 이제되이이이이이이이이이이이
     }
 
     @Override

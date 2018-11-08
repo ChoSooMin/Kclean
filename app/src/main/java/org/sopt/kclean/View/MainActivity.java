@@ -2,7 +2,6 @@ package org.sopt.kclean.View;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,19 +20,20 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button main_createGroupBtn;
+    private Button main_createGroupBtn;
+    private Button main_search_button;
 
 
     // 탭
-    TabHost tabHost;
-    TabWidget tabWidget;
-    FrameLayout frameLayout;
+    private TabHost tabHost;
+    private TabWidget tabWidget;
+    private FrameLayout frameLayout;
 
     //
-    RecyclerView recyclerView;
-    AdapterGroupList groupListAdapter;
-    LinearLayoutManager layoutManager;
-    ArrayList<Group> groups;
+    private RecyclerView recyclerView;
+    private AdapterGroupList groupListAdapter;
+    private LinearLayoutManager layoutManager;
+    private ArrayList<Group> groups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         groups = new ArrayList<Group>();
 
-        groups.add(new Group("SOPT_23",484,"류지훈", getDrawable(R.drawable.sopt), getDrawable(R.drawable.sopt), "최효진 최고"));
+//        groups.add(new Group("SOPT_23",484,"류지훈", "", getDrawable(R.drawable.sopt), "최효진 최고"));
 
         recyclerView =  (RecyclerView)findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -79,7 +79,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 검색 버튼
+        main_search_button = (Button) findViewById(R.id.main_search_button);
+        main_search_button.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FinancialDetailActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // tab 눌러질 때 처리

@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".View.GroupBeforeJoinActivity" />
         <activity android:name=".View.GroupAfterJoinActivity" />
-        <activity android:name=".View.CreateGroupActivity"></activity>
+        <activity android:name=".View.CreateGroupActivity" />
+        <activity android:name=".View.FinancialDetailActivity"></activity>
     </application>
 
 </manifest>

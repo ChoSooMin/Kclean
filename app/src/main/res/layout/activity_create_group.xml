@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context=".View.CreateGroupActivity">
 
     <RelativeLayout
@@ -17,18 +18,19 @@
             android:text="새 동아리 만들기"
             android:textSize="18sp"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/create_group_complete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
             android:text="완료"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
             android:textColor="#653bff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:background="@android:color/transparent"/>
 
     </RelativeLayout>
 
@@ -103,7 +105,8 @@
         android:id="@+id/create_group_groupPW_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"

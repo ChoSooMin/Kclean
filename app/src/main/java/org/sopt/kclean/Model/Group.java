@@ -10,7 +10,6 @@ import android.os.Parcelable;
 
 public class Group implements Parcelable {
 
-
     private String groupName;
     private int totalMember;
     private String masterName;
