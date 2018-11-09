@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import org.sopt.kclean.R;
 
-public class GroupAfterJoinActivity extends AppCompatActivity {
+public class MemberActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_after_join);
+        setContentView(R.layout.activity_member);
     }
 }

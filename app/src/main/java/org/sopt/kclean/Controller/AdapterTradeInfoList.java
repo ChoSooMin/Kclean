@@ -45,7 +45,7 @@ public class AdapterTradeInfoList extends RecyclerView.Adapter<RecyclerView.View
 
     class TradeListViewHolder extends RecyclerView.ViewHolder {
         // 홈화면 동아리 리스트에 들어갈 뷰 속성
-        public RelativeLayout trade_info_card_linear;
+        public RelativeLayout trade_info_card_relative;
         public ImageView trade_info_group_image;
         public TextView trade_info_tradeName_txt;
         public TextView trade_info_tradeTime_txt;
@@ -56,7 +56,7 @@ public class AdapterTradeInfoList extends RecyclerView.Adapter<RecyclerView.View
         public TradeListViewHolder(View itemView) {
             super(itemView);
 
-            trade_info_card_linear = (RelativeLayout)itemView.findViewById(R.id.trade_info_card_linear);
+            trade_info_card_relative = (RelativeLayout)itemView.findViewById(R.id.trade_info_card_relative);
             trade_info_group_image = (ImageView) itemView.findViewById(R.id.trade_info_group_image);
             trade_info_tradeName_txt = (TextView) itemView.findViewById(R.id.trade_info_tradeName_txt);
             trade_info_tradeTime_txt = (TextView) itemView.findViewById(R.id.trade_info_tradeTime_txt);

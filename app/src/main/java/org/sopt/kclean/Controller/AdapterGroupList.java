@@ -3,9 +3,6 @@ package org.sopt.kclean.Controller;
 //import android.support.v7.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +13,7 @@ import android.widget.TextView;
 
 import org.sopt.kclean.Model.Group;
 import org.sopt.kclean.R;
-import org.sopt.kclean.View.GroupBeforeJoinActivity;
+import org.sopt.kclean.View.GroupDetailActivity;
 
 import java.util.ArrayList;
 
@@ -52,7 +49,7 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
         ((GroupListViewHolder) holder).group_card_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GroupBeforeJoinActivity.class);
+                Intent intent = new Intent(context, GroupDetailActivity.class);
                 intent.putExtra("selectedGroup", groupList.get(position));
 
                 context.startActivity(intent);

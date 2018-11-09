@@ -1,7 +1,6 @@
 package org.sopt.kclean.Controller;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import org.sopt.kclean.Model.Notice;
 import org.sopt.kclean.R;
-import org.sopt.kclean.View.GroupBeforeJoinActivity;
 
 import java.util.ArrayList;
 

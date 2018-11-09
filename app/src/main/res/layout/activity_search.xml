@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.SearchActivity">
+
+    <RelativeLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/search_cancel_button"
+            android:layout_marginLeft="19dp"
+            android:background="#f1effc">
+
+            <ImageView
+                android:id="@+id/search_search_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sopt"
+                android:layout_marginLeft="8dp"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:layout_toRightOf="@id/search_search_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="우ㅏㄹ니아린아ㅓ리ㅏ"
+                android:background="@android:color/transparent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/search_cancel_button"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:textSize="16sp"
+            android:textColor="#653bff"
+            android:layout_marginRight="15dp"
+            android:background="@android:color/transparent"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_result_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:padding="1dp"
+        android:background="#f1effc"/>
+
+</LinearLayout>

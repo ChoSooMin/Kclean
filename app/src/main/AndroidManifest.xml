@@ -16,10 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.GroupBeforeJoinActivity" />
-        <activity android:name=".View.GroupAfterJoinActivity" />
+        <activity android:name=".View.GroupDetailActivity" />
         <activity android:name=".View.CreateGroupActivity" />
-        <activity android:name=".View.FinancialDetailActivity"></activity>
+        <activity android:name=".View.FinancialDetailActivity" />
+        <activity android:name=".View.SearchActivity" />
+        <activity android:name=".View.MemberActivity"></activity>
     </application>
 
 </manifest>
