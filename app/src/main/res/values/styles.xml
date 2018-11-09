@@ -4,11 +4,24 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@android:color/background_light</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:statusBarColor">#ffffff</item>
         <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog"/>
+
+    <style name = "PasswordEditTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name ="colorAccent">@color/colorPassword</item>
+        <item name="colorControlNormal">@color/colorPassword</item>
+    </style>
+
+    <style name = "EditTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name ="colorAccent">@color/colorEdit</item>
+        <item name="colorControlNormal">@color/colorEdit</item>
     </style>
 
 </resources>
