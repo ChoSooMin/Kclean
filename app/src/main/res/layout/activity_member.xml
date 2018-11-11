@@ -7,55 +7,51 @@
     android:orientation="vertical"
     tools:context=".View.MemberActivity">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="26dp"
-        android:layout_marginLeft="16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원"
-            android:textSize="24sp"
-            android:textColor="#1d1d1d"/>
-
-        <ImageView
-            android:layout_width="9dp"
-            android:layout_height="9dp"
-            android:background="#ff9d00"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="7dp">
+        android:src="@drawable/ic_user"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="7dp"
+        android:background="#f2f2f8">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="총 회원수 "
             android:textColor="#282828"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/member_totalNumber_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="98"
-            android:textColor="#0065bb"
-            android:textSize="14sp"/>
+            android:textColor="#3b3a99"
+            android:textSize="14sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="명"
             android:textColor="#282828"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -65,6 +61,6 @@
         android:layout_height="wrap_content"
         android:background="#f1effc"
         android:padding="1dp"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

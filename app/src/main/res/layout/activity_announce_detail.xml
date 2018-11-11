@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.AnnounceDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp">
+
+        <Button
+            android:id="@+id/announce_detail_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="19dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/announce_detail_announceTitle_text"
+            android:layout_marginLeft="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1차 뒷풀이 참여자 모집"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:textColor="#1D1D1D"
+            android:includeFontPadding="false"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/announce_detail_memberImage_circle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#000000"
+                android:layout_marginLeft="24dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/announce_detail_memberImage_circle"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                android:layout_centerVertical="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="총무 "
+                        android:textSize="14sp"
+                        android:textColor="#1D1D1D"
+                        android:fontFamily="@font/notosans_cjk_kr_medium"
+                        android:includeFontPadding="false"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="강지희"
+                        android:textSize="14sp"
+                        android:textColor="#1D1D1D"
+                        android:fontFamily="@font/notosans_cjk_kr_medium"
+                        android:includeFontPadding="false"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/announce_detail_announceTime_hour_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="#8c8c8c"
+                        android:text="18"
+                        android:fontFamily="@font/notosans_cjk_kr_regular"
+                        android:includeFontPadding="false"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textSize="12sp"
+                        android:textColor="#8c8c8c"
+                        android:fontFamily="@font/notosans_cjk_kr_regular"
+                        android:includeFontPadding="false"/>
+
+                    <TextView
+                        android:id="@+id/announce_detail_announceTime_minute_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30"
+                        android:textSize="12sp"
+                        android:textColor="#8c8c8c"
+                        android:fontFamily="@font/notosans_cjk_kr_regular"
+                        android:includeFontPadding="false"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/announce_detail_image1"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#000000"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/announce_detail_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018.11.9"
+                android:layout_toRightOf="@id/announce_detail_image1"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/notosans_cjk_kr_regular"
+                android:textColor="#1D1D1D"
+                android:includeFontPadding="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp">
+
+            <ImageView
+                android:id="@+id/announce_detail_image2"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#000000"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/announce_detail_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18:00~ 20:00"
+                android:layout_toRightOf="@id/announce_detail_image2"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/notosans_cjk_kr_regular"
+                android:textColor="#1D1D1D"
+                android:includeFontPadding="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp">
+
+            <ImageView
+                android:id="@+id/announce_detail_image3"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#000000"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/announce_detail_place_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="건대 할리스 카페 옆 00국밥집"
+                android:layout_toRightOf="@id/announce_detail_image3"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/notosans_cjk_kr_regular"
+                android:textColor="#1D1D1D"
+                android:includeFontPadding="false"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="20dp"
+            android:text="뒷풀이 참여자 분들 송금 부탁드려요 ~ 많이 많이 참석해주세용 헤헤헤헤"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:textSize="14sp"
+            android:includeFontPadding="false"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="22dp">
+
+            <ImageView
+                android:id="@+id/announce_detail_announceType_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/sopt"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="17dp"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/announce_detail_money_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25,000"
+                    android:textSize="22sp"
+                    android:textColor="#1D1D1D"
+                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                    android:includeFontPadding="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="원"
+                    android:textSize="14sp"
+                    android:textColor="#1D1D1D"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/announce_detail_bottom_relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/announce_detail_line"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#f2f2f8"
+            android:layout_alignParentTop="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/announce_detail_line"
+            android:layout_marginTop="22dp"
+            android:id="@+id/announce_detail_join_list">
+
+            <TextView
+                android:id="@+id/announce_detail_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="참여명단"
+                android:textSize="16sp"
+                android:textColor="#1d1d1d"
+                android:layout_marginLeft="24dp"
+                android:fontFamily="@font/notosans_cjk_kr_bold"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/announce_detail_joinNumber_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="32"
+                android:textSize="14sp"
+                android:textColor="#3b3a99"
+                android:layout_toRightOf="@id/announce_detail_list_text"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"/>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/announce_detail_join_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/announce_detail_join_list">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <!-- '일반공지'일 때는 버튼 안보임 -->
+        <!-- '총무&행사공지'일 때 나타나는 버튼 -->
+        <Button
+            android:id="@+id/announce_detail_manager_button"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="송금요청"
+            android:textColor="#FFFFFF"
+            android:background="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:textSize="16sp"
+            android:includeFontPadding="false"
+            android:layout_alignParentBottom="true"/>
+
+        <!-- '일반회원&행사공지'일 때 나타나는 버튼 -->
+        <Button
+            android:id="@+id/announce_detail_member_button"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="참석하기"
+            android:textColor="#FFFFFF"
+            android:background="#3b3a99"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:textSize="16sp"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

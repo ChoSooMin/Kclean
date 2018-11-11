@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="143dp"
+    android:layout_height="152dp"
     android:orientation="vertical"
     android:id="@+id/search_group_card_linear">
 
@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp">
 
-        <ImageView
-            android:id="@+id/search_group_group_image"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/search_group_group_circleImage"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="#000000"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/search_group_group_image"
+            android:layout_toRightOf="@id/search_group_group_circleImage"
             android:layout_marginLeft="10dp">
 
             <TextView
@@ -32,7 +32,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="S.O.P.T 23기"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:textColor="#1D1D1D"
+                android:includeFontPadding="false"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -44,7 +47,9 @@
                     android:layout_height="wrap_content"
                     android:text="총 회원 "
                     android:textSize="12sp"
-                    android:textColor="#8c8c8c"/>
+                    android:textColor="#8c8c8c"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"/>
 
                 <TextView
                     android:id="@+id/search_group_totalMember_text"
@@ -52,14 +57,18 @@
                     android:layout_height="wrap_content"
                     android:text="485"
                     android:textSize="12sp"
-                    android:textColor="#8c8c8c"/>
+                    android:textColor="#8c8c8c"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" / 총무 "
                     android:textSize="12sp"
-                    android:textColor="#8c8c8c"/>
+                    android:textColor="#8c8c8c"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"/>
 
                 <TextView
                     android:id="@+id/search_group_managerName_text"
@@ -67,7 +76,9 @@
                     android:layout_height="wrap_content"
                     android:text="강지희"
                     android:textSize="12sp"
-                    android:textColor="#8c8c8c"/>
+                    android:textColor="#8c8c8c"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"/>
 
             </LinearLayout>
 
@@ -84,6 +95,8 @@
         android:layout_marginRight="28dp"
         android:layout_marginLeft="21dp"
         android:textSize="14sp"
-        android:textColor="#1d1d1d"/>
+        android:textColor="#1d1d1d"
+        android:fontFamily="@font/notosans_cjk_kr_regular"
+        android:includeFontPadding="false"/>
 
 </LinearLayout>

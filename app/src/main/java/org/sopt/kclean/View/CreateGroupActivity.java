@@ -2,38 +2,27 @@ package org.sopt.kclean.View;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.ExifInterface;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.sopt.kclean.Controller.ImageHandler;
 import org.sopt.kclean.R;
-
-import java.io.IOException;
-import java.net.URI;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,13 +35,12 @@ public class CreateGroupActivity extends AppCompatActivity {
     //앨범에서 사진 가져오기
     public static final int PICK_FROM_ALBUM = 1;
 
-    private Button create_group_complete_button;
+    private ImageButton create_group_complete_button;
     private ImageButton create_group_groupBackground_button;
-    private EditText create_group_groupName_editTt;
+    private EditText create_group_groupName_editTxt;
     private CircleImageView create_group_groupImage_circleView;
-    private Button create_group_publish_button;
-    private EditText create_group_groupPW_editTxt;
-    private LinearLayout create_group_groupPW_linear;
+    private EditText create_group_groupDetail_editTxt;
+
     private static final String[] IMAGE_PROJECTION = {
             MediaStore.Images.ImageColumns.DATA,
             MediaStore.Images.Thumbnails.DATA};
@@ -64,31 +52,12 @@ public class CreateGroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_group);
 
         // xml이랑 연결 우히히
-        create_group_complete_button = (Button) findViewById(R.id.create_group_complete_button);
+        create_group_complete_button = (ImageButton) findViewById(R.id.create_group_complete_button);
         create_group_groupBackground_button = (ImageButton) findViewById(R.id.create_group_groupBackground_button);
-        create_group_groupName_editTt = (EditText) findViewById(R.id.create_group_groupName_editTt);
+        create_group_groupName_editTxt = (EditText) findViewById(R.id.create_group_groupName_editTxt);
         create_group_groupImage_circleView = (CircleImageView) findViewById(R.id.create_group_groupImage_circleView);
-        create_group_publish_button = (Button) findViewById(R.id.create_group_group_publish_button);
-        create_group_groupPW_editTxt = (EditText) findViewById(R.id.create_group_groupPW_editTxt);
-        create_group_groupPW_linear = (LinearLayout) findViewById(R.id.create_group_groupPW_linear);
+        create_group_groupDetail_editTxt = (EditText) findViewById(R.id.create_group_groupDetail_editTxt);
 
-
-        //  버튼 리스너 우히히
-        create_group_publish_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (isPublic == 1) {
-                    // 비공개로
-                    create_group_groupPW_linear.setVisibility(View.VISIBLE);
-                    isPublic = -1;
-                } else if (isPublic == -1) {
-                    // 공개로
-                    create_group_groupPW_linear.setVisibility(View.GONE);
-                    isPublic = 1;
-                }
-            }
-        });
         //배경 사진 고르기
         create_group_groupBackground_button.setOnClickListener(new View.OnClickListener() {
             @Override

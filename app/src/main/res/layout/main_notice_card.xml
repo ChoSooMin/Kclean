@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="161.5dp"
+    android:orientation="horizontal"
+    android:id="@+id/main_notice_card_linear">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/main_notice_card_group_circleImage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="16dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="22dp">
+
+        <TextView
+            android:id="@+id/main_notice_card_noticeTitle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="컨퍼런스 기획단 모집"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_bold"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/main_notice_card_noticeContent_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="컨퍼런스 기획단 모집합니다. 기획/디자인 관심있는 분들 많은 지원 부탁드립니다..."
+            android:textSize="14sp"
+            android:textColor="#1d1d1d"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:layout_marginTop="4.6dp"
+            android:includeFontPadding="false"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2.4dp">
+
+            <TextView
+                android:id="@+id/main_notice_card_noticeDate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11/05"
+                android:textSize="12sp"
+                android:textColor="#8c8c8c"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="12sp"
+                android:textColor="#8c8c8c"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/main_notice_card_noticeTime_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:14"
+                android:textSize="12sp"
+                android:textColor="#8c8c8c"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/main_notice_card_groupName_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="S.O.P.T 23기"
+                android:textSize="12sp"
+                android:textColor="#8c8c8c"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  |  총무 "
+                android:textSize="12sp"
+                android:textColor="#8c8c8c"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/main_notice_card_managerName_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="강지희"
+                android:textSize="12sp"
+                android:textColor="#8c8c8c"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"/>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/main_notice_card_send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_moneyout_round"
+            android:layout_marginTop="13dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

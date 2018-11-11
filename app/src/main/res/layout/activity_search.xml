@@ -15,16 +15,17 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_toLeftOf="@id/search_cancel_button"
-            android:layout_marginLeft="19dp"
-            android:background="#f1effc">
+            android:layout_marginLeft="16dp"
+            android:background="#f2f2f8"
+            android:layout_centerVertical="true">
 
             <ImageView
                 android:id="@+id/search_search_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/sopt"
+                android:src="@drawable/ic_search_mini"
                 android:layout_marginLeft="8dp"
                 android:layout_centerVertical="true"/>
 
@@ -32,23 +33,29 @@
                 android:layout_toRightOf="@id/search_search_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="우ㅏㄹ니아린아ㅓ리ㅏ"
+                android:hint="검색어를 입력하세요."
+                android:textCursorDrawable="@color/colorEdit"
                 android:background="@android:color/transparent"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="2dp"/>
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:textSize="14sp"
+                android:textColor="#1D1D1D"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="10dp"
+                android:cursorVisible="true"/>
 
         </RelativeLayout>
 
         <Button
             android:id="@+id/search_cancel_button"
             android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="취소"
-            android:textSize="16sp"
-            android:textColor="#653bff"
-            android:layout_marginRight="15dp"
-            android:background="@android:color/transparent"/>
+            android:layout_width="30dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="17dp"
+            android:background="@drawable/ic_cancel"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
 
     </RelativeLayout>
 

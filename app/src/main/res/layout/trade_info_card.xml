@@ -6,20 +6,20 @@
     android:layout_height="71dp"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/trade_info_group_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/trade_info_memberCircle_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
-        android:background="#000000"/>
+        android:background="@drawable/ic_profile_40"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/trade_info_group_image"
+        android:layout_toRightOf="@id/trade_info_memberCircle_image"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="45dp"
         android:layout_toLeftOf="@id/trade_info_money_linear">
@@ -29,7 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:textSize="14sp"
-            android:text="서울시 행복 돼지고기 집인데용 아주 맛있어용 히히"/>
+            android:text="서울시 행복 돼지고기 집인데용 아주 맛있어용 히히"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:textColor="#1D1D1D"
+            android:includeFontPadding="false"/>
 
         <TextView
             android:id="@+id/trade_info_tradeTime_txt"
@@ -37,7 +40,9 @@
             android:layout_height="wrap_content"
             android:text="13:08"
             android:textColor="#8c8c8c"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
 
     </LinearLayout>
 
@@ -68,7 +73,9 @@
                 android:layout_height="wrap_content"
                 android:text=" "
                 android:textSize="18sp"
-                android:textColor="#ff5050"/>
+                android:textColor="#ff5050"
+                android:fontFamily="@font/notosans_cjk_kr_bold"
+                android:includeFontPadding="false"/>
 
             <TextView
                 android:id="@+id/trade_info_tradePrice_txt"
@@ -76,14 +83,18 @@
                 android:layout_height="wrap_content"
                 android:text="25,000"
                 android:textSize="18sp"
-                android:textColor="#ff5050"/>
+                android:textColor="#ff5050"
+                android:fontFamily="@font/notosans_cjk_kr_bold"
+                android:includeFontPadding="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="원"
                 android:textColor="#ff5050"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false" />
 
         </LinearLayout>
 
@@ -94,7 +105,9 @@
             android:text="결제"
             android:layout_gravity="right"
             android:textSize="12sp"
-            android:textColor="#ff5050"/>
+            android:textColor="#ff5050"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
     </LinearLayout>
 
 </RelativeLayout>

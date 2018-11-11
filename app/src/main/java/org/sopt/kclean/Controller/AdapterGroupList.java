@@ -42,6 +42,9 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         //((GroupListViewHolder)holder).group_card_image.setImageDrawable(groupList.get(position).getGroupImage());
+        // 이건 임시
+        ((GroupListViewHolder) holder).group_card_image.setImageResource(R.drawable.sopt);
+
         ((GroupListViewHolder)holder).group_card_name_text.setText(groupList.get(position).getMasterName());
         ((GroupListViewHolder)holder).group_card_totalnumber_text.setText("" + groupList.get(position).getTotalMember());
         ((GroupListViewHolder)holder).group_card_group_name_text.setText(groupList.get(position).getGroupName());

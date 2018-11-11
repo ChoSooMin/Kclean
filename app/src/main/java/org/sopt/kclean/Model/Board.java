@@ -1,8 +1,4 @@
 package org.sopt.kclean.Model;
 
-public class Notice {
-
-
-
-
+public class Board {
 }

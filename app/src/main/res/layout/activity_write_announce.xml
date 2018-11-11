@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.WriteAnnounceActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="공지 작성"
+            android:textColor="#1D1D1D"
+            android:textSize="18sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
+
+        <ImageButton
+            android:id="@+id/write_board_complete_imgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="19dp"
+            android:background="@drawable/ic_succes"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/write_board_title_editTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="공지 제목 작성하기"
+        android:textCursorDrawable="@color/colorEdit"
+        android:textColor="#1D1D1D"
+        android:textSize="18sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공지 유형"
+        android:textColor="#1D1D1D"
+        android:textSize="16sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"/>
+
+    <RadioGroup
+        android:id="@+id/write_board_type_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/write_board_type_normal_radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/radio_button_normal"
+            android:paddingRight="10dp"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/write_board_type_special_radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/radio_button_special"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/write_board_requestMoney_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요청 금액"
+            android:textColor="#1D1D1D"
+            android:textSize="16sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1인 청구 금액"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"/>
+
+        <EditText
+            android:id="@+id/write_board_personMoney_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:hint="인당 송금요청 할 금액을 입력해주세요."
+            android:textColor="#1D1D1D"
+            android:textSize="14sp"
+            android:textCursorDrawable="@color/colorEdit"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="세부 사항"
+        android:textColor="#1D1D1D"
+        android:textSize="16sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="16dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="장소"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"/>
+        
+        <EditText
+            android:id="@+id/write_board_place_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/place"
+            android:layout_marginLeft="10dp"
+            android:hint="장소를 입력해주세요."
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:textCursorDrawable="@color/colorEdit"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"/>
+
+        <EditText
+            android:id="@+id/write_board_date_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/date"
+            android:layout_marginLeft="10dp"
+            android:hint="날짜를 입력해주세요."
+            android:textSize="14sp"
+            android:textCursorDrawable="@color/colorEdit"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"/>
+
+        <EditText
+            android:id="@+id/write_board_time_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/time"
+            android:layout_marginLeft="10dp"
+            android:hint="시간대를 입력해주세요."
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:textCursorDrawable="@color/colorEdit"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내용"
+        android:textColor="#3b3a99"
+        android:textSize="12sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/write_board_content_editTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#f2f2f8"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="14sp"
+        android:textColor="#1D1D1D"
+        android:textCursorDrawable="@color/colorEdit"
+        android:fontFamily="@font/notosans_cjk_kr_regular"
+        android:includeFontPadding="false"
+        android:hint="공지에 들어갈 내용을 작성해주세요."/>
+
+</LinearLayout>

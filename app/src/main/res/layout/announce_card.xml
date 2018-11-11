@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/announce_card_linear"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:orientation="vertical"
+    android:background="@drawable/announce_rounded">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp">
+
+        <ImageView
+            android:id="@+id/announce_card_type_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_normal_notice"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/announce_card_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11/03"
+                android:textColor="#8c8c8c"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textColor="#8c8c8c"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="true"/>
+
+            <TextView
+                android:id="@+id/announce_card_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18:30"
+                android:textColor="#8c8c8c"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="true"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/announce_card_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="컨퍼런스 기획단 모집"
+        android:fontFamily="@font/notosans_cjk_kr_bold"
+        android:includeFontPadding="false"
+        android:textSize="14sp"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/announce_card_content_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="컨퍼런스 기획단 모집합니다. 기획/디자인 관심있는 분들 많은 지원 부탁드립니다 화이팅이에용..."
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/notosans_cjk_kr_regular"
+        android:includeFontPadding="false"/>
+
+</LinearLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="165dp"
+    android:orientation="vertical"
+    android:id="@+id/board_card_linear">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/board_card_memberImg_circleImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_profile_40"
+            android:layout_marginLeft="20dp"/>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/board_card_memberImg_circleImg"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/board_card_writer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="구설원"
+                android:textSize="14sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:textColor="#1D1D1D" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/board_card_date_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11/03"
+                    android:textColor="#8c8c8c"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/notosans_cjk_kr_regular"
+                    android:includeFontPadding="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="#8c8c8c"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/notosans_cjk_kr_regular"
+                    android:includeFontPadding="false"/>
+
+                <TextView
+                    android:id="@+id/board_card_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18:30"
+                    android:textColor="#8c8c8c"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/notosans_cjk_kr_regular"
+                    android:includeFontPadding="false"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/board_card_content_text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="컨퍼런스 후기 올립니다 ! 덕분에 즐겁고 보람찬 경험 많이 할수 있었습니다. 다음에도 또 이런 행사 열어주세요!"
+        android:textSize="14sp"
+        android:textColor="#1D1D1D"
+        android:fontFamily="@font/notosans_cjk_kr_regular"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/board_commentNumber_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="12sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"/>
+
+        <TextView
+            android:id="@+id/board_likeNumber_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22"
+            android:textSize="12sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            android:layout_marginRight="19.5dp"/>
+
+        <LinearLayout
+            android:id="@+id/board_photo_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/board_photoNumber_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textSize="12sp"
+                android:textColor="#1D1D1D"
+                android:fontFamily="@font/notosans_cjk_kr_regular"
+                android:includeFontPadding="false"
+                android:layout_marginRight="19.5dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -18,131 +18,115 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="새 동아리 만들기"
-            android:textColor="#000000"
-            android:textStyle="bold"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
             android:textSize="18sp"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:includeFontPadding="false" />
 
-        <Button
+        <ImageButton
             android:id="@+id/create_group_complete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="완료"
-            android:textStyle="bold"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="15dp"
-            android:textColor="#653bff"
+            android:textColor="#ff5050"
             android:textSize="16sp"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/ic_succes"/>
 
     </RelativeLayout>
 
-
+    
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_height="196dp">
 
         <ImageButton
             android:id="@+id/create_group_groupBackground_button"
             android:layout_width="match_parent"
-            android:layout_height="196dp"
-            android:layout_alignParentStart="true"
-            android:background="#653bff"
-            android:text= "동아리 소개 배경 사진을\n업로드 해주세요\n:-)"
-            android:textColor="#ffffff" />
+            android:layout_height="match_parent"
+            android:background="#3b3a99"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/create_group_groupImage_circleView"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/create_group_groupBackground_button"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
-            app:civ_border_color="#fcb335"
-            app:civ_border_width="2dp" />
-
-        <EditText
-            android:id="@+id/create_group_groupName_editTt"
-            android:layout_width="256dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/create_group_groupImage_circleView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="22dp"
-            android:hint="동아리 이름을 입력해주세요."
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:theme="@style/EditTheme" />
-
-        <EditText
-            android:layout_width="328dp"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/create_group_groupName_editTt"
-            android:layout_below="@+id/create_group_groupName_editTt"
-            android:hint="동아리 설명을 작성해주세요."
-            android:layout_marginTop="10dp"
-            android:theme="@style/EditTheme" />
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="동아리 소개 배경 사진을\n업로드 해주세요\n:-)"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
 
     </RelativeLayout>
+
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52.5dp">
+        android:layout_marginTop="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_alignBaseline="@+id/create_group_group_publish_button"
-            android:layout_alignBottom="@+id/create_group_group_publish_button"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="15dp"
-            android:text="공개여부"
-            android:textColor="#1d1d1d"
-            android:textSize="16sp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/create_group_groupImage_circleView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            app:civ_border_color="#f2f2f8"
+            app:civ_border_width="2dp"
+            android:background="@drawable/ic_empty_profile_48"/>
 
-        <Button
-            android:id="@+id/create_group_group_publish_button"
-            android:layout_width="wrap_content"
+
+        <EditText
+            android:id="@+id/create_group_groupName_editTxt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="15dp" />
+            android:hint="동아리 이름을 입력해주세요."
+            android:textCursorDrawable="@color/colorEdit"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:theme="@style/EditTheme"
+            android:layout_toRightOf="@id/create_group_groupImage_circleView"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_centerVertical="true"/>
+
+
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/create_group_groupPW_linear"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="동아리 설명"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:textColor="#1D1D1D"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:includeFontPadding="false"/>
+
+    <EditText
+        android:id="@+id/create_group_groupDetail_editTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="비밀번호 입력창"
-            android:textColor="#ff5050"
-            android:textSize="16sp"
-            />
-
-        <EditText
-            android:id="@+id/create_group_groupPW_editTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15.5dp"
-            android:layout_marginRight="15.5dp"
-            android:layout_marginTop="18dp"
-            android:hint="4자리 비밀번호를 설정해주세요."
-            android:textSize="14sp"
-            android:theme="@style/PasswordEditTheme" />
-
-    </LinearLayout>
-
+        android:hint="동아리 설명을 작성해주세요."
+        android:layout_centerVertical="true"
+        android:textCursorDrawable="@color/colorEdit"
+        android:theme="@style/EditTheme"
+        android:background="#f2f2f8"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/notosans_cjk_kr_regular"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

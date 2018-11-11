@@ -15,12 +15,14 @@ import org.sopt.kclean.R;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AdapterTradeInfoList extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     ArrayList<Trade> tradeInfoList;
     Context context;
 
-    public AdapterTradeInfoList(ArrayList<Trade> tradeInfoList, Context context) {
+    public AdapterTradeInfoList(Context context, ArrayList<Trade> tradeInfoList) {
         this.tradeInfoList = tradeInfoList;
         this.context = context;
     }
@@ -46,7 +48,7 @@ public class AdapterTradeInfoList extends RecyclerView.Adapter<RecyclerView.View
     class TradeListViewHolder extends RecyclerView.ViewHolder {
         // 홈화면 동아리 리스트에 들어갈 뷰 속성
         public RelativeLayout trade_info_card_relative;
-        public ImageView trade_info_group_image;
+        public CircleImageView trade_info_memberCircle_image;
         public TextView trade_info_tradeName_txt;
         public TextView trade_info_tradeTime_txt;
         public TextView trade_info_isPlus_txt;
@@ -57,7 +59,7 @@ public class AdapterTradeInfoList extends RecyclerView.Adapter<RecyclerView.View
             super(itemView);
 
             trade_info_card_relative = (RelativeLayout)itemView.findViewById(R.id.trade_info_card_relative);
-            trade_info_group_image = (ImageView) itemView.findViewById(R.id.trade_info_group_image);
+            trade_info_memberCircle_image = (CircleImageView) itemView.findViewById(R.id.trade_info_memberCircle_image);
             trade_info_tradeName_txt = (TextView) itemView.findViewById(R.id.trade_info_tradeName_txt);
             trade_info_tradeTime_txt = (TextView) itemView.findViewById(R.id.trade_info_tradeTime_txt);
             trade_info_isPlus_txt = (TextView) itemView.findViewById(R.id.trade_info_isPlus_txt);

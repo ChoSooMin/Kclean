@@ -105,8 +105,12 @@ public class Group implements Parcelable {
         parcel.writeString(groupName);
         parcel.writeInt(totalMember);
         parcel.writeString(masterName);
-        parcel.writeValue(groupImage);
-        parcel.writeValue(groupBackground);
+
+//        parcel.writeValue(groupImage);
+//        parcel.writeValue(groupBackground);
+
+        parcel.writeString(groupImage);
+        parcel.writeString(groupBackground);
         parcel.writeString(groupDetail);
     }
 
