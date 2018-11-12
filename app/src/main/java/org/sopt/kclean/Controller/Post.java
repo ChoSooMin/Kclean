@@ -22,41 +22,51 @@ public class Post {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private String url;
     private String json;
-
-    public Post(String url, String json){
+    private String token;
+    public Post(String url, String json)
+    {
         this.url = url;
         this.json = json;
 
+    }
+
+    public Post(String url, String json,String token){
+        this.url = url;
+        this.json = json;
+        this.token = token;
     }
     public Post(String url){
         this.url = url;
     }
 
     public String post() throws IOException {
-
         RequestBody body = RequestBody.create(JSON, json);
-        Request request = new Request.Builder()
-                .addHeader("accept","application/x-www-form-urlencoded")
-                .url(url)
-                .post(body)
-                .build();
+        Request request;
+        if(token != null) {
+            request = new Request.Builder()
+                    .addHeader("accept", "application/x-www-form-urlencoded")
+                    .addHeader("token",token)
+                    .url(url)
+                    .post(body)
+                    .build();
+        }
+        else
+        {
+            request = new Request.Builder()
+                    .addHeader("accept", "application/x-www-form-urlencoded")
+                    .url(url)
+                    .post(body)
+                    .build();
+
+        }
         try(Response response = client.newCall(request).execute()){
-            return response.body().string();
+             String s = response.header("state");
+
+             if(response.code() == 200)
+                return response.body().string();
+             else
+                 return null;
         }
     }
 
-}
-class PostTask extends AsyncTask<String,String,String> {
-    @Override
-    protected String doInBackground(String... strings) {
-        Post post = new Post(strings[0], strings[1]);
-        String response = null;
-        try {
-            response = post.post();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Log.d("PostTask", "posttask!!");
-        return response;
-    }
 }

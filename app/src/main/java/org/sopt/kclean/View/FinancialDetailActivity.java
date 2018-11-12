@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import org.sopt.kclean.R;
 
+
 public class FinancialDetailActivity extends AppCompatActivity {
 
     @Override

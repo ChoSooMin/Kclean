@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import org.sopt.kclean.Controller.ImageHandler;
 import org.sopt.kclean.R;
+import org.sopt.kclean.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
