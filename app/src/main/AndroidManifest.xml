@@ -10,15 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.MainActivity">
+        </activity>
+        <activity android:name=".View.GroupDetailActivity" />
+        <activity android:name=".View.CreateGroupActivity" />
+        <activity android:name=".View.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.GroupDetailActivity" />
-        <activity android:name=".View.CreateGroupActivity" />
-        <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.FinancialDetailActivity" />
         <activity android:name=".View.SearchActivity" />
         <activity android:name=".View.MemberActivity" />
@@ -26,6 +27,14 @@
         <activity android:name=".View.AnnounceDetailActivity" />
         <activity android:name=".View.BoardActivity" />
         <activity android:name=".View.WriteAnnounceActivity"></activity>
+        <service
+            android:name=".Service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
+
+
 
 </manifest>

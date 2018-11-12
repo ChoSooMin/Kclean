@@ -2,11 +2,14 @@ package org.sopt.kclean.View;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        user = new User();
         login_id_editTxt = (EditText) findViewById(R.id.login_id_editTxt); // 아이디
         login_pw_editTxt = (EditText) findViewById(R.id.login_pw_editTxt); // 비밀번호
         login_login_button = (Button) findViewById(R.id.login_login_button); // 로그인 버튼
@@ -43,22 +46,45 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(login_id_editTxt.getText() == null)
                 {
+                    // 다이얼로그 바디
+                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
+                    // 메세지
+                    alert_confirm.setMessage("ID를 입력해주세요.");
+                    // 확인 버튼 리스너
+                    alert_confirm.setPositiveButton("확인", null);
+                    // 다이얼로그 생성
+                    AlertDialog alert = alert_confirm.create();
+                    // 아이콘
+                    //alert.setIcon(R.drawable.ic_launcher);
+                    // 다이얼로그 타이틀
+                    // 다이얼로그 보기
+                        alert.show();
 
 
                 }
                 else if(login_pw_editTxt.getText() == null){
+                    // 다이얼로그 바디
+                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
+                    // 메세지
+                    alert_confirm.setMessage("PassWord를 입력해주세요.");
+                    // 확인 버튼 리스너
+                    alert_confirm.setPositiveButton("확인", null);
+                    // 다이얼로그 생성
+                    AlertDialog alert = alert_confirm.create();
+                    // 아이콘
+                    //alert.setIcon(R.drawable.ic_launcher);
+                    // 다이얼로그 타이틀
+                    // 다이얼로그 보기
+                    alert.show();
 
 
                 }
                 else
                 {
                     LoginTask loginTask = new LoginTask();
-                    loginTask.execute(login_id_editTxt.getText().toString(),login_pw_editTxt.getText().toString());
+                    loginTask.execute(login_id_editTxt.getText().toString(), FirebaseInstanceId.getInstance().getToken().toString() ,login_pw_editTxt.getText().toString());
 
                 }
-
-
-
 
             }
         });
@@ -118,6 +144,19 @@ public class LoginActivity extends AppCompatActivity {
                 //응답 오류시  다시 로그인 하라고 하기
                 login_id_editTxt.setText("");
                 login_pw_editTxt.setText("");
+                // 다이얼로그 바디
+                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
+                // 메세지
+                alert_confirm.setMessage("로그인 실패 했습니다.");
+                // 확인 버튼 리스너
+                alert_confirm.setPositiveButton("확인", null);
+                // 다이얼로그 생성
+                AlertDialog alert = alert_confirm.create();
+                // 아이콘
+                //alert.setIcon(R.drawable.ic_launcher);
+                // 다이얼로그 타이틀
+                // 다이얼로그 보기
+                alert.show();
             }
 
             super.onPostExecute(s);

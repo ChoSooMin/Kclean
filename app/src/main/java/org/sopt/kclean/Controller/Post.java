@@ -44,7 +44,7 @@ public class Post {
         Request request;
         if(token != null) {
             request = new Request.Builder()
-                    .addHeader("accept", "application/x-www-form-urlencoded")
+                    .addHeader("Content-type", "application/x-www-form-urlencoded")
                     .addHeader("token",token)
                     .url(url)
                     .post(body)
@@ -53,7 +53,7 @@ public class Post {
         else
         {
             request = new Request.Builder()
-                    .addHeader("accept", "application/x-www-form-urlencoded")
+                    .addHeader("Content-type", "application/x-www-form-urlencoded")
                     .url(url)
                     .post(body)
                     .build();
@@ -62,8 +62,11 @@ public class Post {
         try(Response response = client.newCall(request).execute()){
              String s = response.header("state");
 
-             if(response.code() == 200)
-                return response.body().string();
+             if(response.code() == 200 ||response.code() == 201 )
+             {
+
+                 return response.body().string();
+             }
              else
                  return null;
         }
