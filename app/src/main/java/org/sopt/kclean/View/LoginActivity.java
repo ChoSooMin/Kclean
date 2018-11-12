@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(login_id_editTxt.getText() == null)
+                if(login_id_editTxt.getText().toString() == null)
                 {
                     // 다이얼로그 바디
                     AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 }
-                else if(login_pw_editTxt.getText() == null){
+                else if(login_pw_editTxt.getText().toString() == null){
                     // 다이얼로그 바디
                     AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
                     // 메세지
@@ -86,6 +86,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
 
+
+
+
             }
         });
 
@@ -95,17 +98,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //회원가입 액티비티
-                //Intent intent = new Intent(LoginActivity,)
+                Intent intent = new Intent(LoginActivity.this, JoinActivity.class);
 
-
-
-
+                startActivity(intent);
             }
         });
     }
 
 
-    private class LoginTask extends AsyncTask<String, String, String>{
+    private class LoginTask extends AsyncTask<String, String, String> {
 
 
         @Override
@@ -113,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             Post post = new Post("https://klean.apps.dev.clayon.io/api/user/signin", PostString.signinJson(strings[0],strings[1],strings[2]));
             String response = null;
             try {
-            response =  post.post();
+                response =  post.post();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -144,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                 //응답 오류시  다시 로그인 하라고 하기
                 login_id_editTxt.setText("");
                 login_pw_editTxt.setText("");
+
                 // 다이얼로그 바디
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
                 // 메세지

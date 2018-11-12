@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.sopt.kclean">
 
+    <uses-permission android:name="android.permission.INTERNET">
+    </uses-permission>
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,9 +28,11 @@
         <activity android:name=".View.SearchActivity" />
         <activity android:name=".View.MemberActivity" />
         <activity android:name=".View.AnnounceActivity" />
+        <activity android:name=".View.JoinActivity" />
         <activity android:name=".View.AnnounceDetailActivity" />
         <activity android:name=".View.BoardActivity" />
-        <activity android:name=".View.WriteAnnounceActivity"></activity>
+        <activity android:name=".View.WriteAnnounceActivity">
+        </activity>
         <service
             android:name=".Service.MyFirebaseInstanceIDService">
             <intent-filter>
@@ -34,7 +40,5 @@
             </intent-filter>
         </service>
     </application>
-
-
 
 </manifest>

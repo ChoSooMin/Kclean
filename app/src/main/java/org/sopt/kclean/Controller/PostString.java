@@ -23,7 +23,7 @@ public  class PostString {
         }
         return jsonObject.toString();
     }
-    public static String signupJson(String user_id,String user_name,String user_pw, String user_phone, int user_sex,String user_birth,String user_univ,String user_major)
+    public static String signupJson(String user_id,String user_name,String user_pw, String user_phone, int user_sex, String user_birth, String user_univ,String user_major)
     {
         JSONObject jsonObject = new JSONObject();
         try {

@@ -139,9 +139,11 @@
                 <!-- 첫 번째 탭(전체) -->
                 <LinearLayout
                     android:id="@+id/content1"
+                    android:theme="@style/Theme.AppCompat.Light"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -210,6 +212,14 @@
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+
+                    </android.support.v7.widget.RecyclerView>
 
                 </LinearLayout>
 

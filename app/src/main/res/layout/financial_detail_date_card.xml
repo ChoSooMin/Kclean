@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:orientation="horizontal"
+    android:background="#f2f2f8">
+
+    <TextView
+        android:id="@+id/date_card_month_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:textColor="#8C8C8C"
+        android:textSize="12sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="."
+        android:textColor="#8C8C8C"
+        android:textSize="12sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/date_card_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7"
+        android:textColor="#8C8C8C"
+        android:textSize="12sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" ("
+        android:textColor="#8C8C8C"
+        android:textSize="12sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/date_card_day_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="일"
+        android:textColor="#8C8C8C"
+        android:textSize="12sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=")"
+        android:textColor="#8C8C8C"
+        android:textSize="12sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

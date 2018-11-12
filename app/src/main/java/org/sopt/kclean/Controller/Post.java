@@ -18,11 +18,14 @@ import okhttp3.Response;
 
 //Post 통신
 public class Post {
+
     OkHttpClient client = new OkHttpClient();
+
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private String url;
     private String json;
     private String token;
+
     public Post(String url, String json)
     {
         this.url = url;
@@ -35,13 +38,16 @@ public class Post {
         this.json = json;
         this.token = token;
     }
+
     public Post(String url){
         this.url = url;
     }
 
     public String post() throws IOException {
+
         RequestBody body = RequestBody.create(JSON, json);
         Request request;
+
         if(token != null) {
             request = new Request.Builder()
                     .addHeader("Content-type", "application/x-www-form-urlencoded")
@@ -57,8 +63,9 @@ public class Post {
                     .url(url)
                     .post(body)
                     .build();
-
         }
+
+
         try(Response response = client.newCall(request).execute()){
              String s = response.header("state");
 
@@ -70,6 +77,7 @@ public class Post {
              else
                  return null;
         }
+
     }
 
 }
