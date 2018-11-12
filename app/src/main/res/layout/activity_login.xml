@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="org.sopt.kclean.View.LoginActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:textSize="24sp"
+        android:textColor="#3b3a99"
+        android:fontFamily="@font/notosans_cjk_kr_bold"
+        android:includeFontPadding="false"
+        android:layout_marginTop="56dp"
+        android:layout_marginLeft="27dp"/>
+
+    <EditText
+        android:id="@+id/login_id_editTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#1D1D1D"
+        android:hint="아이디"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="37dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginTop="95dp"/>
+
+    <EditText
+        android:id="@+id/login_pw_editTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#1D1D1D"
+        android:hint="비밀번호"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="37dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginTop="22dp"/>
+
+    <Button
+        android:id="@+id/login_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="33dp"
+        android:text="로그인"
+        android:layout_marginTop="62dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디가 없으신가요?"
+            android:textSize="12sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
+
+        <Button
+            android:id="@+id/login_join_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"/>
+    </LinearLayout>
+
+</LinearLayout>
