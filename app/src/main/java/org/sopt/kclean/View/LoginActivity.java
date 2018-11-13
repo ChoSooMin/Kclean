@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     LoginTask loginTask = new LoginTask();
                     loginTask.execute(login_id_editTxt.getText().toString(), FirebaseInstanceId.getInstance().getToken().toString() ,login_pw_editTxt.getText().toString());
+
                 }
 
 
@@ -107,15 +108,17 @@ public class LoginActivity extends AppCompatActivity {
             if(s != null) { //응답 성공시
                 try {
                     jsonObject = new JSONObject(s);
-                    user.setToken(jsonObject.getString("token"));
+                    //user.setToken();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("token", jsonObject.getString("token"));
+                    startActivity(intent);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                //(1)인텐트로 user 넘기기
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+
+
+
             }
             else
             {

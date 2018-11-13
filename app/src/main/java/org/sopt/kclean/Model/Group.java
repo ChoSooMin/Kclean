@@ -10,6 +10,7 @@ import android.os.Parcelable;
 
 public class Group implements Parcelable {
 
+    private String groupId;
     private String groupName;
     private int totalMember;
     private String masterName;
@@ -27,7 +28,21 @@ public class Group implements Parcelable {
         this.groupDetail = groupDetail;
         this.groupPassword = password;
     }
-
+    public Group(String groupName,String groupImage,String groupDetail,String groupBackground)
+    {
+        this.groupName = groupName;
+        this.groupImage = groupImage;
+        this.groupDetail = groupDetail;
+        this.groupBackground = groupBackground;
+    }
+    public Group(String groupId,String groupName , String groupImage, String masterName, int totalMember )
+    {
+        this.groupId = groupId;
+        this.groupName = groupName;
+        this.groupImage = groupImage;
+        this.masterName =masterName;
+        this.totalMember = totalMember;
+    }
     public Group(Parcel source)
     {
         groupName = source.readString();
@@ -39,6 +54,13 @@ public class Group implements Parcelable {
         groupPassword = source.readString();
     }
 
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
     public String getGroupPassword() {
         return groupPassword;
     }

@@ -75,7 +75,6 @@ public class Post {
 
         try(Response response = client.newCall(request).execute()){
              String s = response.header("state");
-
              if(response.code() == 200 ||response.code() == 201 )
              {
 

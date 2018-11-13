@@ -15,16 +15,22 @@ import org.sopt.kclean.R;
  * Created by choisunpil on 14/11/2018.
  */
 
-public class DialogCustom {
-
+public class DialogCustom extends Dialog {
     private static final int LAYOUT = R.layout.dialog_custom;
     private Context context;
     private String text;
     private Button button;
     private TextView textView;
 
-    public DialogCustom(Context context) {
+    public DialogCustom(@NonNull Context context) {
+        super(context);
         this.context = context;
+    }
+    public DialogCustom(@NonNull Context context,String text)
+    {
+        super(context);
+        this.context = context;
+        this.text = text;
     }
 
 //    public DialogCustom(Context context,String text) {
@@ -55,13 +61,11 @@ public class DialogCustom {
 
         notice_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-//                Toast.makeText(context, "취소 했습니다.", Toast.LENGTH_SHORT).show();
-
-                // 커스텀 다이얼로그를 종료한다.
-                dlg.dismiss();
+            public void onClick(View v) {
+                cancel();
             }
         });
+
     }
 
 }

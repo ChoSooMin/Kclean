@@ -3,7 +3,9 @@ package org.sopt.kclean.Controller;
 //import android.support.v7.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import org.sopt.kclean.Model.Group;
 import org.sopt.kclean.R;
 import org.sopt.kclean.View.GroupDetailActivity;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -41,10 +47,9 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        //((GroupListViewHolder)holder).group_card_image.setImageDrawable(groupList.get(position).getGroupImage());
         // 이건 임시
-        ((GroupListViewHolder) holder).group_card_image.setImageResource(R.drawable.sopt);
-
+        Glide.with(context).load(groupList.get(position).getGroupImage()).asBitmap().centerCrop().into(((GroupListViewHolder) holder).group_card_image);
+        //((GroupListViewHolder) holder).group_card_image.setImageURI(uri); ;
         ((GroupListViewHolder)holder).group_card_name_text.setText(groupList.get(position).getMasterName());
         ((GroupListViewHolder)holder).group_card_totalnumber_text.setText("" + groupList.get(position).getTotalMember());
         ((GroupListViewHolder)holder).group_card_group_name_text.setText(groupList.get(position).getGroupName());

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,10 +16,18 @@ import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.sopt.kclean.Controller.AdapterGroupList;
+import org.sopt.kclean.Controller.Get;
+import org.sopt.kclean.Controller.Post;
+import org.sopt.kclean.Controller.PostString;
 import org.sopt.kclean.Model.Group;
+import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,14 +46,24 @@ public class MainActivity extends AppCompatActivity {
     private AdapterGroupList groupListAdapter;
     private LinearLayoutManager layoutManager;
     private ArrayList<Group> groups;
-
+    private User user;
     private TabHost.TabSpec tab1, tab2, tab3;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Intent intent = getIntent();
+        user = new User();
+        user.setToken(intent.getStringExtra("token"));
         // 탭탭탭~~
         tabHost = (TabHost)findViewById(R.id.tabHost);
 
@@ -59,19 +78,10 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tab3);
         // 요까지 탭탭탭~~
 
-        groups = new ArrayList<Group>();
-
-        groups.add(new Group("SOPT_23",484,"류지훈", "", "", "최효진 최고", "1234"));
-
-        recyclerView =  (RecyclerView)findViewById(R.id.recycler_view);
-        layoutManager = new LinearLayoutManager(getApplicationContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
-        groupListAdapter = new AdapterGroupList(getApplicationContext(), groups);
-        recyclerView.setAdapter(groupListAdapter);
 
 
-
+        MainTask mainTask = new  MainTask();
+        mainTask.execute();
         // 동아리 생성 버튼
         main_createGroupBtn = (ImageButton) findViewById(R.id.main_createGroupBtn);
         main_createGroupBtn.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +122,57 @@ public class MainActivity extends AppCompatActivity {
                     case "2":
                         break;
                 }
-            }
-        });
     }
+});
+    }
+    private class MainTask extends AsyncTask<String, String, String>{
+        @Override
+        protected String doInBackground(String... strings) {
+           Get get = new Get();
+
+            String response = null;
+            try {
+                response = get.run("https://klean.apps.dev.clayon.io/api/club","application/x-www-form-urlencoded",user.getToken());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            JSONArray jsonArray = null;
+            try {
+                JSONObject jsonObject= new JSONObject(s);
+                jsonArray = jsonObject.getJSONArray("data");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return;
+            }
+            super.onPostExecute(s);
+            groups = new ArrayList<Group>();
+            if(jsonArray == null)
+                return;
+
+            for(int i = 0;  i <jsonArray.length() ;i++) {
+                try {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    Group group =  new Group(jsonObject.getString("club_id"),jsonObject.getString("club_name"),jsonObject.getString("club_logo"),jsonObject.getString("club_manager"),jsonObject.getInt("club_count"));
+                    groups.add(group);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            recyclerView =  (RecyclerView)findViewById(R.id.recycler_view);
+            layoutManager = new LinearLayoutManager(getApplicationContext());
+            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
+            groupListAdapter = new AdapterGroupList(getApplicationContext(), groups);
+            recyclerView.setAdapter(groupListAdapter);
+        }
+    }
+
+
 
 }
