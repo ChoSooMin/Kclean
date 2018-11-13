@@ -83,7 +83,7 @@ public class JoinActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            Post post = new Post("https://klean.apps.dev.clayon.io/api/user/signup", PostString.signupJson(strings[0], strings[1], strings[2], strings[3], Integer.parseInt(strings[4]), strings[5], strings[6], strings[7]));
+            Post post = new Post("https://klean.apps.dev.clayon.io/api/user/signup", PostString.signupJson(strings[0], strings[1], strings[2], strings[3], Integer.parseInt(strings[4]), strings[5], strings[6], strings[7]),"application/x-www-form-urlencoded");
 
             String response = null;
 

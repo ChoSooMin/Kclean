@@ -1,10 +1,12 @@
 package org.sopt.kclean.View;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,19 +48,20 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(login_id_editTxt.getText().toString() == null)
                 {
-                    // 다이얼로그 바디
-                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
-                    // 메세지
-                    alert_confirm.setMessage("ID를 입력해주세요.");
-                    // 확인 버튼 리스너
-                    alert_confirm.setPositiveButton("확인", null);
-                    // 다이얼로그 생성
-                    AlertDialog alert = alert_confirm.create();
-                    // 아이콘
-                    //alert.setIcon(R.drawable.ic_launcher);
-                    // 다이얼로그 타이틀
-                    // 다이얼로그 보기
-                        alert.show();
+//                    // 다이얼로그 바디
+//                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
+//                    // 메세지
+//                    alert_confirm.setMessage("ID를 입력해주세요.");
+//                    // 확인 버튼 리스너
+//                    alert_confirm.setPositiveButton("확인", null);
+//                    // 다이얼로그 생성
+//                    AlertDialog alert = alert_confirm.create();
+//                    // 아이콘
+//                    //alert.setIcon(R.drawable.ic_launcher);
+//                    // 다이얼로그 타이틀
+//                    // 다이얼로그 보기
+                    Dialog dialog = new DialogCustom(LoginActivity.this,"아이디 또는 비밀번호를 다시 확인해주세요");
+                        dialog.show();
 
 
                 }
@@ -111,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            Post post = new Post("https://klean.apps.dev.clayon.io/api/user/signin", PostString.signinJson(strings[0],strings[1],strings[2]));
+            Post post = new Post("https://klean.apps.dev.clayon.io/api/user/signin", PostString.signinJson(strings[0],strings[1],strings[2]),"application/x-www-form-urlencoded");
             String response = null;
             try {
                 response =  post.post();
@@ -146,10 +149,14 @@ public class LoginActivity extends AppCompatActivity {
                 login_id_editTxt.setText("");
                 login_pw_editTxt.setText("");
 
-                // 다이얼로그 바디
+
+                LayoutInflater layoutInflater = LayoutInflater.from(LoginActivity.this);
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
+                View promptView = layoutInflater.inflate(R.layout.dialog_custom, null);
+                alert_confirm.setView(promptView);
+                // 다이얼로그 바디
                 // 메세지
-                alert_confirm.setMessage("로그인 실패 했습니다.");
+                alert_confirm.setMessage("아이디 또는 비밀번호를 다시 확인하세요.");
                 // 확인 버튼 리스너
                 alert_confirm.setPositiveButton("확인", null);
                 // 다이얼로그 생성

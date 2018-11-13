@@ -25,18 +25,21 @@ public class Post {
     private String url;
     private String json;
     private String token;
+    private String content;
 
-    public Post(String url, String json)
+    public Post(String url, String json,String content)
     {
         this.url = url;
         this.json = json;
+        this.content = content;
 
     }
 
-    public Post(String url, String json,String token){
+    public Post(String url, String json,String token,String content){
         this.url = url;
         this.json = json;
         this.token = token;
+        this.content = content;
     }
 
     public Post(String url){
@@ -50,7 +53,7 @@ public class Post {
 
         if(token != null) {
             request = new Request.Builder()
-                    .addHeader("Content-type", "application/x-www-form-urlencoded")
+                    .addHeader("Content-type", content)
                     .addHeader("token",token)
                     .url(url)
                     .post(body)
