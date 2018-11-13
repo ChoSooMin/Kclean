@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.MultipartBody;
 
 /**
  * Created by choisunpil on 07/11/2018.
@@ -27,7 +28,10 @@ public class Post {
     private String token;
     private String content;
 
-    public Post(String url, String json,String content)
+    //
+    public RequestBody requestBody;
+
+    public Post(String url, String json, String content)
     {
         this.url = url;
         this.json = json;

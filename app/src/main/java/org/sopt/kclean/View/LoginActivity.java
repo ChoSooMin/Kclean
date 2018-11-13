@@ -46,47 +46,23 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(login_id_editTxt.getText().toString() == null)
+                if(login_id_editTxt.getText().toString().equals(""))
                 {
-//                    // 다이얼로그 바디
-//                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
-//                    // 메세지
-//                    alert_confirm.setMessage("ID를 입력해주세요.");
-//                    // 확인 버튼 리스너
-//                    alert_confirm.setPositiveButton("확인", null);
-//                    // 다이얼로그 생성
-//                    AlertDialog alert = alert_confirm.create();
-//                    // 아이콘
-//                    //alert.setIcon(R.drawable.ic_launcher);
-//                    // 다이얼로그 타이틀
-//                    // 다이얼로그 보기
-                    Dialog dialog = new DialogCustom(LoginActivity.this,"아이디 또는 비밀번호를 다시 확인해주세요");
-                        dialog.show();
-
-
+                    DialogCustom customDialog = new DialogCustom(LoginActivity.this);
+                    // 커스텀 다이얼로그를 호출한다.
+                    // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
+                    customDialog.callFunction("아이디를 입력해주세요.");
                 }
-                else if(login_pw_editTxt.getText().toString() == null){
-                    // 다이얼로그 바디
-                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
-                    // 메세지
-                    alert_confirm.setMessage("PassWord를 입력해주세요.");
-                    // 확인 버튼 리스너
-                    alert_confirm.setPositiveButton("확인", null);
-                    // 다이얼로그 생성
-                    AlertDialog alert = alert_confirm.create();
-                    // 아이콘
-                    //alert.setIcon(R.drawable.ic_launcher);
-                    // 다이얼로그 타이틀
-                    // 다이얼로그 보기
-                    alert.show();
-
-
+                else if(login_pw_editTxt.getText().toString().equals("")){
+                    DialogCustom customDialog = new DialogCustom(LoginActivity.this);
+                    // 커스텀 다이얼로그를 호출한다.
+                    // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
+                    customDialog.callFunction("비밀번호를 입력해주세요.");
                 }
                 else
                 {
                     LoginTask loginTask = new LoginTask();
                     loginTask.execute(login_id_editTxt.getText().toString(), FirebaseInstanceId.getInstance().getToken().toString() ,login_pw_editTxt.getText().toString());
-
                 }
 
 
@@ -140,8 +116,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
-
-
             }
             else
             {
@@ -149,23 +123,10 @@ public class LoginActivity extends AppCompatActivity {
                 login_id_editTxt.setText("");
                 login_pw_editTxt.setText("");
 
-
-                LayoutInflater layoutInflater = LayoutInflater.from(LoginActivity.this);
-                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(LoginActivity.this, R.style.MyAlertDialogStyle);
-                View promptView = layoutInflater.inflate(R.layout.dialog_custom, null);
-                alert_confirm.setView(promptView);
-                // 다이얼로그 바디
-                // 메세지
-                alert_confirm.setMessage("아이디 또는 비밀번호를 다시 확인하세요.");
-                // 확인 버튼 리스너
-                alert_confirm.setPositiveButton("확인", null);
-                // 다이얼로그 생성
-                AlertDialog alert = alert_confirm.create();
-                // 아이콘
-                //alert.setIcon(R.drawable.ic_launcher);
-                // 다이얼로그 타이틀
-                // 다이얼로그 보기
-                alert.show();
+                DialogCustom customDialog = new DialogCustom(LoginActivity.this);
+                // 커스텀 다이얼로그를 호출한다.
+                // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
+                customDialog.callFunction("아이디 또는 비밀번호가 맞지 않습니다.");
             }
 
             super.onPostExecute(s);

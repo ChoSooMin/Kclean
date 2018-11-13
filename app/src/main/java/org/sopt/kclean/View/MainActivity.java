@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabChanged(String number) {
                 switch (number) {
-
                     case "1":
                         break;
 

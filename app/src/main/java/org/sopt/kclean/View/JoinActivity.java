@@ -18,6 +18,8 @@ import org.sopt.kclean.Controller.PostString;
 import org.sopt.kclean.R;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.Response;
 
@@ -32,6 +34,14 @@ public class JoinActivity extends AppCompatActivity {
     private EditText join_univ_editTxt; // 대학교 EditText
     private EditText join_major_editTxt; // 전공 EditText
     private Button join_join_button; // 회원가입 버튼
+
+    // 핸드폰 번호 형식 확인
+    private String phoneFormat = "^\\s*(010|011|016|017|018|019)(-|\\)|\\s)*(\\d{3,4})(-|\\s)*(\\d{4})\\s*$";
+    private Pattern phonePattern = Pattern.compile(phoneFormat);
+
+    // 생년월일 형식 확인
+    private String birthFormat = "^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$";
+    private Pattern birthPattern = Pattern.compile(birthFormat);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +67,7 @@ public class JoinActivity extends AppCompatActivity {
                 // 통신
                 JoinTask joinTask = new JoinTask();
 
-                if (join_id_editTxt.getText().toString() == null || join_name_editTxt.getText().toString() == null || join_pw_editTxt.getText().toString() == null || join_phone_editTxt.getText().toString() == null || join_gender_editTxt.getText().toString() == null || join_birth_editTxt.getText().toString() == null || join_univ_editTxt.getText().toString() == null || join_major_editTxt.getText().toString() == null) {
+                if (join_id_editTxt.getText().toString().equals("") || join_name_editTxt.getText().toString().equals("") || join_pw_editTxt.getText().toString().equals("") || join_phone_editTxt.getText().toString().equals("") || join_gender_editTxt.getText().toString().equals("") || join_birth_editTxt.getText().toString().equals("") || join_univ_editTxt.getText().toString().equals("") || join_major_editTxt.getText().toString().equals("")) {
                     // 다이얼로그 바디
                     AlertDialog.Builder alert_confirm = new AlertDialog.Builder(JoinActivity.this, R.style.MyAlertDialogStyle);
                     // 메세지
@@ -67,13 +77,49 @@ public class JoinActivity extends AppCompatActivity {
                     // 다이얼로그 생성
                     AlertDialog alert = alert_confirm.create();
                     // 아이콘
-                    //alert.setIcon(R.drawable.ic_launcher);
+//                     alert.setIcon(R.drawable.ic_launcher);
                     // 다이얼로그 타이틀
                     // 다이얼로그 보기
                     alert.show();
                 }
                 else {
-                    joinTask.execute(join_id_editTxt.getText().toString(), join_name_editTxt.getText().toString(), join_pw_editTxt.getText().toString(), join_phone_editTxt.getText().toString(), join_gender_editTxt.getText().toString(), join_birth_editTxt.getText().toString(), join_univ_editTxt.getText().toString(), join_major_editTxt.getText().toString());
+
+                    Matcher phoneMatcher = phonePattern.matcher(join_phone_editTxt.getText().toString());
+                    Matcher birthMatcher = birthPattern.matcher(join_birth_editTxt.getText().toString());
+
+                    if (!phoneMatcher.matches()) {
+                        // 다이얼로그 바디
+                        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(JoinActivity.this, R.style.MyAlertDialogStyle);
+                        // 메세지
+                        alert_confirm.setMessage("전화번호 형식이 맞지 않습니다.");
+                        // 확인 버튼 리스너
+                        alert_confirm.setPositiveButton("확인", null);
+                        // 다이얼로그 생성
+                        AlertDialog alert = alert_confirm.create();
+                        // 아이콘
+//                     alert.setIcon(R.drawable.ic_launcher);
+                        // 다이얼로그 타이틀
+                        // 다이얼로그 보기
+                        alert.show();
+                    }
+                    else if (!birthMatcher.matches()) {
+                        // 다이얼로그 바디
+                        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(JoinActivity.this, R.style.MyAlertDialogStyle);
+                        // 메세지
+                        alert_confirm.setMessage("생년월일 형식이 맞지 않습니다.");
+                        // 확인 버튼 리스너
+                        alert_confirm.setPositiveButton("확인", null);
+                        // 다이얼로그 생성
+                        AlertDialog alert = alert_confirm.create();
+                        // 아이콘
+//                     alert.setIcon(R.drawable.ic_launcher);
+                        // 다이얼로그 타이틀
+                        // 다이얼로그 보기
+                        alert.show();
+                    }
+                    else {
+                        joinTask.execute(join_id_editTxt.getText().toString(), join_name_editTxt.getText().toString(), join_pw_editTxt.getText().toString(), join_phone_editTxt.getText().toString(), join_gender_editTxt.getText().toString(), join_birth_editTxt.getText().toString(), join_univ_editTxt.getText().toString(), join_major_editTxt.getText().toString());
+                    }
                 }
             }
         });

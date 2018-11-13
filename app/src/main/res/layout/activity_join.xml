@@ -41,7 +41,9 @@
         android:layout_marginLeft="27dp"
         android:layout_marginRight="27dp"
         android:layout_marginTop="10dp"
-        android:hint="phone"/>
+        android:hint="phone (XXX-XXXX-XXXX)"
+        android:inputType="numberSigned"
+        android:digits="0123456789-"/>
 
     <EditText
         android:id="@+id/join_gender_editTxt"
@@ -59,7 +61,9 @@
         android:layout_marginLeft="27dp"
         android:layout_marginRight="27dp"
         android:layout_marginTop="10dp"
-        android:hint="birth"/>
+        android:hint="birth (XXXX-XX-XX)"
+        android:inputType="numberSigned"
+        android:digits="0123456789-"/>
 
     <EditText
         android:id="@+id/join_univ_editTxt"
