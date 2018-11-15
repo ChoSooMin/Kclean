@@ -38,7 +38,6 @@ public class AnnounceActivity extends AppCompatActivity {
 
         // 작성하기 버튼 리스너
         announce_write_imgBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AnnounceActivity.this, WriteAnnounceActivity.class); // 공지 작성 화면 띄우기

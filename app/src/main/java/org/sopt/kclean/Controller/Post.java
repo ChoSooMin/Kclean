@@ -39,7 +39,7 @@ public class Post {
 
     }
 
-    public Post(String url, String json,String token,String content){
+    public Post(String url, String json, String token,String content){
         this.url = url;
         this.json = json;
         this.token = token;
@@ -57,21 +57,19 @@ public class Post {
 
         if(token != null) {
             request = new Request.Builder()
-                    .addHeader("Content-type", content)
+                    .addHeader("Content-type",  content)
                     .addHeader("token",token)
                     .url(url)
                     .post(body)
                     .build();
         }
-        else
-        {
+        else {
             request = new Request.Builder()
                     .addHeader("Content-type", "application/x-www-form-urlencoded")
                     .url(url)
                     .post(body)
                     .build();
         }
-
 
         try(Response response = client.newCall(request).execute()){
              String s = response.header("state");
@@ -83,7 +81,5 @@ public class Post {
              else
                  return null;
         }
-
     }
-
 }

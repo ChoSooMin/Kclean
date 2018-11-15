@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-
     }
 
     @Override
@@ -77,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tab2);
         tabHost.addTab(tab3);
         // 요까지 탭탭탭~~
-
 
 
         MainTask mainTask = new  MainTask();
@@ -122,17 +119,18 @@ public class MainActivity extends AppCompatActivity {
                     case "2":
                         break;
                 }
+            }
+        });
     }
-});
-    }
+
     private class MainTask extends AsyncTask<String, String, String>{
         @Override
         protected String doInBackground(String... strings) {
-           Get get = new Get();
+            Get get = new Get(user.getToken());
 
             String response = null;
             try {
-                response = get.run("https://klean.apps.dev.clayon.io/api/club","application/x-www-form-urlencoded",user.getToken());
+                response = get.run("https://klean.apps.dev.clayon.io/api/club","application/x-www-form-urlencoded");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -164,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
             recyclerView =  (RecyclerView)findViewById(R.id.recycler_view);
             layoutManager = new LinearLayoutManager(getApplicationContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -172,7 +171,4 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setAdapter(groupListAdapter);
         }
     }
-
-
-
 }

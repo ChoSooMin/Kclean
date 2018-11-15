@@ -1,12 +1,9 @@
 package org.sopt.kclean.View;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button login_login_button; // 로그인 버튼
     private Button login_join_button; // 회원가입 버튼
     private User user; //로그인 성공시 정보 받기
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +62,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
 
-
-
-
             }
         });
 
@@ -85,9 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
     private class LoginTask extends AsyncTask<String, String, String> {
-
 
         @Override
         protected String doInBackground(String... strings) {
@@ -115,10 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-
-
             }
             else
             {
@@ -136,4 +123,3 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
-

@@ -71,6 +71,4 @@ public  class PostString {
 
         return jsonObject.toString();
     }
-
 }
-
