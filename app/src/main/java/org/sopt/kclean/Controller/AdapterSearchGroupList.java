@@ -1,16 +1,19 @@
 package org.sopt.kclean.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import org.sopt.kclean.Model.Group;
 import org.sopt.kclean.R;
+import org.sopt.kclean.View.GroupDetailActivity;
 
 import java.util.ArrayList;
 
@@ -40,6 +43,15 @@ public class AdapterSearchGroupList extends RecyclerView.Adapter<RecyclerView.Vi
         ((SearchGroupListViewHolder)holder).search_group_totalMember_text.setText("" + searchGroupList.get(position).getTotalMember());
         ((SearchGroupListViewHolder)holder).search_group_managerName_text.setText(searchGroupList.get(position).getMasterName());
         ((SearchGroupListViewHolder)holder).search_group_groupDetail_text.setText(searchGroupList.get(position).getGroupDetail());
+        ((SearchGroupListViewHolder)holder).search_group_card_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, GroupDetailActivity.class);
+                intent.putExtra("selectedGroup", searchGroupList.get(position));
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -54,6 +66,7 @@ public class AdapterSearchGroupList extends RecyclerView.Adapter<RecyclerView.Vi
         public TextView search_group_totalMember_text;
         public TextView search_group_managerName_text;
         public TextView search_group_groupDetail_text;
+        public LinearLayout search_group_card_linear;
 
         public SearchGroupListViewHolder(View itemView) {
             super(itemView);
@@ -63,6 +76,7 @@ public class AdapterSearchGroupList extends RecyclerView.Adapter<RecyclerView.Vi
             search_group_totalMember_text = (TextView) itemView.findViewById(R.id.search_group_totalMember_text);
             search_group_managerName_text = (TextView) itemView.findViewById(R.id.search_group_managerName_text);
             search_group_groupDetail_text = (TextView) itemView.findViewById(R.id.search_group_groupDetail_text);
+            search_group_card_linear = (LinearLayout) itemView.findViewById(R.id.search_group_card_linear);
         }
     }
 }

@@ -1,7 +1,5 @@
 package org.sopt.kclean.Controller;
 
-import android.widget.Toast;
-
 import java.io.IOException;
 
 import okhttp3.HttpUrl;
@@ -43,8 +41,6 @@ public class Get {
         this.queryName = queryName;
         this.query = query;
     }
-
-
 
     // Get에서 ,,, 포스트,,, 값,, ㅛ요청한다고라,,,,?
     public  String run(String url, String content) throws IOException {

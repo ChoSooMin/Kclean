@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private AdapterGroupList groupListAdapter;
     private LinearLayoutManager layoutManager;
     private ArrayList<Group> groups;
-    private User user;
+    public static User user;
     private TabHost.TabSpec tab1, tab2, tab3;
 
 
@@ -140,14 +140,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             JSONArray jsonArray = null;
+
             try {
                 JSONObject jsonObject= new JSONObject(s);
                 jsonArray = jsonObject.getJSONArray("data");
-
             } catch (JSONException e) {
                 e.printStackTrace();
                 return;
             }
+
             super.onPostExecute(s);
             groups = new ArrayList<Group>();
             if(jsonArray == null)
