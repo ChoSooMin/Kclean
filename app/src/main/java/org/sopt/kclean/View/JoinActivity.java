@@ -133,11 +133,8 @@ public class JoinActivity extends AppCompatActivity {
 
             String response = null;
 
-            try {
                 response =  post.post();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
 
             return response;
         }

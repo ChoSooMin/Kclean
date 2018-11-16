@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
@@ -21,6 +22,8 @@ import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button login_login_button; // 로그인 버튼
     private Button login_join_button; // 회원가입 버튼
     private User user; //로그인 성공시 정보 받기
+    private String device_token;
 
 
     @Override
@@ -93,11 +97,8 @@ public class LoginActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             Post post = new Post("https://klean.apps.dev.clayon.io/api/user/signin", PostString.signinJson(strings[0],strings[1],strings[2]),"application/x-www-form-urlencoded");
             String response = null;
-            try {
                 response =  post.post();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
             return response;
         }
 
@@ -135,5 +136,14 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(s);
         }
     }
+    void passPushTokenToServer(){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String toekn = FirebaseInstanceId.getInstance().getToken();
+        Map<String, Object> map = new HashMap<>();
+
+
+    }
+
+
 }
 
