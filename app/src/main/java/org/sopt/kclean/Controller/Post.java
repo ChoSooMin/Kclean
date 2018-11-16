@@ -1,20 +1,9 @@
 package org.sopt.kclean.Controller;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -32,13 +21,12 @@ import okhttp3.MultipartBody;
 public class Post {
 
     OkHttpClient client = new OkHttpClient();
-    final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/*");
+
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private String url;
     private String json;
     private String token;
     private String content;
-    private JSONObject jsonObject;
 
     //
     public RequestBody requestBody;
@@ -62,11 +50,9 @@ public class Post {
         this.url = url;
     }
 
-    public String post()  {
+    public String post() throws IOException {
 
         RequestBody body = RequestBody.create(JSON, json);
-        MediaType fileContentType = MediaType.parse("File/*");
-        File file;
         Request request;
 
         if(0 ==content.compareTo("application/x-www-form-urlencoded"))
@@ -133,6 +119,7 @@ public class Post {
 
         }
         try(Response response = client.newCall(request).execute()){
+             String s = response.header("state");
              if(response.code() == 200 ||response.code() == 201 )
              {
 

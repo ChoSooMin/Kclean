@@ -2,7 +2,6 @@ package org.sopt.kclean.Controller;
 
 import java.io.IOException;
 
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -20,10 +19,11 @@ public class Get {
     String queryName;
     String token;
 
+
     // token 없을 때
     public Get() {}
 
-    // token 있을 때 & query 없을 때
+    // token 있을 때 & query 없ㅇ을 때
     public Get(String token) {
         this.token = token;
     }
@@ -34,22 +34,22 @@ public class Get {
         this.query = query;
     }
 
-    // token & query 있을 때
+    // query & token 있을 때
     public Get(String token, String queryName, String query) {
         this.token = token;
         this.queryName = queryName;
         this.query = query;
     }
 
-    // Get에서,,, ㅇㅇ,,,
+    // Get에서 ,,, 포스트,,, 값,, ㅛ요청한다고라,,,,?
     public  String run(String url, String content) throws IOException {
+
 
         Request request;
 
         if (token != null) {
             if (query != null) {
                 HttpUrl.Builder httpUrl = HttpUrl.parse(url).newBuilder();
-
                 httpUrl.addQueryParameter(queryName, query);
 
                 request = new Request.Builder()
@@ -57,7 +57,7 @@ public class Get {
                         .addHeader("token", token)
                         .url(httpUrl.toString())
                         .build();
-                }
+            }
             else { // query == null
                 request = new Request.Builder()
                         .addHeader("Content-type", content)
@@ -65,11 +65,11 @@ public class Get {
                         .url(url)
                         .build();
             }
+
         }
         else { // token == null
             if (query != null) {
                 HttpUrl.Builder httpUrl = HttpUrl.parse(url).newBuilder();
-
                 httpUrl.addQueryParameter(queryName, query);
 
                 request = new Request.Builder()

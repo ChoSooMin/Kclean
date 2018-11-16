@@ -9,5 +9,16 @@ import org.json.JSONObject;
 //Get 할때 보낼 인자
 public class GetString {
 
+    //login
+    public static String clubSearch(String word){
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.accumulate("word", word);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject.toString();
+    }
 
 }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.SearchActivity">
+    tools:context=".View.SearchActivity"
+    android:background="#FFFFFF">
 
     <RelativeLayout
         android:layout_marginTop="12dp"
@@ -16,7 +17,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:layout_toLeftOf="@id/search_cancel_button"
+            android:layout_toLeftOf="@id/search_ok_button"
             android:layout_marginLeft="16dp"
             android:background="#f2f2f8"
             android:layout_centerVertical="true">
@@ -30,6 +31,7 @@
                 android:layout_centerVertical="true"/>
 
             <EditText
+                android:id="@+id/search_search_text"
                 android:layout_toRightOf="@id/search_search_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,12 +50,12 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/search_cancel_button"
+            android:id="@+id/search_ok_button"
             android:layout_alignParentEnd="true"
             android:layout_width="30dp"
             android:layout_height="24dp"
             android:layout_marginRight="17dp"
-            android:background="@drawable/ic_cancel"
+            android:background="@drawable/ic_ok"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"/>
 
@@ -63,8 +65,6 @@
         android:id="@+id/search_result_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:padding="1dp"
-        android:background="#f1effc"/>
+        android:layout_marginTop="28dp"/>
 
 </LinearLayout>

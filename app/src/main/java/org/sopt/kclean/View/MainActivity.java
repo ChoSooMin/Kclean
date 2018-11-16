@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        if(intent.getStringExtra("token") != null)
+        user = new User();
         user.setToken(intent.getStringExtra("token"));
         // 탭탭탭~~
         tabHost = (TabHost)findViewById(R.id.tabHost);
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 동아리 생성 화면으로
                 Intent intent=new Intent(MainActivity.this, CreateGroupActivity.class);
-                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -143,15 +142,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             JSONArray jsonArray = null;
-
             try {
                 JSONObject jsonObject= new JSONObject(s);
                 jsonArray = jsonObject.getJSONArray("data");
-            }catch (JSONException e) {
+
+            } catch (JSONException e) {
                 e.printStackTrace();
                 return;
             }
-
             super.onPostExecute(s);
             groups = new ArrayList<Group>();
             if(jsonArray == null)
@@ -166,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
             recyclerView =  (RecyclerView)findViewById(R.id.recycler_view);
             layoutManager = new LinearLayoutManager(getApplicationContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -175,5 +172,7 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setAdapter(groupListAdapter);
         }
     }
+
+
 
 }

@@ -43,7 +43,7 @@ public  class PostString {
     }
 
     // 동아리 만들기
-    public static String clubJson(String club_name, String club_logo, String club_explanation, String club_background,String bank_name,String banl_account)
+    public static String clubJson(String club_name, String club_logo, String club_explanation, String club_background)
     {
         JSONObject jsonObject = new JSONObject();
 
@@ -57,6 +57,7 @@ public  class PostString {
         } catch (JSONException e){
             e.printStackTrace();
         }
+
         return jsonObject.toString();
     }
 
@@ -72,7 +73,6 @@ public  class PostString {
 
         return jsonObject.toString();
     }
-
 
 }
 

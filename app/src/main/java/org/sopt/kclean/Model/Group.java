@@ -17,17 +17,16 @@ public class Group implements Parcelable {
     private String groupImage;
     private String  groupBackground;
     private String groupDetail;
-    private String groupPassword;
 
-    public Group(String groupName, int totalMember, String masterName, String groupImage, String groupBackground, String groupDetail,String password) {
+    public Group(String groupId, String groupName, String groupDetail, String groupImage, String masterName, int totalMember) {
+        this.groupId = groupId;
         this.groupName = groupName;
-        this.totalMember = totalMember;
-        this.masterName = masterName;
-        this.groupImage = groupImage;
-        this.groupBackground = groupBackground;
         this.groupDetail = groupDetail;
-        this.groupPassword = password;
+        this.groupImage = groupImage;
+        this.masterName = masterName;
+        this.totalMember = totalMember;
     }
+
     public Group(String groupName,String groupImage,String groupDetail,String groupBackground)
     {
         this.groupName = groupName;
@@ -35,6 +34,7 @@ public class Group implements Parcelable {
         this.groupDetail = groupDetail;
         this.groupBackground = groupBackground;
     }
+
     public Group(String groupId,String groupName , String groupImage, String masterName, int totalMember )
     {
         this.groupId = groupId;
@@ -43,15 +43,16 @@ public class Group implements Parcelable {
         this.masterName =masterName;
         this.totalMember = totalMember;
     }
+
     public Group(Parcel source)
     {
+        groupId = source.readString();
         groupName = source.readString();
         totalMember = source.readInt();
         masterName = source.readString();
         groupImage = source.readString();
         groupBackground = source.readString();
         groupDetail = source.readString();
-        groupPassword = source.readString();
     }
 
     public String getGroupId() {
@@ -60,13 +61,6 @@ public class Group implements Parcelable {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
-    }
-    public String getGroupPassword() {
-        return groupPassword;
-    }
-
-    public void setGroupPassword(String groupPassword) {
-        this.groupPassword = groupPassword;
     }
 
     public String getGroupName() {
@@ -124,13 +118,10 @@ public class Group implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(groupId);
         parcel.writeString(groupName);
         parcel.writeInt(totalMember);
         parcel.writeString(masterName);
-
-//        parcel.writeValue(groupImage);
-//        parcel.writeValue(groupBackground);
-
         parcel.writeString(groupImage);
         parcel.writeString(groupBackground);
         parcel.writeString(groupDetail);

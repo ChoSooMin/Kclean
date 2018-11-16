@@ -30,8 +30,8 @@ import java.util.ArrayList;
 
 public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-   private ArrayList<Group> groupList;
-   private Context context;
+    private ArrayList<Group> groupList;
+    private Context context;
 
     public AdapterGroupList(Context context, ArrayList<Group> groupList) {
         this.context = context;
