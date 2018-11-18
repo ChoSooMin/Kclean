@@ -1,8 +1,5 @@
-package org.sopt.kclean.Service;
+package org.sopt.kclean.Firebase;
 
-import android.app.Service;
-import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,14 +11,15 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.firebase.jobdispatcher.Constraint;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-    /**
+import org.sopt.kclean.R;
+import org.sopt.kclean.View.MainActivity;
+
+import java.util.Map;
+
+/**
      * Copyright 2016 Google Inc. All Rights Reserved.
      *
      * Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,39 +58,39 @@ import com.google.firebase.messaging.RemoteMessage;
             // and data payloads are treated as notification messages. The Firebase console always sends notification
             // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
             // [END_EXCLUDE]
-
+            Log.d("ok",remoteMessage.getNotification().getBody());
              System.out.println(remoteMessage.getNotification());
-//            // TODO(developer): Handle FCM messages here.
-//            // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-//            Log.d(TAG, "From: " + remoteMessage.getFrom());
+            // TODO(developer): Handle FCM messages here.
+            // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+            // Check if message contains a data payload.
+            if (remoteMessage.getData().size() > 0) {
+                Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 
-//            // Check if message contains a data payload.
-//            if (remoteMessage.getData().size() > 0) {
-//                Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-//
 //                if (/* Check if data needs to be processed by long running job */ true) {
 //                    // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
-//                    scheduleJob();
+//               //     scheduleJob();
 //                } else {
 //                    // Handle message within 10 seconds
 //                    handleNow();
 //                }
-//
-//            }
-//
-//            // Check if message contains a notification payload.
-//            if (remoteMessage.getNotification() != null) {
-//                Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-//            }
-//
-//            // Also if you intend on generating your own notifications as a result of a received FCM
-//            // message, here is where that should be initiated. See sendNotification method below.
-//        }
-            // [END receive_message]
+                sendNotification(remoteMessage.getData());
 
-//        /**
-//         * Schedule a job using FirebaseJobDispatcher.
-//         */
+            }
+
+            // Check if message contains a notification payload.
+            if (remoteMessage.getNotification() != null) {
+                Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            }
+
+            // Also if you intend on generating your own notifications as a result of a received FCM
+            // message, here is where that should be initiated. See sendNotification method below.
+        }
+          //   [END receive_message]
+
+        /**
+         * Schedule a job using FirebaseJobDispatcher.
+         */
 //        private void scheduleJob() {
 //            // [START dispatch_job]
 //            FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
@@ -103,49 +101,49 @@ import com.google.firebase.messaging.RemoteMessage;
 //            dispatcher.schedule(myJob);
 //            // [END dispatch_job]
 //        }
-//
-//        /**
-//         * Handle time allotted to BroadcastReceivers.
-//         */
-//        private void handleNow() {
-//            Log.d(TAG, "Short lived task is done.");
-//        }
-//
-//        /**
-//         * Create and show a simple notification containing the received FCM message.
-//         *
-//         * @param messageBody FCM message body received.
-//         */
-//        private void sendNotification(String messageBody) {
-//            Intent intent = new Intent(this, MainActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-//                    PendingIntent.FLAG_ONE_SHOT);
-//
-//            String channelId = getString(R.string.default_notification_channel_id);
-//            Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//            NotificationCompat.Builder notificationBuilder =
-//                    new NotificationCompat.Builder(this, channelId)
-//                            .setSmallIcon(R.drawable.ic_stat_ic_notification)
-//                            .setContentTitle("FCM Message")
-//                            .setContentText(messageBody)
-//                            .setAutoCancel(true)
-//                            .setSound(defaultSoundUri)
-//                            .setContentIntent(pendingIntent);
-//
-//            NotificationManager notificationManager =
-//                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//            // Since android Oreo notification channel is needed.
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                NotificationChannel channel = new NotificationChannel(channelId,
-//                        "Channel human readable title",
-//                        NotificationManager.IMPORTANCE_DEFAULT);
-//                notificationManager.createNotificationChannel(channel);
-//            }
-//
-//            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
-//        }
+
+        /**
+         * Handle time allotted to BroadcastReceivers.
+         */
+        private void handleNow() {
+            Log.d(TAG, "Short lived task is done.");
         }
-    }
+
+        /**
+         * Create and show a simple notification containing the received FCM message.
+         *
+         * @param messageBody FCM message body received.
+         */
+        private void sendNotification(Map<String,String> messageBody) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                    PendingIntent.FLAG_ONE_SHOT);
+
+            String channelId = getString(R.string.default_notification_channel_id);
+            Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder =
+                    new NotificationCompat.Builder(this,channelId)
+                            .setSmallIcon(R.drawable.sopt) //작은 아이콘 필수  지금 임시루 sopt이미지 해놓은거
+                            .setContentTitle(messageBody.get("title")) //제목 필수
+                            .setContentText(messageBody.get("body")) //내용 필수
+                            .setAutoCancel(true)
+                            .setSound(defaultSoundUri)
+                            .setContentIntent(pendingIntent);
+
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            // Since android Oreo notification channel is needed.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(channelId,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+                notificationManager.createNotificationChannel(channel);
+            }
+
+            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        }
+   }
+
 

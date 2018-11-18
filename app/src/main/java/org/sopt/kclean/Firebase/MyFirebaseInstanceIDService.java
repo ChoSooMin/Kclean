@@ -1,4 +1,4 @@
-package org.sopt.kclean.Service;
+package org.sopt.kclean.Firebase;
 
 import android.app.Service;
 import android.util.Log;
@@ -30,6 +30,9 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
+        //서버 통신 노드로 보낼
+
+
     }
 
 

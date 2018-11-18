@@ -25,48 +25,48 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="148dp"
-            android:background="@drawable/rounded_green"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_green">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="잔여 예산"
-                android:textSize="12sp"
-                android:textColor="#ffffff"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosans_cjk_kr_medium"
-                android:includeFontPadding="false"/>
+                android:includeFontPadding="false"
+                android:text="잔여 예산"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="18dp"
-                android:layout_marginBottom="4dp"
                 android:layout_above="@+id/financial_detail_back_linear"
-                >
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="18dp"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/financial_detail_account_balance_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="73,567,788"
-                    android:textSize="24sp"
-                    android:textColor="#ffffff"
                     android:fontFamily="@font/notosans_cjk_kr_bold"
-                    android:includeFontPadding="false"/>
+                    android:includeFontPadding="false"
+                    android:text="73,567,788"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
                     android:text="원"
-                    android:textSize="24sp"
                     android:textColor="#ffffff"
-                    android:includeFontPadding="false"/>
+                    android:textSize="24sp" />
 
             </LinearLayout>
 
@@ -74,39 +74,39 @@
                 android:id="@+id/financial_detail_back_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="18dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="18dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/financial_detail_bank_text"
+                    android:id="@+id/financial_detail_bank_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"
                     android:text="국민은행"
-                    android:textSize="12sp"
                     android:textColor="#ffffff"
-                    android:fontFamily="@font/notosans_cjk_kr_medium"
-                    android:includeFontPadding="false"/>
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"
                     android:text=" "
-                    android:textSize="12sp"
                     android:textColor="#ffffff"
-                    android:fontFamily="@font/notosans_cjk_kr_medium"
-                    android:includeFontPadding="false"/>
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/financial_detail_account_text"
+                    android:id="@+id/financial_detail_account_number_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="67070204087002"
-                    android:textSize="12sp"
-                    android:textColor="#ffffff"
                     android:fontFamily="@font/notosans_cjk_kr_medium"
-                    android:includeFontPadding="false"/>
+                    android:includeFontPadding="false"
+                    android:text="67070204087002"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -138,7 +138,7 @@
 
                 <!-- 첫 번째 탭(전체) -->
                 <LinearLayout
-                    android:id="@+id/content1"
+                    android:id="@+id/fin_content1"
                     android:theme="@style/Theme.AppCompat.Light"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -164,14 +164,14 @@
                             android:layout_centerHorizontal="true">
 
                             <TextView
-                                android:id="@+id/financial_detail_year_text"
+                                android:id="@+id/financial_detail_year_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="2018"
-                                android:textSize="16sp"
-                                android:textColor="#1D1D1D"
                                 android:fontFamily="@font/notosans_cjk_kr_medium"
-                                android:includeFontPadding="false"/>
+                                android:includeFontPadding="false"
+                                android:text="2018"
+                                android:textColor="#1D1D1D"
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -183,14 +183,14 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
-                                android:id="@+id/financial_detail_month_text"
+                                android:id="@+id/financial_detail_month_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="10"
-                                android:textSize="16sp"
-                                android:textColor="#1D1D1D"
                                 android:fontFamily="@font/notosans_cjk_kr_medium"
-                                android:includeFontPadding="false"/>
+                                android:includeFontPadding="false"
+                                android:text="10"
+                                android:textColor="#1D1D1D"
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -214,9 +214,9 @@
                     </RelativeLayout>
 
                     <android.support.v7.widget.RecyclerView
+                        android:id = "@+id/financial_detail_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
 
 
                     </android.support.v7.widget.RecyclerView>
@@ -225,10 +225,18 @@
 
                 <!-- 두 번째 탭(결제) -->
                 <LinearLayout
-                    android:id="@+id/content2"
+                    android:id="@+id/fin_content2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                    <android.support.v7.widget.RecyclerView
+                        android:id = "@+id/financial_detail_list2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                    </android.support.v7.widget.RecyclerView>
+
 
 
                 </LinearLayout>

@@ -8,19 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.iid.FirebaseInstanceId;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.sopt.kclean.Firebase.FireBaseHandler;
 import org.sopt.kclean.Controller.Post;
 import org.sopt.kclean.Controller.PostString;
 import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -62,7 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                 else
                 {
                     LoginTask loginTask = new LoginTask();
-                    loginTask.execute(login_id_editTxt.getText().toString(), FirebaseInstanceId.getInstance().getToken().toString() ,login_pw_editTxt.getText().toString());
+                    user.setToken(FireBaseHandler.passPushTokenToServer(login_id_editTxt.getText().toString()));
+                    loginTask.execute(login_id_editTxt.getText().toString(), user.getToken() ,login_pw_editTxt.getText().toString());
 
                 }
 
@@ -88,7 +85,11 @@ public class LoginActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             Post post = new Post("https://klean.apps.dev.clayon.io/api/user/signin", PostString.signinJson(strings[0],strings[1],strings[2]),"application/x-www-form-urlencoded");
             String response = null;
+            try {
                 response =  post.post();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             return response;
         }
@@ -123,13 +124,5 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(s);
         }
     }
-    void passPushTokenToServer(){
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String toekn = FirebaseInstanceId.getInstance().getToken();
-        Map<String, Object> map = new HashMap<>();
-
-
-    }
-
 
 }

@@ -1,4 +1,4 @@
-package org.sopt.kclean.Controller;
+package org.sopt.kclean.Firebase;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -12,12 +12,13 @@ public class FireBaseHandler {
 
 
 
-  public static String passPushTokenToServer(){
-       // String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+  public static String passPushTokenToServer(String userId){
+        //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+      FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         String token = FirebaseInstanceId.getInstance().getToken();
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("token",token);
-//      FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
+       Map<String, Object> map = new HashMap<>();
+        map.put("token",token);
+      FirebaseDatabase.getInstance().getReference().child("users").child(userId).updateChildren(map);
        return token;
     }
 }

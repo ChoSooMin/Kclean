@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import org.sopt.kclean.Model.Group;
+import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 import org.sopt.kclean.View.GroupDetailActivity;
 
@@ -23,10 +24,12 @@ public class AdapterSearchGroupList extends RecyclerView.Adapter<RecyclerView.Vi
 
     private ArrayList<Group> searchGroupList;
     private Context context;
+    private User user;
 
-    public AdapterSearchGroupList(Context context, ArrayList<Group> searchGroupList) {
+    public AdapterSearchGroupList(Context context, ArrayList<Group> searchGroupList, User user) {
         this.context = context;
         this.searchGroupList = searchGroupList;
+        this.user = user;
     }
 
     @Override
@@ -48,6 +51,7 @@ public class AdapterSearchGroupList extends RecyclerView.Adapter<RecyclerView.Vi
             public void onClick(View v) {
                 Intent intent = new Intent(context, GroupDetailActivity.class);
                 intent.putExtra("selectedGroup", searchGroupList.get(position));
+                intent.putExtra("user",user);
 
                 context.startActivity(intent);
             }

@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -141,19 +142,24 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+            super.onPostExecute(s);
             JSONArray jsonArray = null;
+
+            if(s == null)
+                return;
+
             try {
                 JSONObject jsonObject= new JSONObject(s);
                 jsonArray = jsonObject.getJSONArray("data");
-
             } catch (JSONException e) {
                 e.printStackTrace();
                 return;
             }
-            super.onPostExecute(s);
+
             groups = new ArrayList<Group>();
             if(jsonArray == null)
                 return;
+
 
             for(int i = 0;  i <jsonArray.length() ;i++) {
                 try {
@@ -168,11 +174,8 @@ public class MainActivity extends AppCompatActivity {
             layoutManager = new LinearLayoutManager(getApplicationContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
-            groupListAdapter = new AdapterGroupList(getApplicationContext(), groups);
+            groupListAdapter = new AdapterGroupList(getApplicationContext(), groups,user);
             recyclerView.setAdapter(groupListAdapter);
         }
     }
-
-
-
 }

@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import org.sopt.kclean.Controller.AdapterGroupList;
 import org.sopt.kclean.Controller.Get;
 import org.sopt.kclean.Model.Group;
+import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 import org.w3c.dom.Text;
 
@@ -30,7 +31,6 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static org.sopt.kclean.View.MainActivity.user;
 
 public class GroupDetailActivity extends AppCompatActivity {
 
@@ -72,12 +72,16 @@ public class GroupDetailActivity extends AppCompatActivity {
     private TextView group_detail_photoNumber_text2; // 게시물 사진수2
 
     private Group group; // 현재 그룹 정보를 담은 group 객체
+    private User user;
     private String[] dayString = {"월"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_detail);
+        Intent intent = getIntent();
+        user = intent.getParcelableExtra("user");
+        group =intent.getParcelableExtra("selectedGroup");
 
         // xml 연결
         group_detail_announce_button = (ImageButton) findViewById(R.id.group_detail_announce_button); // 공지 버튼
@@ -137,6 +141,8 @@ public class GroupDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
+                intent.putExtra("user",user);
+                intent.putExtra("selectedGroup",group);
                 startActivity(intent);
             }
         });
@@ -166,8 +172,7 @@ public class GroupDetailActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            group = (Group) getIntent().getSerializableExtra("selectedGroup"); // 앞에서 intent에 담아 보낸 Group 객체 가져오기
-
+            //group = (Group) getIntent().getSerializableExtra("selectedGroup"); // 앞에서 intent에 담아 보낸 Group 객체 가져오기
             Get get = new Get(user.getToken(), "club_id", group.getGroupId()); // Get 객체 생성
 
             String response = null;

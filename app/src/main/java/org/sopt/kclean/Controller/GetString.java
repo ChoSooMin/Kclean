@@ -21,4 +21,35 @@ public class GetString {
         return jsonObject.toString();
     }
 
+    //재정 정보
+    public static String GroupFinanceInfo(String club_id)
+    {
+        JSONObject jsonObject =  new JSONObject();
+
+        try{
+            jsonObject.accumulate("club_id",club_id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return jsonObject.toString();
+    }
+
+    public static String GroupFinanceInfoList(String club_id,int search_year, int serach_month)
+    {
+        JSONObject jsonObject =  new JSONObject();
+
+        try{
+            jsonObject.accumulate("club_id",club_id);
+            jsonObject.accumulate("search_year",search_year);
+            jsonObject.accumulate("search_month",serach_month);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return jsonObject.toString();
+    }
+
+
+
 }

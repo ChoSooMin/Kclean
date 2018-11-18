@@ -43,7 +43,7 @@ public  class PostString {
     }
 
     // 동아리 만들기
-    public static String clubJson(String club_name, String club_logo, String club_explanation, String club_background)
+    public static String clubJson(String club_name, String club_logo, String club_explanation, String club_background,String bank_name,String bank_account)
     {
         JSONObject jsonObject = new JSONObject();
 
@@ -53,7 +53,7 @@ public  class PostString {
             jsonObject.accumulate("club_explanation", club_explanation);
             jsonObject.accumulate("club_background", club_background);
             jsonObject.accumulate("bank_name",bank_name);
-            jsonObject.accumulate("bank_account",banl_account);
+            jsonObject.accumulate("bank_account",bank_account);
         } catch (JSONException e){
             e.printStackTrace();
         }
@@ -73,6 +73,11 @@ public  class PostString {
 
         return jsonObject.toString();
     }
+
+    //
+
+
+
 
 }
 

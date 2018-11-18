@@ -3,7 +3,9 @@ package org.sopt.kclean.Controller;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -11,6 +13,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.MultipartBody;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by choisunpil on 07/11/2018.
@@ -21,7 +25,7 @@ import okhttp3.MultipartBody;
 public class Post {
 
     OkHttpClient client = new OkHttpClient();
-
+    private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private String url;
     private String json;

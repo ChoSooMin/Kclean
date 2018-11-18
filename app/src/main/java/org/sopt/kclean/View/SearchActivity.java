@@ -1,5 +1,6 @@
 package org.sopt.kclean.View;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import org.sopt.kclean.Controller.AdapterGroupList;
 import org.sopt.kclean.Controller.AdapterSearchGroupList;
 import org.sopt.kclean.Controller.Get;
 import org.sopt.kclean.Model.Group;
+import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 
 import java.io.IOException;
@@ -40,10 +42,13 @@ public class SearchActivity extends AppCompatActivity {
     //
     private String word = "";
     private String response = "";
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        user = intent.getParcelableExtra("user");
         setContentView(R.layout.activity_search);
 
         search_search_text = (EditText) findViewById(R.id.search_search_text);
@@ -115,7 +120,7 @@ public class SearchActivity extends AppCompatActivity {
             layoutManager = new LinearLayoutManager(getApplicationContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             search_result_recycler.setLayoutManager(layoutManager);
-            searchGroupListAdapter = new AdapterSearchGroupList(getApplicationContext(), searchGroupList);
+            searchGroupListAdapter = new AdapterSearchGroupList(getApplicationContext(), searchGroupList,user);
             search_result_recycler.setAdapter(searchGroupListAdapter);
         }
     }
