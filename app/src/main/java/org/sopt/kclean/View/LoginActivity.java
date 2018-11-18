@@ -1,13 +1,18 @@
 package org.sopt.kclean.View;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,24 +24,67 @@ import org.sopt.kclean.R;
 
 import java.io.IOException;
 
+import static android.support.v4.media.session.MediaButtonReceiver.handleIntent;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText login_id_editTxt; // 아이디
     private EditText login_pw_editTxt; // 비밀번호
     private Button login_login_button; // 로그인 버튼
     private ImageButton login_join_button; // 회원가입 버튼
+    private ToggleButton login_auto_toggleBtn;
+    private boolean isChecking; //자동 로그인 확인
     private User user; //로그인 성공시 정보 받기
     private String device_token;
+    private int goingSendMoney ; //1이면 바로 송금
+    SharedPreferences pref;
+
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        goingSendMoney= intent.getIntExtra("result",0);
+
+        Log.v("soominddd", goingSendMoney + "");
+        if(goingSendMoney != 0)
+            Log.d("TAG", "" + goingSendMoney);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        user = new User();
+
+        Intent intent = getIntent();
+        onNewIntent(intent);
+
         login_id_editTxt = (EditText) findViewById(R.id.login_id_editTxt); // 아이디
         login_pw_editTxt = (EditText) findViewById(R.id.login_pw_editTxt); // 비밀번호
         login_login_button = (Button) findViewById(R.id.login_login_button); // 로그인 버튼
         login_join_button = (ImageButton) findViewById(R.id.login_join_button); // 회원가입 버튼
+        login_auto_toggleBtn = (ToggleButton)findViewById(R.id.login_auto_toggleBtn); //토글 버튼
+       // goingSendMoney = intent.getIntExtra("result",-1);
+       // Toast.makeText(this,""+goingSendMoney,Toast.LENGTH_LONG).show();
+        handleIntent(getIntent());
+        user = new User();
+        //자동로그인 저장 정보
+        pref = getSharedPreferences("user_info", MODE_PRIVATE);
+        user.setId(pref.getString("id",""));
+        user.setPassword(pref.getString("password",""));
+        Log.d("save",user.getId()+"    "+user.getPassword());
+
+        if(user.getId() != "" && user.getPassword() != "")
+        {
+            LoginTask loginTask = new LoginTask();
+            user.setToken(FireBaseHandler.passPushTokenToServer(user.getId()));
+            loginTask.execute(user.getId(),user.getToken(),user.getPassword());
+            return;
+        }
+
 
         // 로그인 리스너
         login_login_button.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +126,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        login_auto_toggleBtn.setOnCheckedChangeListener(new ToggleButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true)
+                    isChecking = true;
+                else
+                    isChecking =false;
+            }
+        });
     }
 
     private class LoginTask extends AsyncTask<String, String, String> {
@@ -101,9 +160,24 @@ public class LoginActivity extends AppCompatActivity {
 
             if(s != null) { //응답 성공시
                 try {
+                    if(isChecking ==true) //자동로그인 저장
+                    {
+                        pref = getSharedPreferences("user_info", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();//저장하려면 editor가 필요
+                        String str = login_id_editTxt.getText().toString(); // 사용자가 입력한 값
+                        editor.putString("id", str); // 입력
+                        str = login_pw_editTxt.getText().toString(); // 사용자가 입력한 값
+                        editor.putString("password", str); // 입력
+                        editor.commit(); // 파일에 최종 반영함
+                    }
+
                     jsonObject = new JSONObject(s);
                     //user.setToken();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent;
+                    if(goingSendMoney == 0)
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    else
+                        intent = new Intent(LoginActivity.this, SendMoneyActivity.class);
                     intent.putExtra("token", jsonObject.getString("token"));
                     startActivity(intent);
                 } catch (JSONException e) {
@@ -120,6 +194,7 @@ public class LoginActivity extends AppCompatActivity {
                 // 커스텀 다이얼로그를 호출한다.
                 // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
                 customDialog.callFunction("아이디 또는 비밀번호가 맞지 않습니다.");
+
             }
 
             super.onPostExecute(s);

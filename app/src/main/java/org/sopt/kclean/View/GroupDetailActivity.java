@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.sopt.kclean.Controller.AdapterGroupList;
 import org.sopt.kclean.Controller.Get;
+import org.sopt.kclean.Controller.Post;
+import org.sopt.kclean.Controller.PostString;
 import org.sopt.kclean.Model.Group;
 import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
@@ -75,10 +78,19 @@ public class GroupDetailActivity extends AppCompatActivity {
     private TextView group_detail_photoNumber_text2; // 게시물 사진수2
 
     private Button group_detail_join_button; // 가입하기 버튼
+    private LinearLayout group_detail_notice_linear;
 
     private Group group; // 현재 그룹 정보를 담은 group 객체
     private String[] dayString = {"일", "월", "화", "수", "목", "금", "토"};
     private User user; // 앞에서 user 객체 받아오기
+
+
+
+
+    //통신해서 받아온 파라미터
+    private int club_checking;
+    private int user_position;
+    private String notice_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +116,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         group_detail_comingTitle_text = (TextView) findViewById(R.id.group_detail_comingTitle_text); // 다가오는 일정 (일정 제목)
         group_detail_comingTime_text = (TextView) findViewById(R.id.group_detail_comingTime_text); // 다가오는 일정 (일정 시간)
         // 최신 공지
+        group_detail_notice_linear = (LinearLayout)findViewById(R.id.group_detail_notice_linear);//공지 레이아웃
         group_detail_type_image = (ImageView) findViewById(R.id.group_detail_type_image); // 공지 타입 이미지
         group_detail_announceDate_text = (TextView) findViewById(R.id.group_detail_announceDate_text); // 공지 날짜
         group_detail_announceTime_text = (TextView) findViewById(R.id.group_detail_announceTime_text); // 공지 시간
@@ -128,59 +141,10 @@ public class GroupDetailActivity extends AppCompatActivity {
         group_detail_likeNumber_text2 = (TextView) findViewById(R.id.group_detail_likeNumber_text2); // 좋아요수
         group_detail_photoNumber_text2 = (TextView) findViewById(R.id.group_detail_photoNumber_text2); // 사진수
 
+        //가입버튼
         group_detail_join_button = (Button) findViewById(R.id.group_detail_join_button);
 
         new GroupDetailTask().execute();
-
-        // 버튼 리스너
-        // 공지 버튼 리스너
-        group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
-                intent.putExtra("user", user);
-                intent.putExtra("group", group);
-
-                startActivity(intent);
-            }
-        });
-
-        // 재정 버튼 리스너
-        group_detail_finance_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
-                intent.putExtra("user",user);
-                intent.putExtra("selectedGroup",group);
-                startActivity(intent);
-            }
-        });
-
-        // 게시판 버튼 리스너
-        group_detail_board_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
-                intent.putExtra("user", user);
-
-                startActivity(intent);
-            }
-        });
-
-        // 회원 버튼 리스너
-        group_detail_member_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
-                intent.putExtra("user", user);
-
-                startActivity(intent);
-            }
-        });
     }
 
     private class GroupDetailTask extends AsyncTask<String, String, String> {
@@ -283,24 +247,36 @@ public class GroupDetailActivity extends AppCompatActivity {
                 group_detail_announceTitle_text.setText(totalNotice.getString("notice_title")); // 공지 제목 설정
                 group_detail_announceContent_text.setText(totalNotice.getString("notice_content")); // 공지 내용 설정
 
-                int notice_id = totalNotice.getInt("notice_id"); // 공지 id 가져오기
+                notice_id = totalNotice.getString("notice_id"); // 공지 id 가져오기
 
                 // user_data 처리
-//                int club_checking = user_data.getInt("club_checking"); // 동아리에 가입이 되어있는지 확인 || 0이면 가입 안됨, 1이면 가입 됨 || 0이면 버튼 나타나고 1이면 버튼 안나타남
-                int club_checking = 1;
-                if (club_checking == 0) {
+                club_checking = user_data.getInt("club_checking"); // 동아리에 가입이 되어있는지 확인 || 0이면 가입 안됨, 1이면 가입 됨 || 0이면 버튼 나타나고 1이면 버튼 안나타남
+                if (club_checking == 0) { //
                     group_detail_join_button.setVisibility(View.VISIBLE);
+                    group_detail_join_button.setOnClickListener(new View.OnClickListener() {
+
+                        //가입버튼
+                        @Override
+                        public void onClick(View v) {
+                            //가입 통신 필요
+                            new GroupJoinTask().execute();
+                            //다이얼로그하고
+                            finish();
+                        }
+                    });
                 }
                 else if (club_checking == 1) {
+
                     group_detail_join_button.setVisibility(View.GONE);
                 }
 
-                int user_position;
+
                 try {
                     user_position = user_data.getInt("user_position"); // 0이면 총무, 1이면 일반 회원
                 } catch(NullPointerException e) {
                     user_position = -1; // -1이면 가입 안한거
                 }
+
 
 
             } catch(JSONException e) {
@@ -313,6 +289,94 @@ public class GroupDetailActivity extends AppCompatActivity {
                 return;
             }
 
+
+            // 버튼 리스너
+            // 공지 버튼 리스너
+            if(club_checking == 0) {
+
+                //최신공지로 이동
+               group_detail_notice_linear.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this,AnnounceDetailActivity.class);
+                        intent.putExtra("notice_id",notice_id);
+                        startActivity(intent);
+                    }
+                });
+
+
+
+
+                group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
+                        intent.putExtra("user", user);
+                        intent.putExtra("group", group);
+
+                        startActivity(intent);
+                    }
+                });
+
+                // 재정 버튼 리스너
+                group_detail_finance_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
+                        intent.putExtra("user", user);
+                        intent.putExtra("selectedGroup", group);
+                        startActivity(intent);
+                    }
+                });
+
+                // 게시판 버튼 리스너
+                group_detail_board_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
+                        intent.putExtra("user", user);
+
+                        startActivity(intent);
+                    }
+                });
+
+                // 회원 버튼 리스너
+                group_detail_member_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
+                        intent.putExtra("user", user);
+
+                        startActivity(intent);
+                    }
+                });
+
+            }
+
         }
     }
+
+    private class GroupJoinTask extends AsyncTask<String, String, String>
+    {
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            Post post = new Post("https://klean.apps.dev.clayon.io/api/club/join", PostString.groupJoinJson(group.getGroupId()),user.getToken(),"application/x-www-form-urlencoded");
+            try {
+                post.post();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
+
+
+
 }

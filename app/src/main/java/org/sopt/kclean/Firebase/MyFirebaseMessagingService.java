@@ -15,6 +15,8 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.sopt.kclean.R;
+import org.sopt.kclean.View.JoinActivity;
+import org.sopt.kclean.View.LoginActivity;
 import org.sopt.kclean.View.MainActivity;
 
 import java.util.Map;
@@ -115,8 +117,9 @@ import java.util.Map;
          * @param messageBody FCM message body received.
          */
         private void sendNotification(Map<String,String> messageBody) {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("result",2);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                     PendingIntent.FLAG_ONE_SHOT);
 
@@ -143,6 +146,8 @@ import java.util.Map;
             }
 
             notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+            startActivity(intent);
+
         }
    }
 

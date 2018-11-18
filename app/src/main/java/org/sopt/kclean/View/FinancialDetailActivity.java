@@ -111,11 +111,9 @@ FrameLayout frameLayout;
                 switch (number) {
                     case "1":
 
-
                         break;
 
                     case "2":
-
 
                         break;
                 }
@@ -206,6 +204,8 @@ FrameLayout frameLayout;
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            if(s == null)
+                return ;
             JSONObject jsonObject = null;
             try {
                 jsonObject = new JSONObject(s);

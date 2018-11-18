@@ -54,17 +54,15 @@ public class DialogCustom extends Dialog {
         final Button notice_button = (Button) dlg.findViewById(R.id.notice_button);
 
         dialog_text.setText(text);
-
-        // 커스텀 다이얼로그를 노출한다.
-        dlg.show();
-
-
         notice_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cancel();
             }
         });
+
+        // 커스텀 다이얼로그를 노출한다.
+        dlg.show();
 
     }
 
