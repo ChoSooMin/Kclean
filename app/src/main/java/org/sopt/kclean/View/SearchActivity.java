@@ -42,18 +42,21 @@ public class SearchActivity extends AppCompatActivity {
     //
     private String word = "";
     private String response = "";
-    private User user;
+
+    //
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        user = intent.getParcelableExtra("user");
         setContentView(R.layout.activity_search);
 
         search_search_text = (EditText) findViewById(R.id.search_search_text);
         search_ok_button = (Button) findViewById(R.id.search_ok_button);
         search_result_recycler = (RecyclerView) findViewById(R.id.search_result_recycler);
+
+        // User 객체 받아오기
+        user = getIntent().getParcelableExtra("user");
 
 
         // 확인 버튼 -> 검색 통신
@@ -100,6 +103,7 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             super.onPostExecute(s);
+
             // 그룹 리스트 객체 생성
             searchGroupList = new ArrayList<Group>();
             if(jsonArray == null)
@@ -120,7 +124,7 @@ public class SearchActivity extends AppCompatActivity {
             layoutManager = new LinearLayoutManager(getApplicationContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             search_result_recycler.setLayoutManager(layoutManager);
-            searchGroupListAdapter = new AdapterSearchGroupList(getApplicationContext(), searchGroupList,user);
+            searchGroupListAdapter = new AdapterSearchGroupList(getApplicationContext(), searchGroupList, user);
             search_result_recycler.setAdapter(searchGroupListAdapter);
         }
     }

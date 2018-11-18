@@ -25,12 +25,12 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.lang.reflect.Member;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
 
 public class GroupDetailActivity extends AppCompatActivity {
 
@@ -38,9 +38,12 @@ public class GroupDetailActivity extends AppCompatActivity {
     private ImageButton group_detail_finance_button; // 재정 버튼
     private ImageButton group_detail_board_button; // 게시판 버튼
     private ImageButton group_detail_member_button; // 회원 버튼
-    private ImageView group_detail_groupBackground_image;
-    private CircleImageView group_detail_group_circleImage;
-    private TextView group_detail_groupDetail_text;
+
+    // 동아리 정보 설정
+    private TextView group_detail_groupName_text; // 동아리 이름
+    private ImageView group_detail_groupBackground_image; // 동아리 배경사진
+    private CircleImageView group_detail_group_circleImage; // 동아리 로고
+    private TextView group_detail_groupDetail_text; // 동아리 설명
     // 다가오는 일정
     private TextView group_detail_comingDay_text; // 다가오는 일정 (일)
     private TextView group_detail_comingMonth_text; // 다가오는 일정 (월)
@@ -71,23 +74,27 @@ public class GroupDetailActivity extends AppCompatActivity {
     private TextView group_detail_likeNumber_text2; // 게시물 좋아요수2
     private TextView group_detail_photoNumber_text2; // 게시물 사진수2
 
+    private Button group_detail_join_button; // 가입하기 버튼
+
     private Group group; // 현재 그룹 정보를 담은 group 객체
-    private User user;
-    private String[] dayString = {"월"};
+    private String[] dayString = {"일", "월", "화", "수", "목", "금", "토"};
+    private User user; // 앞에서 user 객체 받아오기
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_detail);
+
         Intent intent = getIntent();
-        user = intent.getParcelableExtra("user");
-        group =intent.getParcelableExtra("selectedGroup");
+        user = intent.getParcelableExtra("user"); // user 객체 받아옴
+        group = getIntent().getParcelableExtra("selectedGroup"); // 앞에서 intent에 담아 보낸 Group 객체 가져오기
 
         // xml 연결
         group_detail_announce_button = (ImageButton) findViewById(R.id.group_detail_announce_button); // 공지 버튼
         group_detail_finance_button = (ImageButton) findViewById(R.id.group_detail_finance_button); // 재정 버튼
         group_detail_board_button = (ImageButton) findViewById(R.id.group_detail_board_button); // 게시판 버튼
         group_detail_member_button = (ImageButton) findViewById(R.id.group_detail_member_button); // 회원 버튼
+        group_detail_groupName_text = (TextView) findViewById(R.id.group_detail_groupName_text); // 동아리 이름
         group_detail_groupBackground_image = (ImageView) findViewById(R.id.group_detail_groupBackground_image); // 그룹 배경사진
         group_detail_group_circleImage = (CircleImageView) findViewById(R.id.group_detail_group_circleImage); // 그룹 대표사진
         group_detail_groupDetail_text = (TextView) findViewById(R.id.group_detail_groupDetail_text); // 그룹 설명
@@ -121,6 +128,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         group_detail_likeNumber_text2 = (TextView) findViewById(R.id.group_detail_likeNumber_text2); // 좋아요수
         group_detail_photoNumber_text2 = (TextView) findViewById(R.id.group_detail_photoNumber_text2); // 사진수
 
+        group_detail_join_button = (Button) findViewById(R.id.group_detail_join_button);
 
         new GroupDetailTask().execute();
 
@@ -131,6 +139,9 @@ public class GroupDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("group", group);
+
                 startActivity(intent);
             }
         });
@@ -153,6 +164,8 @@ public class GroupDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
+                intent.putExtra("user", user);
+
                 startActivity(intent);
             }
         });
@@ -163,6 +176,8 @@ public class GroupDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
+                intent.putExtra("user", user);
+
                 startActivity(intent);
             }
         });
@@ -198,35 +213,103 @@ public class GroupDetailActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(s);
 
+                Log.v("groupDetail", "요긴 성공");
                 groupObject = jsonObject.getJSONObject("data");
-                clubInfo = jsonObject.getJSONObject("clubInfo");
-                noticeschedule = jsonObject.getJSONObject("noticeschedule");
-                totalNotice = jsonObject.getJSONObject("totalNotice");
-                user_data = jsonObject.getJSONObject("user_data");
+                clubInfo = groupObject.getJSONObject("clubInfo");
+                noticeschedule = groupObject.getJSONObject("noticeschedule");
+                totalNotice = groupObject.getJSONObject("totalNotice");
+                user_data = groupObject.getJSONObject("user_data");
             } catch (JSONException e) {
+                Log.v("groupDetail", "!! Exception !!"); //  이쓍,,, 왜,,, Exception,,
+
                 e.printStackTrace();
                 return;
             }
 
             if (groupObject == null || clubInfo == null || noticeschedule == null || totalNotice == null || user_data == null) {
+                Log.v("groupDetail", "returnㅜㅜ");
+
                 return;
             }
 
             try {
+                Log.v("groupDetail", "들어와띠");
+
+                group_detail_groupName_text.setText(clubInfo.getString("club_name")); // 그룹 이름 설정
                 Glide.with(getApplicationContext()).load(clubInfo.getString("club_background")).asBitmap().centerCrop().into(group_detail_groupBackground_image); // 그룹 배경사진 설정
                 Glide.with(getApplicationContext()).load(clubInfo.getString("club_logo")).asBitmap().centerCrop().into(group_detail_group_circleImage); // 그룹 대표사진 설정
                 group_detail_groupDetail_text.setText(clubInfo.getString("club_explanation")); // 그룹 설명 설정
+
+
                 // 다가오는 일정 설정
+                group_detail_comingTitle_text.setText(noticeschedule.getString("notice_title"));
+                // 날짜
                 String dateString = noticeschedule.getString("notice_date"); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
-                Log.v("soominDDDD", dateString);
+                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+                Date formatDate = transFormat.parse(dateString);
 
-                int dayInt = noticeschedule.getInt("notice_day"); // 다가오는 일정 요일
+                group_detail_comingMonth_text.setText((formatDate.getMonth() + 1) +  ""); // 다가오는 일정 (월)
+                group_detail_comingDay_text.setText(formatDate.getDate() + ""); // 다가오는 일정 (일)
+                // 여기까지 날짜
+                group_detail_comingTime_text.setText(noticeschedule.getString("notice_time")); // 다가오는 일정 시간 설정
 
-//                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-//                Date date = format.parse(dateString);
+                // 최신 공지 설정
+                // 최신 공지 타입 이미지 설정
+                int announceType = totalNotice.getInt("notice_category");
+                if (announceType == 0) {
+                    group_detail_type_image.setImageResource(R.drawable.ic_normal_notice);
+                }
+                else if (announceType == 1) {
+                    group_detail_type_image.setImageResource(R.drawable.ic_special_notice);
+                }
+                // 공지 작성 날짜 설정
+                String announceDateString = totalNotice.getString("write_time"); // 공지 작성한 날짜
+                Date announceDate = transFormat.parse(announceDateString);
+                int announceMonth = announceDate.getMonth() + 1;
+                int announceDateInt = announceDate.getDate();
+                int announceHour = announceDate.getHours();
+                int announceMin = announceDate.getMinutes();
+
+                String finalDate = announceMonth + "/" + announceDateInt;
+                String finalTime = announceHour + ":" + announceMin;
+
+                if (announceMin == 0) {
+                    finalTime += "0";
+                }
+
+                group_detail_announceDate_text.setText(finalDate); // 공지 작성 날짜 설정
+                group_detail_announceTime_text.setText(finalTime); // 공지 작성 시간 설정
+                //
+                group_detail_announceTitle_text.setText(totalNotice.getString("notice_title")); // 공지 제목 설정
+                group_detail_announceContent_text.setText(totalNotice.getString("notice_content")); // 공지 내용 설정
+
+                int notice_id = totalNotice.getInt("notice_id"); // 공지 id 가져오기
+
+                // user_data 처리
+//                int club_checking = user_data.getInt("club_checking"); // 동아리에 가입이 되어있는지 확인 || 0이면 가입 안됨, 1이면 가입 됨 || 0이면 버튼 나타나고 1이면 버튼 안나타남
+                int club_checking = 1;
+                if (club_checking == 0) {
+                    group_detail_join_button.setVisibility(View.VISIBLE);
+                }
+                else if (club_checking == 1) {
+                    group_detail_join_button.setVisibility(View.GONE);
+                }
+
+                int user_position;
+                try {
+                    user_position = user_data.getInt("user_position"); // 0이면 총무, 1이면 일반 회원
+                } catch(NullPointerException e) {
+                    user_position = -1; // -1이면 가입 안한거
+                }
+
 
             } catch(JSONException e) {
                 e.printStackTrace();
+
+                return;
+            } catch (ParseException e) {
+                e.printStackTrace();
+
                 return;
             }
 

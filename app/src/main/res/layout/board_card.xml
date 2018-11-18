@@ -99,25 +99,29 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:src="@drawable/ic_favorite_black_20"
+            android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/board_commentNumber_text"
+            android:id="@+id/board_likeNumber_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4"
             android:textSize="12sp"
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false"
+            android:layout_marginLeft="3dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"/>
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/ic_message"
+            android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/board_likeNumber_text"
+            android:id="@+id/board_commentNumber_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="22"
@@ -125,7 +129,8 @@
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            android:layout_marginRight="19.5dp"/>
+            android:layout_marginRight="19.5dp"
+            android:layout_marginLeft="3dp"/>
 
         <LinearLayout
             android:id="@+id/board_photo_linear"
@@ -135,7 +140,9 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_img_15"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/board_photoNumber_text"
@@ -146,7 +153,8 @@
                 android:textColor="#1D1D1D"
                 android:fontFamily="@font/notosans_cjk_kr_regular"
                 android:includeFontPadding="false"
-                android:layout_marginRight="19.5dp" />
+                android:layout_marginRight="19.5dp"
+                android:layout_marginLeft="3dp"/>
 
         </LinearLayout>
 

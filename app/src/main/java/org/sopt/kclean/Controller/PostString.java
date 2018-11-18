@@ -25,15 +25,16 @@ public  class PostString {
     }
 
     // 회원가입
-    public static String signupJson(String user_id,String user_name,String user_pw, String user_phone, int user_sex, String user_birth, String user_univ,String user_major)
+    public static String signupJson(String user_id, String user_pw, String user_name, String user_birth, int user_sex, String user_phone, String user_univ, String user_major)
     {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.accumulate("user_id",user_id);
-            jsonObject.accumulate("user_phone",user_phone);
             jsonObject.accumulate("user_pw",user_pw);
-            jsonObject.accumulate("user_sex",user_sex);
+            jsonObject.accumulate("user_name",user_name);
             jsonObject.accumulate("user_birth",user_birth);
+            jsonObject.accumulate("user_sex",user_sex);
+            jsonObject.accumulate("user_phone",user_phone);
             jsonObject.accumulate("user_univ",user_univ);
             jsonObject.accumulate("user_major",user_major);
         } catch (JSONException e) {
@@ -43,7 +44,7 @@ public  class PostString {
     }
 
     // 동아리 만들기
-    public static String clubJson(String club_name, String club_logo, String club_explanation, String club_background,String bank_name,String bank_account)
+    public static String clubJson(String club_name, String club_logo, String club_explanation, String club_background, String bank_name, String bank_account)
     {
         JSONObject jsonObject = new JSONObject();
 
@@ -73,11 +74,6 @@ public  class PostString {
 
         return jsonObject.toString();
     }
-
-    //
-
-
-
 
 }
 

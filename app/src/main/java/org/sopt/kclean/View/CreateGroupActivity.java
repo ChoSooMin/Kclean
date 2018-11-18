@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -85,8 +83,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         create_group_groupName_editTxt = (EditText) findViewById(R.id.create_group_groupName_editTxt);
         create_group_groupImage_circleView = (CircleImageView) findViewById(R.id.create_group_groupImage_circleView);
         create_group_groupDetail_editTxt = (EditText) findViewById(R.id.create_group_groupDetail_editTxt);
-        bank_accout_editTxt = (EditText)findViewById(R.id.create_group_bankAccount_editTxt);
-        bank_name_editTxt = (EditText)findViewById(R.id.create_group_bankName_editTxt);
+        bank_accout_editTxt = (EditText)findViewById(R.id.bank_account_editTxt);
+        bank_name_editTxt = (EditText)findViewById(R.id.bank_name_editTxt);
 
 
         //배경 사진 고르기

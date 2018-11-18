@@ -130,13 +130,13 @@
         android:layout_marginTop="10dp"/>
 
     <EditText
-        android:id="@+id/create_group_bankName_editTxt"
+        android:id="@+id/bank_account_editTxt"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="#F0F0F0"/>
 
     <EditText
-        android:id="@+id/create_group_bankAccount_editTxt"
+        android:id="@+id/bank_name_editTxt"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="#F0F0F0"/>

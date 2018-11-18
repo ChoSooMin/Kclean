@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,88 +7,307 @@
     android:orientation="vertical"
     tools:context=".View.JoinActivity">
 
-    <EditText
-        android:id="@+id/join_id_editTxt"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="id"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
 
-    <EditText
-        android:id="@+id/join_name_editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:textSize="24sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_bold"
+            android:includeFontPadding="false"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="18dp"/>
 
-    <EditText
-        android:id="@+id/join_pw_editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="pw"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="60dp" />
 
-    <EditText
-        android:id="@+id/join_phone_editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="phone (XXX-XXXX-XXXX)"
-        android:inputType="numberSigned"
-        android:digits="0123456789-"/>
+        <EditText
+            android:id="@+id/join_id_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="아이디를 입력해주세요."
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            style="@style/EditTheme"/>
 
-    <EditText
-        android:id="@+id/join_gender_editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="gender"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/join_birth_editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="birth (XXXX-XX-XX)"
-        android:inputType="numberSigned"
-        android:digits="0123456789-"/>
+        <EditText
+            android:id="@+id/join_pw_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="비밀번호를 입력해주세요."
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            style="@style/EditTheme"/>
 
-    <EditText
-        android:id="@+id/join_univ_editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="univ"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 확인"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/join_major_editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="10dp"
-        android:hint="major"/>
+        <EditText
+            android:id="@+id/join_pwAgain_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="비밀번호를 한 번 더 입력해주세요."
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            style="@style/EditTheme"/>
 
-    <Button
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:id="@+id/join_join_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="확인"/>
+        <RelativeLayout
+            android:id="@+id/join_pwCheck_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:visibility="gone">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="잘못된 비밀번호입니다."
+                android:textSize="12sp"
+                android:textColor="#e83700"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true"/>
+            
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_warning_24"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="16dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/join_name_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="이름을 입력해주세요."
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            style="@style/EditTheme"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생년월일"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <EditText
+            android:id="@+id/join_birth_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="birth (XXXX-XX-XX)"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            android:inputType="numberSigned"
+            android:digits="0123456789-"
+            style="@style/EditTheme"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="성별"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/join_gender_radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/join_woman_radioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_woman"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/join_man_radioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_man"
+                android:layout_marginLeft="-2dp"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화번호"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/join_phone_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="전화번호를 입력해주세요. (XXX-XXXX-XXXX)"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            style="@style/EditTheme"
+            android:inputType="numberSigned"
+            android:digits="0123456789-"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="대학교"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <EditText
+            android:id="@+id/join_univ_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="univ"
+            style="@style/EditTheme"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학과"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/join_major_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:hint="major"
+            style="@style/EditTheme"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:id="@+id/join_join_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_purple"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="다음"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:fontFamily="@font/notosans_cjk_kr_bold"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="17dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

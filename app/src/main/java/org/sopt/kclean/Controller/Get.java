@@ -57,6 +57,7 @@ public class Get {
     // Get에서 ,,, 포스트,,, 값,, ㅛ요청한다고라,,,,?
     public  String run(String url, String content) throws IOException {
 
+
         Request request;
 
         if (token != null) {

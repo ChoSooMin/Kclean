@@ -30,7 +30,6 @@ import java.util.Calendar;
 import java.io.IOException;
 import java.util.Date;
 
-
 public class FinancialDetailActivity extends AppCompatActivity {
 
     private TextView financial_detail_account_balance_txt;
@@ -224,8 +223,6 @@ FrameLayout frameLayout;
                 e.printStackTrace();
                 return;
             }
-
         }
     }
-
 }

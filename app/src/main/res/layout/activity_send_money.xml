@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.SendMoneyActivity"
+    android:background="#3b3a99">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded"
+        android:orientation="vertical"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="105dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1차 뒷풀이 참여자 모집"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:textColor="#1D1D1D"
+                android:textSize="18sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="30dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/ic_special_notice"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_dot_line_360"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="17dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/send_money_profileImg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_profile_40"
+                android:layout_marginLeft="16dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toRightOf="@id/send_money_profileImg"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="총무 "
+                    android:textColor="#1D1D1D"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="강지희"
+                    android:textSize="14sp"
+                    android:textColor="#1D1D1D"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="16dp"
+                android:layout_centerInParent="true"
+                android:text="10/07 18:30"
+                android:textSize="12sp"
+                android:textColor="#8C8C8C"
+                android:fontFamily="@font/notosans_cjk_kr_regular"
+                android:includeFontPadding="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜"
+                android:textColor="#3b3a99"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/send_money_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018.11.9"
+                android:textSize="14sp"
+                android:textColor="#1D1D1D"
+                android:layout_toRightOf="@id/date"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시간"
+                android:textColor="#3b3a99"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/send_money_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/time"
+                android:text="18:00~20:00"
+                android:textColor="#1D1D1D"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="장소"
+                android:textColor="#3b3a99"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/send_money_place_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/place"
+                android:text="건대 할리스 카페 옆 00국밥집"
+                android:textColor="#1D1D1D"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_dot_line_360"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="10dp"
+            android:text="내용"
+            android:textColor="#3b3a99"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="93dp"
+            android:text="뒷풀이 참여자 분들 송금 부탁드려요 ~ 많이 많이 참석해주세용"
+            android:layout_marginTop="5dp"
+            android:textColor="#1D1D1D"
+            android:textSize="14sp"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_dot_line_360"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="금액"
+                android:textSize="14sp"
+                android:textColor="#1D1D1D"
+                android:fontFamily="@font/notosans_cjk_kr_medium"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="26dp"
+                android:layout_centerVertical="true"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_coin_36"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/send_money_money_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25,000"
+                    android:textColor="#1D1D1D"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                    android:includeFontPadding="false"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="원"
+                    android:textSize="14sp"
+                    android:textColor="#1D1D1D"
+                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                    android:includeFontPadding="false"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

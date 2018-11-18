@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.SendMoneyFinishActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="206dp"
+        android:background="#3b3a99"
+        />
+
+    <LinearLayout
+        android:id="@+id/moneyLayout"
+        android:layout_below="@id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/send_money_finsish_money_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25,000"
+            android:textColor="#3b3a99"
+            android:textSize="22sp"
+            android:fontFamily="@font/notosans_cjk_kr_bold"
+            android:includeFontPadding="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원"
+            android:textColor="#3b3a99"
+            android:textSize="20sp"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="true"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/moneyLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/moneyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="송금 "
+            android:textSize="20sp"
+            android:textColor="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/send_money_finish_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요청"
+            android:textSize="20sp"
+            android:textColor="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="되었습니다."
+            android:textSize="20sp"
+            android:textColor="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dot"
+        android:layout_below="@id/moneyLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/ic_dot_line_400"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_below="@id/dot"
+        android:id="@+id/send_money_finish_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1차 뒷풀이 참여자 모집"
+        android:textColor="#1D1D1D"
+        android:textSize="18sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_below="@id/send_money_finish_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="날짜"
+            android:textSize="14sp"
+            android:textColor="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/send_money_finish_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="40dp"
+            android:text="2018.11.09"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative2"
+        android:layout_below="@id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="시간"
+            android:textSize="14sp"
+            android:textColor="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/send_money_finish_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="40dp"
+            android:text="18:00~ 20:00"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative3"
+        android:layout_below="@id/relative2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="요청인원"
+            android:textSize="14sp"
+            android:textColor="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/send_money_finish_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="40dp"
+            android:text="32"
+            android:textSize="14sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
+
+    </RelativeLayout>
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3b3a99"
+        android:text="확인"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

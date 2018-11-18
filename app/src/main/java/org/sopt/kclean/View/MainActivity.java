@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 동아리 생성 화면으로
                 Intent intent=new Intent(MainActivity.this, CreateGroupActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                intent.putExtra("user",user);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
@@ -143,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            Log.v("ssss", s + "");
+
             JSONArray jsonArray = null;
 
             if(s == null)
@@ -151,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject= new JSONObject(s);
                 jsonArray = jsonObject.getJSONArray("data");
+
             } catch (JSONException e) {
                 e.printStackTrace();
                 return;
@@ -159,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
             groups = new ArrayList<Group>();
             if(jsonArray == null)
                 return;
-
 
             for(int i = 0;  i <jsonArray.length() ;i++) {
                 try {
@@ -174,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             layoutManager = new LinearLayoutManager(getApplicationContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
-            groupListAdapter = new AdapterGroupList(getApplicationContext(), groups,user);
+            groupListAdapter = new AdapterGroupList(getApplicationContext(), groups, user);
             recyclerView.setAdapter(groupListAdapter);
         }
     }

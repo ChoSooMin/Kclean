@@ -82,8 +82,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:background="#000000"/>
+                android:layout_marginLeft="16dp"/>
 
             <ImageView
                 android:id="@+id/kkodari"
@@ -654,10 +653,7 @@
             android:layout_height="48dp"
             android:background="#ff5050"
             android:text="가입하기"
-            android:textColor="#FFFFFF"
-            android:layout_alignParentBottom="true"
-            android:visibility="visible"/>
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
-
 </ScrollView>

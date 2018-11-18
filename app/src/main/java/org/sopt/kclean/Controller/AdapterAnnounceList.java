@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.sopt.kclean.Model.Notice;
+import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 import org.w3c.dom.Text;
 
@@ -22,10 +23,12 @@ public class AdapterAnnounceList extends RecyclerView.Adapter<RecyclerView.ViewH
 
     ArrayList<Notice> announceList;
     Context context;
+    User user;
 
-    public AdapterAnnounceList(Context context, ArrayList<Notice> announceList) {
+    public AdapterAnnounceList(Context context, ArrayList<Notice> announceList, User user) {
         this.announceList = announceList;
         this.context = context;
+        this.user = user;
     }
 
     @NonNull
@@ -39,6 +42,8 @@ public class AdapterAnnounceList extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         // 임시로,,, 해놨ㄷ,,,ㅏ,,,
+        Notice notice = announceList.get(position);
+
         ((AnnounceListViewHolder)holder).announce_card_type_image.setImageResource(R.drawable.ic_normal_notice);
         ((AnnounceListViewHolder)holder).announce_card_time_text.setText("11/03");
         ((AnnounceListViewHolder)holder).announce_card_date_text.setText("18:30");
