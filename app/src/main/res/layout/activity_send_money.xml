@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <ImageButton
+            android:id="@+id/close_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_expand_close"
@@ -71,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/send_money_profileImg"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

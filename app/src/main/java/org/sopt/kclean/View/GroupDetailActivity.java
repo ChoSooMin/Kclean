@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -145,8 +146,29 @@ public class GroupDetailActivity extends AppCompatActivity {
 
         new GroupDetailTask().execute(); // 통신
 
-        Log.v("groupDetaildd", "user_positiokn ||" + user_position); // 뭐시바
-        // 숨
+        Log.v("groupDetaildd", "user_positiokn ||" + user_position); // 우엥
+
+        // 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
+        if (club_checking == 0) { //
+            group_detail_join_button.setVisibility(View.VISIBLE);
+            group_detail_join_button.setOnClickListener(new View.OnClickListener() {
+
+                //가입버튼
+                @Override
+                public void onClick(View v) {
+                    //가입 통신 필요
+                    new GroupJoinTask().execute();
+                    //다이얼로그하고
+                    finish();
+                }
+            });
+        }
+        else if (club_checking == 1) {
+            group_detail_join_button.setVisibility(View.GONE);
+        }
+        //
+
+        // 요놈도 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
         //최신공지로 이동
         group_detail_notice_linear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,10 +233,10 @@ public class GroupDetailActivity extends AppCompatActivity {
 
         Log.v("groupCheckingaa", club_checking + "");
         if (club_checking == 0) {
-            group_detail_member_button.setVisibility(View.GONE);
+            group_detail_join_button.setVisibility(View.GONE);
         }
         else if(club_checking == 1) {
-            group_detail_member_button.setVisibility(View.VISIBLE );
+            group_detail_join_button.setVisibility(View.VISIBLE );
         }
 
     }
@@ -333,24 +355,23 @@ public class GroupDetailActivity extends AppCompatActivity {
                 // user_data 처리
                 club_checking = user_data.getInt("club_checking"); // 동아리에 가입이 되어있는지 확인 || 0이면 가입 안됨, 1이면 가입 됨 || 0이면 버튼 나타나고 1이면 버튼 안나타남
                 Log.v("groupChecking", club_checking + "");
-                if (club_checking == 0) { //
-                    group_detail_join_button.setVisibility(View.VISIBLE);
-                    group_detail_join_button.setOnClickListener(new View.OnClickListener() {
-
-                        //가입버튼
-                        @Override
-                        public void onClick(View v) {
-                            //가입 통신 필요
-                            new GroupJoinTask().execute();
-                            //다이얼로그하고
-                            finish();
-                        }
-                    });
-                }
-                else if (club_checking == 1) {
-
-                    group_detail_join_button.setVisibility(View.GONE);
-                }
+//                if (club_checking == 0) { //
+//                    group_detail_join_button.setVisibility(View.VISIBLE);
+//                    group_detail_join_button.setOnClickListener(new View.OnClickListener() {
+//
+//                        //가입버튼
+//                        @Override
+//                        public void onClick(View v) {
+//                            //가입 통신 필요
+//                            new GroupJoinTask().execute();
+//                            //다이얼로그하고
+//                            finish();
+//                        }
+//                    });
+//                }
+//                else if (club_checking == 1) {
+//                    group_detail_join_button.setVisibility(View.GONE);
+//                }
 
 
 
@@ -436,6 +457,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         }
     }
 
+    // 통신 (그룹 가입)
     private class GroupJoinTask extends AsyncTask<String, String, String>
     {
 
@@ -443,13 +465,48 @@ public class GroupDetailActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
 
             Post post = new Post("https://klean.apps.dev.clayon.io/api/club/join", PostString.groupJoinJson(group.getGroupId()),user.getToken(),"application/x-www-form-urlencoded");
+
+            String response = null;
+
             try {
-                post.post();
+                response = post.post();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            return null;
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            JSONObject jsonObject = null;
+
+            if(s != null) { //응답 성공시
+                try {
+                    jsonObject = new JSONObject(s);
+                    String message = jsonObject.getString("message");
+
+                    if (message.equals("Success to enter club")) {
+                        Toast.makeText(getApplicationContext(), "동아리 가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
+//                        Intent intent = new Intent(GroupDetailActivity.this, MainActivity.class);
+//
+//                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            else
+            {
+                //응답 오류시  다시 로그인 하라고 하기
+                Toast.makeText(getApplicationContext(), "동아리 가입 실패", Toast.LENGTH_LONG).show();
+            }
+
+            super.onPostExecute(s);
         }
     }
 

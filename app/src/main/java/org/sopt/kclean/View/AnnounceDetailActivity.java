@@ -59,7 +59,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
 
     String notice_id = ""; // 공지 id
     String response = "";
-    ArrayList<User> userList = new ArrayList<User>();
+    private ArrayList<User> userList;
 
     private User user;
 
@@ -123,14 +123,70 @@ public class AnnounceDetailActivity extends AppCompatActivity {
             }
         });
 
-        // (일반회원)
+        // (일반회원) 참석하기 버튼 눌렀을 때
         announce_detail_member_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
+                new AttendTask().execute(notice_id);
             }
         });
+    }
+
+    // 참석하기
+    private class AttendTask extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            Post post = new Post("https://klean.apps.dev.clayon.io/api/club/notice", PostString.attendAnnuonce(strings[0]), user.getToken(),"application/x-www-form-urlencoded");
+
+            String response = null;
+
+            try {
+                response =  post.post();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            JSONObject jsonObject = null;
+            String message = "";
+
+            if(s != null) { //응답 성공시
+                try {
+                    jsonObject = new JSONObject(s);
+                    message = jsonObject.getString("message");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+//                if (message.equals("Success to send push alram")) {
+                Toast.makeText(getApplicationContext(), "참석신청이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                announce_detail_member_button.setText("참석 취소");
+                new AnnounceDetailTask().execute(notice_id);
+
+                if (message.equals("Already Exists")) {
+                    Toast.makeText(getApplicationContext(), "이미 신청", Toast.LENGTH_LONG).show();
+                }
+//                }
+            }
+            else // s == null
+            {
+                if (message.equals("Already Exists")) {
+                    Toast.makeText(getApplicationContext(), "이미 신청", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "참석하기에 실패하였습니다.", Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            super.onPostExecute(s);
+        }
     }
 
     // 송금요청
@@ -306,6 +362,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
             if (notice_people == null)
                 return;
 
+            userList = new ArrayList<User>();
 
             // 받아온 response에서 searchGroupList에 group 추가
             for (int i = 0; i < notice_people.length(); i++) {

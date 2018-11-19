@@ -176,6 +176,7 @@ public class JoinActivity extends AppCompatActivity {
         });
     }
 
+    // 회원가입
     private class JoinTask extends AsyncTask<String, String, String> {
 
         @Override

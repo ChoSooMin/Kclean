@@ -107,5 +107,32 @@ public  class PostString {
 
         return jsonObject.toString();
     }
+
+    // 공지 참여
+    public static String attendAnnuonce(String notice_id) {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.accumulate("notice_id", notice_id);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return jsonObject.toString();
+    }
+
+    // 계좌 등록
+    public static String registerAccount(String user_account, String user_bank) {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.accumulate("user_account", user_account);
+            jsonObject.accumulate("user_bank", user_bank);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return jsonObject.toString();
+    }
 }
 

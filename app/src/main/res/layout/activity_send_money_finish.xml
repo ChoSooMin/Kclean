@@ -52,39 +52,39 @@
 
     <LinearLayout
         android:id="@+id/moneyLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/moneyLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/moneyLayout"
+        android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="송금 "
-            android:textSize="20sp"
-            android:textColor="#3b3a99"
             android:fontFamily="@font/notosans_cjk_kr_medium"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false"
+            android:text="송금 "
+            android:textColor="#3b3a99"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/send_money_finish_type_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="요청"
-            android:textSize="20sp"
-            android:textColor="#3b3a99"
             android:fontFamily="@font/notosans_cjk_kr_medium"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false"
+            android:text="요청"
+            android:textColor="#3b3a99"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="되었습니다."
-            android:textSize="20sp"
-            android:textColor="#3b3a99"
             android:fontFamily="@font/notosans_cjk_kr_medium"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false"
+            android:text="되었습니다."
+            android:textColor="#3b3a99"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -206,6 +206,7 @@
     </RelativeLayout>
     
     <Button
+        android:id="@+id/send_money_finish_success_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#3b3a99"
