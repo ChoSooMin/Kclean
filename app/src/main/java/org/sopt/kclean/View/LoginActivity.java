@@ -39,19 +39,10 @@ public class LoginActivity extends AppCompatActivity {
     private int goingSendMoney ; //1이면 바로 송금
     SharedPreferences pref;
 
-
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        handleIntent(intent);
-    }
-
-    private void handleIntent(Intent intent) {
-        goingSendMoney= intent.getIntExtra("result",0);
-
-        Log.v("soominddd", goingSendMoney + "");
-        if(goingSendMoney != 0)
-            Log.d("TAG", "" + goingSendMoney);
+        goingSendMoney = intent.getIntExtra("result",0);
     }
 
     @Override
@@ -59,17 +50,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Intent intent = getIntent();
-        onNewIntent(intent);
-
         login_id_editTxt = (EditText) findViewById(R.id.login_id_editTxt); // 아이디
         login_pw_editTxt = (EditText) findViewById(R.id.login_pw_editTxt); // 비밀번호
         login_login_button = (Button) findViewById(R.id.login_login_button); // 로그인 버튼
         login_join_button = (ImageButton) findViewById(R.id.login_join_button); // 회원가입 버튼
         login_auto_toggleBtn = (ToggleButton)findViewById(R.id.login_auto_toggleBtn); //토글 버튼
-       // goingSendMoney = intent.getIntExtra("result",-1);
-       // Toast.makeText(this,""+goingSendMoney,Toast.LENGTH_LONG).show();
-        handleIntent(getIntent());
+
         user = new User();
         //자동로그인 저장 정보
         pref = getSharedPreferences("user_info", MODE_PRIVATE);

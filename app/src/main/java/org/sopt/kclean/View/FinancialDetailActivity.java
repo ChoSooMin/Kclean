@@ -1,6 +1,7 @@
 package org.sopt.kclean.View;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
@@ -37,8 +39,8 @@ public class FinancialDetailActivity extends AppCompatActivity {
     private TextView financial_detail_account_number_txt;
     private TextView financial_detail_year_txt;
     private TextView financial_detail_month_txt;
-    private Button financial_detail_left_button;
-    private Button financial_detail_right_button;
+    private ImageButton financial_detail_left_button;
+    private ImageButton financial_detail_right_button;
     private RecyclerView fin_recycler1;
     private RecyclerView fin_recycler2;
     private Calendar oCalendar;
@@ -76,8 +78,8 @@ FrameLayout frameLayout;
         financial_detail_account_number_txt = (TextView)findViewById(R.id.financial_detail_account_number_txt);
         financial_detail_year_txt = (TextView)findViewById(R.id.financial_detail_year_txt);
         financial_detail_month_txt = (TextView)findViewById(R.id.financial_detail_month_txt);
-        financial_detail_left_button = (Button)findViewById(R.id.financial_detail_left_button);
-        financial_detail_right_button = (Button)findViewById(R.id.financial_detail_right_button);
+        financial_detail_left_button = (ImageButton) findViewById(R.id.financial_detail_left_button);
+        financial_detail_right_button = (ImageButton)findViewById(R.id.financial_detail_right_button);
 
         //동아리 재정 내역
         FinancialDetailTask financialDetailTask = new FinancialDetailTask();

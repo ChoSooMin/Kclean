@@ -685,6 +685,7 @@
         android:layout_height="48dp"
         android:background="#ff5050"
         android:text="가입하기"
+        android:visibility="gone"
         android:textColor="#FFFFFF"
         android:layout_weight="1"/>
 

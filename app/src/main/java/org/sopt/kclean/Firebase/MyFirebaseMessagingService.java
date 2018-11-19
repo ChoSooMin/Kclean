@@ -18,6 +18,7 @@ import org.sopt.kclean.R;
 import org.sopt.kclean.View.JoinActivity;
 import org.sopt.kclean.View.LoginActivity;
 import org.sopt.kclean.View.MainActivity;
+import org.sopt.kclean.View.SendMoneyActivity;
 
 import java.util.Map;
 
@@ -117,9 +118,9 @@ import java.util.Map;
          * @param messageBody FCM message body received.
          */
         private void sendNotification(Map<String,String> messageBody) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.putExtra("result",2);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Intent intent = new Intent(this, SendMoneyActivity.class);
+            intent.putExtra("result",1);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                     PendingIntent.FLAG_ONE_SHOT);
 
@@ -132,7 +133,8 @@ import java.util.Map;
                             .setContentText(messageBody.get("body")) //내용 필수
                             .setAutoCancel(true)
                             .setSound(defaultSoundUri)
-                            .setContentIntent(pendingIntent);
+                            .setContentIntent(pendingIntent)
+                                ;
 
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

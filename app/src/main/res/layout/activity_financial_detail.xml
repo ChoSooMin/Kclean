@@ -149,11 +149,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp">
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/financial_detail_left_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="18dp"
+                            android:background="@drawable/ic_left"
                             android:layout_centerVertical="true"/>
 
                         <LinearLayout
@@ -203,12 +204,13 @@
 
                         </LinearLayout>
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/financial_detail_right_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginRight="18dp"
+                            android:background="@drawable/ic_right"
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>

@@ -146,98 +146,99 @@ public class GroupDetailActivity extends AppCompatActivity {
 
         new GroupDetailTask().execute(); // 통신
 
-        Log.v("groupDetaildd", "user_positiokn ||" + user_position); // 우엥
-
-        // 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
-        if (club_checking == 0) { //
-            group_detail_join_button.setVisibility(View.VISIBLE);
-            group_detail_join_button.setOnClickListener(new View.OnClickListener() {
-
-                //가입버튼
-                @Override
-                public void onClick(View v) {
-                    //가입 통신 필요
-                    new GroupJoinTask().execute();
-                    //다이얼로그하고
-                    finish();
-                }
-            });
-        }
-        else if (club_checking == 1) {
-            group_detail_join_button.setVisibility(View.GONE);
-        }
-        //
-
-        // 요놈도 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
-        //최신공지로 이동
-        group_detail_notice_linear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this,AnnounceDetailActivity.class);
-                intent.putExtra("notice_id",notice_id);
-                startActivity(intent);
-            }
-        });
-
-
-
-        // 공지버튼
-        group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
-                intent.putExtra("user", user);
-                intent.putExtra("group", group);
-                intent.putExtra("user_position", user_position);
-
-                startActivity(intent);
-            }
-        });
-
-        // 재정 버튼 리스너
-        group_detail_finance_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
-                intent.putExtra("user", user);
-                intent.putExtra("selectedGroup", group);
-                startActivity(intent);
-            }
-        });
-
-        // 게시판 버튼 리스너
-        group_detail_board_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
-                intent.putExtra("user", user);
-
-                startActivity(intent);
-            }
-        });
-
-        // 회원 버튼 리스너
-        group_detail_member_button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
-                intent.putExtra("user", user);
-
-                startActivity(intent);
-            }
-        });
-
-        Log.v("groupCheckingaa", club_checking + "");
-        if (club_checking == 0) {
-            group_detail_join_button.setVisibility(View.GONE);
-        }
-        else if(club_checking == 1) {
-            group_detail_join_button.setVisibility(View.VISIBLE );
-        }
+//        Log.v("groupDetaildd", "user_positiokn ||" + user_position); // 우엥
+//
+//
+//        // 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
+//        if (club_checking == 0) { //
+//            group_detail_join_button.setVisibility(View.VISIBLE);
+//            group_detail_join_button.setOnClickListener(new View.OnClickListener() {
+//
+//                //가입버튼
+//                @Override
+//                public void onClick(View v) {
+//                    //가입 통신 필요
+//                    new GroupJoinTask().execute();
+//                    //다이얼로그하고
+//                    finish();
+//                }
+//            });
+//        }
+//        else if (club_checking == 1) {
+//            group_detail_join_button.setVisibility(View.GONE);
+//        }
+//        //
+//
+//        // 요놈도 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
+//        //최신공지로 이동
+//        group_detail_notice_linear.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(GroupDetailActivity.this,AnnounceDetailActivity.class);
+//                intent.putExtra("notice_id",notice_id);
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//
+//        // 공지버튼
+//        group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
+//                intent.putExtra("user", user);
+//                intent.putExtra("group", group);
+//                intent.putExtra("user_position", user_position);
+//
+//                startActivity(intent);
+//            }
+//        });
+//
+//        // 재정 버튼 리스너
+//        group_detail_finance_button.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
+//                intent.putExtra("user", user);
+//                intent.putExtra("selectedGroup", group);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        // 게시판 버튼 리스너
+//        group_detail_board_button.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
+//                intent.putExtra("user", user);
+//
+//                startActivity(intent);
+//            }
+//        });
+//
+//        // 회원 버튼 리스너
+//        group_detail_member_button.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
+//                intent.putExtra("user", user);
+//
+//                startActivity(intent);
+//            }
+//        });
+//
+//        Log.v("groupCheckingaa", club_checking + "");
+//        if (club_checking == 0) {
+//            group_detail_join_button.setVisibility(View.GONE);
+//        }
+//        else if(club_checking == 1) {
+//            group_detail_join_button.setVisibility(View.VISIBLE );
+//        }
 
     }
 
@@ -291,6 +292,7 @@ public class GroupDetailActivity extends AppCompatActivity {
                 return;
             }
 
+
             try {
                 Log.v("groupDetail", "들어와띠");
 
@@ -308,13 +310,13 @@ public class GroupDetailActivity extends AppCompatActivity {
                 // 다가오는 일정 설정
                 group_detail_comingTitle_text.setText(noticeschedule.getString("notice_title"));
                 // 날짜
-                String dateString = noticeschedule.getString("notice_date"); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
-                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
-                if (dateString != null) {
-                    Date formatDate = transFormat.parse(dateString);
-                    group_detail_comingMonth_text.setText((formatDate.getMonth() + 1) +  ""); // 다가오는 일정 (월)
-                    group_detail_comingDay_text.setText(formatDate.getDate() + ""); // 다가오는 일정 (일)
-                }
+//                String dateString = noticeschedule.getString("notice_date"); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
+//                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+//                if (dateString != null) {
+//                    Date formatDate = transFormat.parse(dateString);
+//                    group_detail_comingMonth_text.setText((formatDate.getMonth() + 1) +  ""); // 다가오는 일정 (월)
+//                    group_detail_comingDay_text.setText(formatDate.getDate() + ""); // 다가오는 일정 (일)
+//                }
 
 
                 // 여기까지 날짜
@@ -329,24 +331,24 @@ public class GroupDetailActivity extends AppCompatActivity {
                 else if (announceType == 1) {
                     group_detail_type_image.setImageResource(R.drawable.ic_special_notice);
                 }
-                // 공지 작성 날짜 설정
-                String announceDateString = totalNotice.getString("write_time"); // 공지 작성한 날짜
-                Date announceDate = transFormat.parse(announceDateString);
-                int announceMonth = announceDate.getMonth() + 1;
-                int announceDateInt = announceDate.getDate();
-                int announceHour = announceDate.getHours();
-                int announceMin = announceDate.getMinutes();
-
-                String finalDate = announceMonth + "/" + announceDateInt;
-                String finalTime = announceHour + ":" + announceMin;
-
-                if (announceMin == 0) {
-                    finalTime += "0";
-                }
-
-                group_detail_announceDate_text.setText(finalDate); // 공지 작성 날짜 설정
-                group_detail_announceTime_text.setText(finalTime); // 공지 작성 시간 설정
-                //
+//                // 공지 작성 날짜 설정
+//                String announceDateString = totalNotice.getString("write_time"); // 공지 작성한 날짜
+//                Date announceDate = transFormat.parse(announceDateString);
+//                int announceMonth = announceDate.getMonth() + 1;
+//                int announceDateInt = announceDate.getDate();
+//                int announceHour = announceDate.getHours();
+//                int announceMin = announceDate.getMinutes();
+//
+//                String finalDate = announceMonth + "/" + announceDateInt;
+//                String finalTime = announceHour + ":" + announceMin;
+//
+//                if (announceMin == 0) {
+//                    finalTime += "0";
+//                }
+//
+//                group_detail_announceDate_text.setText(finalDate); // 공지 작성 날짜 설정
+//                group_detail_announceTime_text.setText(finalTime); // 공지 작성 시간 설정
+//                //
                 group_detail_announceTitle_text.setText(totalNotice.getString("notice_title")); // 공지 제목 설정
                 group_detail_announceContent_text.setText(totalNotice.getString("notice_content")); // 공지 내용 설정
 
@@ -355,23 +357,23 @@ public class GroupDetailActivity extends AppCompatActivity {
                 // user_data 처리
                 club_checking = user_data.getInt("club_checking"); // 동아리에 가입이 되어있는지 확인 || 0이면 가입 안됨, 1이면 가입 됨 || 0이면 버튼 나타나고 1이면 버튼 안나타남
                 Log.v("groupChecking", club_checking + "");
-//                if (club_checking == 0) { //
-//                    group_detail_join_button.setVisibility(View.VISIBLE);
-//                    group_detail_join_button.setOnClickListener(new View.OnClickListener() {
-//
-//                        //가입버튼
-//                        @Override
-//                        public void onClick(View v) {
-//                            //가입 통신 필요
-//                            new GroupJoinTask().execute();
-//                            //다이얼로그하고
-//                            finish();
-//                        }
-//                    });
-//                }
-//                else if (club_checking == 1) {
-//                    group_detail_join_button.setVisibility(View.GONE);
-//                }
+                if (club_checking == 0) { //
+                    group_detail_join_button.setVisibility(View.VISIBLE);
+                    group_detail_join_button.setOnClickListener(new View.OnClickListener() {
+
+                        //가입버튼
+                        @Override
+                        public void onClick(View v) {
+                            //가입 통신 필요
+                            new GroupJoinTask().execute();
+                            //다이얼로그하고
+                            finish();
+                        }
+                    });
+                }
+                else if (club_checking == 1) {
+                    group_detail_join_button.setVisibility(View.GONE);
+                }
 
 
 
@@ -380,78 +382,78 @@ public class GroupDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
 
                 return;
-            } catch (ParseException e) {
-                Log.v("groupDetail", "ParseException!!");
-                e.printStackTrace();
-
-                return;
             }
-
+//            catch (ParseException e) {
+//                Log.v("groupDetail", "ParseException!!");
+//                e.printStackTrace();
+//
+//                return;
+//            }
 
             // 버튼 리스너
             // 공지 버튼 리스너
-            if(club_checking == 0) {
+            if(club_checking == 1) {
 
-//                //최신공지로 이동
-//               group_detail_notice_linear.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(GroupDetailActivity.this,AnnounceDetailActivity.class);
-//                        intent.putExtra("notice_id",notice_id);
-//                        startActivity(intent);
-//                    }
-//                });
-//
-//
-//
-//
-//                group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
-//                        intent.putExtra("user", user);
-//                        intent.putExtra("group", group);
-//
-//                        startActivity(intent);
-//                    }
-//                });
-//
-//                // 재정 버튼 리스너
-//                group_detail_finance_button.setOnClickListener(new View.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
-//                        intent.putExtra("user", user);
-//                        intent.putExtra("selectedGroup", group);
-//                        startActivity(intent);
-//                    }
-//                });
-//
-//                // 게시판 버튼 리스너
-//                group_detail_board_button.setOnClickListener(new View.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
-//                        intent.putExtra("user", user);
-//
-//                        startActivity(intent);
-//                    }
-//                });
-//
-//                // 회원 버튼 리스너
-//                group_detail_member_button.setOnClickListener(new View.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
-//                        intent.putExtra("user", user);
-//
-//                        startActivity(intent);
-//                    }
-//                });
+                //최신공지로 이동
+               group_detail_notice_linear.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this,AnnounceDetailActivity.class);
+                        intent.putExtra("notice_id",notice_id);
+                        startActivity(intent);
+                    }
+                });
+
+
+
+
+                group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
+                        intent.putExtra("user", user);
+                        intent.putExtra("group", group);
+
+                        startActivity(intent);
+                    }
+                });
+
+                // 재정 버튼 리스너
+                group_detail_finance_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
+                        intent.putExtra("user", user);
+                        intent.putExtra("selectedGroup", group);
+                        startActivity(intent);
+                    }
+                });
+
+                // 게시판 버튼 리스너
+                group_detail_board_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
+                        intent.putExtra("user", user);
+
+                        startActivity(intent);
+                    }
+                });
+
+                // 회원 버튼 리스너
+                group_detail_member_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
+                        intent.putExtra("user", user);
+
+                        startActivity(intent);
+                    }
+                });
 
             }
         }
