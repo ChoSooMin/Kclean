@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.SendMoneyFinishActivity">
+    tools:context=".View.SendMoneyFinishActivity"
+    android:background="#FFFFFF">
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
-        android:background="#3b3a99"
-        />
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_moneyout"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:id="@+id/moneyLayout"
@@ -21,6 +22,12 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_coin_36"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/send_money_finsish_money_text"

@@ -1,8 +1,10 @@
 package org.sopt.kclean.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,14 @@ import android.widget.TextView;
 import org.sopt.kclean.Model.Notice;
 import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
+import org.sopt.kclean.View.AnnounceDetailActivity;
+import org.sopt.kclean.View.GroupDetailActivity;
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -24,11 +31,15 @@ public class AdapterAnnounceList extends RecyclerView.Adapter<RecyclerView.ViewH
     ArrayList<Notice> announceList;
     Context context;
     User user;
+    int user_position;
 
-    public AdapterAnnounceList(Context context, ArrayList<Notice> announceList, User user) {
+    public AdapterAnnounceList(Context context, ArrayList<Notice> announceList, User user, int user_position) {
         this.announceList = announceList;
         this.context = context;
         this.user = user;
+        this.user_position = user_position;
+        Log.v("adapterUser", "get user_position || " + user_position);
+        Log.v("adapterUser", "this user_position || " + user_position);
     }
 
     @NonNull
@@ -44,18 +55,83 @@ public class AdapterAnnounceList extends RecyclerView.Adapter<RecyclerView.ViewH
         // 임시로,,, 해놨ㄷ,,,ㅏ,,,
         Notice notice = announceList.get(position);
 
-        ((AnnounceListViewHolder)holder).announce_card_type_image.setImageResource(R.drawable.ic_normal_notice);
-        ((AnnounceListViewHolder)holder).announce_card_time_text.setText("11/03");
-        ((AnnounceListViewHolder)holder).announce_card_date_text.setText("18:30");
-        ((AnnounceListViewHolder)holder).announce_card_title_text.setText("컨퍼런스 기획단 모집");
-        ((AnnounceListViewHolder)holder).announce_card_content_text.setText("<공지사항> 컨퍼런스 기획단 모집합니다. 기획/디자인 관심있는 분들 많은 지원 부탁드립니다 화이팅이에용...");
+        final String notice_id = notice.getNotice_id();
+
+        int category = notice.getNotice_category();
+        if (category == 0) {
+            ((AnnounceListViewHolder)holder).announce_card_type_image.setImageResource(R.drawable.ic_normal_notice);
+        }
+        else if (category == 1) {
+            ((AnnounceListViewHolder)holder).announce_card_type_image.setImageResource(R.drawable.ic_special_notice);
+        }
+
+        // 날짜
+        Date formatDate = new Date();
+        String time = notice.getWrite_time(); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
+        int month = 0;
+        int date = 0;
+        int hour = -1;
+        int minute = -1;
+
+        String monthStr = "";
+        String dateStr = "";
+        String hourStr = "";
+        String minuteStr = "";
+
+        String write_time = "";
+        String write_date = "";
+        SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+        try {
+            formatDate = transFormat.parse(time);
+            month = formatDate.getMonth() + 1;
+            date = formatDate.getDate() + 1;
+            hour = formatDate.getHours();
+            minute = formatDate.getMinutes();
+
+            monthStr = month + "";
+            dateStr = date + "";
+            hourStr = hour + "";
+            minuteStr = minute + "";
+
+            if (month == 0) {
+                monthStr = month + "0";
+            }
+            if (date == 0){
+                dateStr = date + "0";
+            }
+            if (hour == 0) {
+                hourStr = hour + "0";
+            }
+            if (minute == 0) {
+                minuteStr = minute + "0";
+            }
+
+            write_date = monthStr + "/" + dateStr + " ";
+            write_time = hourStr + ":" + minuteStr;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        ((AnnounceListViewHolder)holder).announce_card_date_text.setText(write_date);
+        ((AnnounceListViewHolder)holder).announce_card_time_text.setText(write_time);
+        ((AnnounceListViewHolder)holder).announce_card_title_text.setText(notice.getNotice_title());
+        ((AnnounceListViewHolder)holder).announce_card_content_text.setText(notice.getNotice_content());
 
         // 항목 누르면?
         ((AnnounceListViewHolder)holder).announce_card_linear.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, AnnounceDetailActivity.class);
 
+
+                intent.putExtra("notice_id", notice_id);
+                intent.putExtra("user", user);
+                Log.v("adapterUser(어댑터 항목 눌렀을 때)", "user_position" + user_position);
+                intent.putExtra("user_position", user_position);
+
+                context.startActivity(intent);
             }
         });
     }

@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="71dp"
-    android:id="@+id/member_card_relative">
-
+    android:orientation="horizontal"
+    android:id="@+id/member_card_relative"
+    android:weightSum="10">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/member_card_member_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/ic_profile_40"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"/>
+        android:layout_weight="2"
+        android:layout_gravity="center"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@id/member_card_member_image"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp">
+        android:layout_gravity="center"
+        android:layout_weight="6">
 
         <TextView
+            android:id="@+id/member_card_memberName_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="조수민"
-            android:textSize="14sp"
             android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:text="조수민"
             android:textColor="#1D1D1D"
-            android:includeFontPadding="false"/>
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -38,29 +38,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/member_card_memberAge_text"
+                android:id="@+id/member_card_memberTime_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23"
-                android:textSize="12sp"
-                android:fontFamily="@font/notosans_cjk_kr_regular"
-                android:textColor="#1D1D1D"
-                android:includeFontPadding="false"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="세, "
+                android:text="11/03 18:30"
                 android:textSize="12sp"
                 android:fontFamily="@font/notosans_cjk_kr_regular"
                 android:textColor="#1D1D1D"
                 android:includeFontPadding="false"/>
             
             <TextView
-                android:id="@+id/member_card_memberGender_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여"
+                android:text=" 참여"
                 android:textSize="12sp"
                 android:fontFamily="@font/notosans_cjk_kr_regular"
                 android:textColor="#1D1D1D"
@@ -74,13 +64,13 @@
         android:id="@+id/member_card_sendCheck_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#1D1D1D"
-        android:text="송금 O"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="17dp"
-        android:layout_centerVertical="true"
-        android:textSize="12sp"
         android:fontFamily="@font/notosans_cjk_kr_bold"
-        android:includeFontPadding="false"/>
+        android:includeFontPadding="false"
+        android:layout_gravity="center"
+        android:text="송금 O"
+        android:textColor="#1D1D1D"
+        android:textSize="12sp"
+        android:layout_weight="1"
+        />
 
-</RelativeLayout>
+</LinearLayout>

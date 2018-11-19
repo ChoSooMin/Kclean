@@ -179,6 +179,7 @@ public class LoginActivity extends AppCompatActivity {
                     else
                         intent = new Intent(LoginActivity.this, SendMoneyActivity.class);
                     intent.putExtra("token", jsonObject.getString("token"));
+                    Log.v("toktok", jsonObject.getString("token"));
                     startActivity(intent);
                 } catch (JSONException e) {
                     e.printStackTrace();

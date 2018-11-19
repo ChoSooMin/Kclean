@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private User user = new User();
     private TabHost.TabSpec tab1, tab2, tab3;
 
+    //
+    private ImageButton mypage_setting;
 
     @Override
     protected void onStart() {
@@ -79,7 +81,17 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tab3);
         // 요까지 탭탭탭~~
 
+        // 마이페이지에서 세팅
+        mypage_setting = (ImageButton) findViewById(R.id.mypage_setting);
+        mypage_setting.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, AccountRegisterActivity.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
+            }
+        });
 
         MainTask mainTask = new  MainTask();
         mainTask.execute();
@@ -174,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
             recyclerView =  (RecyclerView)findViewById(R.id.recycler_view);
             layoutManager = new LinearLayoutManager(getApplicationContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

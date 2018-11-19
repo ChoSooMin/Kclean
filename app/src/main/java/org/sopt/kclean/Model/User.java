@@ -8,6 +8,7 @@ import android.os.Parcelable;
  */
 
 public class User implements Parcelable {
+
     String id;
     String password;
     String name;
@@ -18,9 +19,20 @@ public class User implements Parcelable {
     String university;
     String major;
     Account account; //추후 객체로 변경
+    String userImg;
+    int account_check;
+    String user_deviceToken;
+    String current_time;
 
-    public User(){
+    public User() {}
 
+    public User(String name, String userImg, String id, String current_time, int account_check, String user_deviceToken){
+        this.name = name;
+        this.userImg = userImg;
+        this.id = id;
+        this.current_time = current_time;
+        this.account_check = account_check;
+        this.user_deviceToken = user_deviceToken;
     }
 
     public User(String id, String password, String name, String phoneNumber, String gender, String birth, String university , String major) {
@@ -30,8 +42,21 @@ public class User implements Parcelable {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.birth = birth;
+        this.university = university;
+        this.major = major;
+    }
+
+    public User(String id, String password, String name, String phoneNumber, String gender, String birth, String university , String major, String userImg, int account_check) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.birth = birth;
         this.university =  university;
         this.major = major;
+        this.userImg = userImg;
+        this.account_check = account_check;
     }
     public User(Parcel source)
     {
@@ -45,8 +70,18 @@ public class User implements Parcelable {
         university = source.readString();
         major = source.readString();
         account = source.readParcelable(Account.class.getClassLoader());
+        userImg = source.readString();
+        account_check = source.readInt();
+        current_time = source.readString();
     }
 
+    public String getCurrent_time() {
+        return current_time;
+    }
+
+    public void setCurrent_time(String current_time) {
+        this.current_time = current_time;
+    }
 
     public String getUniversity() {
         return university;
@@ -128,6 +163,30 @@ public class User implements Parcelable {
         this.account = account;
     }
 
+    public String getUserImg() {
+        return userImg;
+    }
+
+    public void setUserImg(String userImg) {
+        this.userImg = userImg;
+    }
+
+    public int getAccount_check() {
+        return account_check;
+    }
+
+    public void setAccount_check(int account_check) {
+        this.account_check = account_check;
+    }
+
+    public String getUser_deviceToken() {
+        return user_deviceToken;
+    }
+
+    public void setUser_deviceToken(String user_deviceToken) {
+        this.user_deviceToken = user_deviceToken;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -145,7 +204,9 @@ public class User implements Parcelable {
         parcel.writeString(university);
         parcel.writeString(major);
         parcel.writeParcelable(account,PARCELABLE_WRITE_RETURN_VALUE);
-
+        parcel.writeString(userImg);
+        parcel.writeInt(account_check);
+        parcel.writeString(current_time);
     }
 
     public static Creator<User> CREATOR = new Creator<User>() {

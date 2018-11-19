@@ -84,7 +84,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         create_group_groupImage_circleView = (CircleImageView) findViewById(R.id.create_group_groupImage_circleView);
         create_group_groupDetail_editTxt = (EditText) findViewById(R.id.create_group_groupDetail_editTxt);
         bank_accout_editTxt = (EditText)findViewById(R.id.bank_account_editTxt);
-        bank_name_editTxt = (EditText)findViewById(R.id.bank_name_editTxt);
+//        bank_name_editTxt = (EditText)findViewById(R.id.bank_name_editTxt);
 
 
         //배경 사진 고르기

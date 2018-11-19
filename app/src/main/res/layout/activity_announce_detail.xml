@@ -79,6 +79,7 @@
                         android:includeFontPadding="false"/>
 
                     <TextView
+                        android:id="@+id/announce_detail_managerName_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="강지희"
@@ -219,6 +220,7 @@
             android:layout_marginLeft="38dp"/>
 
         <TextView
+            android:id="@+id/announce_detail_announceContent_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="38dp"

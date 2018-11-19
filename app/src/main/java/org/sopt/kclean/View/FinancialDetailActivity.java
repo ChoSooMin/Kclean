@@ -41,8 +41,8 @@ public class FinancialDetailActivity extends AppCompatActivity {
     private Button financial_detail_right_button;
     private RecyclerView fin_recycler1;
     private RecyclerView fin_recycler2;
-    private   Calendar oCalendar;
-    private  Integer search_year;
+    private Calendar oCalendar;
+    private Integer search_year;
     private Integer search_month;
 
     // 탭

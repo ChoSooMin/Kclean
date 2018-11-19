@@ -4,52 +4,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialog_style"
-    android:layout_width="284dp"
-    android:layout_height="178dp"
-    android:background="@drawable/die_bg_img">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/dialog_notice_text"
+
+    <RelativeLayout
+        android:id="@+id/bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:textColor="#1D1D1D"
-        android:textSize="18sp"
-        android:fontFamily="@font/notosans_cjk_kr_medium"
-        android:includeFontPadding="false"
-        android:text="안내" />
+        android:layout_below="@id/astro"
+        android:layout_marginTop="-32dp"
+        android:background="@drawable/ic_bgimg_dia">
 
-    <TextView
-        android:id="@+id/dialog_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:fontFamily="@font/notosans_cjk_kr_regular"
-        android:includeFontPadding="false"
-        android:text="default" />
+        <TextView
+            android:id="@+id/dialog_text"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/notosans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            android:text="아이디가 입력되지 않았습니다.\n아이디를 입력해주세요."
+            android:gravity="center"
+            android:textColor="#1D1D1D"
+            android:textSize="14sp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/die_line_244"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46.5dp"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/notice_button"
-        android:layout_width="match_parent"
-        android:layout_height="46.5dp"
-        android:layout_alignParentBottom="true"
-        android:background="#ffffff"
-        android:text="확인"
-        android:textColor="#3b3a99"
-        android:textSize="14sp"
-        android:fontFamily="@font/notosans_cjk_kr_medium"
-        android:includeFontPadding="false"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_dia_ok"
+        android:layout_below="@id/bg"/>
+
+    <ImageView
+        android:id="@+id/astro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_astro_70" />
 
 </RelativeLayout>

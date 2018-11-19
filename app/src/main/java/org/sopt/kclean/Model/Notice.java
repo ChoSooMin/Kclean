@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Notice implements Parcelable {
 
+    String notice_id;
     String notice_title;
     int notice_category;
     String club_manager_img;
@@ -18,8 +19,17 @@ public class Notice implements Parcelable {
     int notice_participant;
     ArrayList<User> notice_people;
 
+    public Notice(String notice_id, String write_time, String notice_title, int notice_category, String notice_content) {
+        this.notice_id = notice_id;
+        this.write_time = write_time;
+        this.notice_title = notice_title;
+        this.notice_category = notice_category;
+        this.notice_content = notice_content;
+    }
+
     public Notice(Parcel source)
     {
+        notice_id = source.readString();
         notice_title = source.readString();
         notice_category = source.readInt();
         club_manager_img = source.readString();
@@ -30,6 +40,14 @@ public class Notice implements Parcelable {
         notice_date = source.readString();
         notice_participant = source.readInt();
         notice_people = source.readArrayList(ArrayList.class.getClassLoader());
+    }
+
+    public String getNotice_id() {
+        return notice_id;
+    }
+
+    public void setNotice_id(String notice_id) {
+        this.notice_id = notice_id;
     }
 
     public ArrayList<User> getNotice_people() {
@@ -119,6 +137,7 @@ public class Notice implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(notice_id);
         parcel.writeString(notice_title);
         parcel.writeInt(notice_category);
         parcel.writeString(club_manager);

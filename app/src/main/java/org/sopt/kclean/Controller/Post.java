@@ -43,7 +43,6 @@ public class Post {
         this.url = url;
         this.json = json;
         this.content = content;
-
     }
 
     public Post(String url, String json,String token,String content){

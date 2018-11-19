@@ -75,5 +75,37 @@ public  class PostString {
         return jsonObject.toString();
     }
 
+    // 송금 요청
+    public static String requestMoney(String notice_id) {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.accumulate("notice_id", notice_id);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return jsonObject.toString();
+    }
+
+    // 공지 작성 (등록)
+    public static String writeAnnounce(String club_id, String notice_title, int notice_category, String notice_place, String notice_date, String notice_time, String notice_content, String notice_cost) {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.accumulate("club_id", club_id);
+            jsonObject.accumulate("notice_title", notice_title);
+            jsonObject.accumulate("notice_category", notice_category);
+            jsonObject.accumulate("notice_place", notice_place);
+            jsonObject.accumulate("notice_date", notice_date);
+            jsonObject.accumulate("notice_time", notice_time);
+            jsonObject.accumulate("notice_content", notice_content);
+            jsonObject.accumulate("notice_cost", notice_cost);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return jsonObject.toString();
+    }
 }
 

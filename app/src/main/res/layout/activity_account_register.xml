@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.AccountRegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계좌 연동"
+            android:textSize="24sp"
+            android:textColor="#1D1D1D"
+            android:fontFamily="@font/notosans_cjk_kr_bold"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_succes"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="16dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계좌 입력"
+        android:textSize="16sp"
+        android:textColor="#1D1D1D"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/join_account_bank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        style="@style/EditTheme"
+        android:layout_marginTop="45dp"
+        android:textColor="#1D1D1D"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:hint="은행을 입력해주세요."/>
+
+    <EditText
+        android:id="@+id/join_account_account_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        style="@style/EditTheme"
+        android:layout_marginTop="20dp"
+        android:textColor="#1D1D1D"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:includeFontPadding="false"
+        android:hint="계좌 번호를 입력해주세요."/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp">
+
+        <ToggleButton
+            android:id="@+id/join_account_agree_toggleBtn"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/auto_login_check"
+            android:checked="false"
+            android:textOn=""
+            android:textOff=""/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계좌 내역 공유 동의 약관에 동의 하시겠습니까?"
+            android:textSize="12sp"
+            android:textColor="#8C8C8C"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

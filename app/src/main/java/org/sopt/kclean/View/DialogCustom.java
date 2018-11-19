@@ -26,19 +26,12 @@ public class DialogCustom extends Dialog {
         super(context);
         this.context = context;
     }
-    public DialogCustom(@NonNull Context context,String text)
-    {
+
+    public DialogCustom(@NonNull Context context,String text) {
         super(context);
         this.context = context;
         this.text = text;
     }
-
-//    public DialogCustom(Context context,String text) {
-//        this.context = context;
-//        this.text = text;
-//
-//
-//    }
 
     public void callFunction(String text) {
         final Dialog dlg = new Dialog(context);
@@ -49,7 +42,6 @@ public class DialogCustom extends Dialog {
         // 커스텀 다이얼로그의 레이아웃을 설정한다.
         dlg.setContentView(R.layout.dialog_custom);
 
-        final TextView dialog_notice_text = (TextView) dlg.findViewById(R.id.dialog_notice_text);
         final TextView dialog_text = (TextView) dlg.findViewById(R.id.dialog_text);
         final Button notice_button = (Button) dlg.findViewById(R.id.notice_button);
 

@@ -47,9 +47,11 @@
             android:id="@+id/create_group_groupBackground_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#3b3a99"/>
+            android:background="@drawable/img_newmoim"
+            android:scaleType="centerCrop"/>
 
         <TextView
+            android:id="@+id/create_group_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -78,7 +80,7 @@
             android:layout_marginLeft="16dp"
             app:civ_border_color="#f2f2f8"
             app:civ_border_width="2dp"
-            android:background="@drawable/ic_empty_profile_48"/>
+            android:background="@drawable/ic_moin_profile_48"/>
 
 
         <EditText
@@ -95,7 +97,8 @@
             android:layout_marginRight="16dp"
             android:fontFamily="@font/notosans_cjk_kr_medium"
             android:includeFontPadding="false"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            style="@style/EditTheme"/>
 
 
 
@@ -116,7 +119,7 @@
         android:id="@+id/create_group_groupDetail_editTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="동아리 설명을 작성해주세요."
+        android:hint="동아리 설명에 들어갈 내용을 50자 이내로 작성해주세요."
         android:layout_centerVertical="true"
         android:textCursorDrawable="@color/colorEdit"
         android:theme="@style/EditTheme"
@@ -129,16 +132,59 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"/>
 
-    <EditText
-        android:id="@+id/bank_account_editTxt"
-        android:layout_width="200dp"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#F0F0F0"/>
+        android:text="재정 계좌"
+        android:fontFamily="@font/notosans_cjk_kr_medium"
+        android:textColor="#1D1D1D"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:includeFontPadding="false"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#3b3a99"
+            android:text="은행 선택"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_gravity="center"/>
+
+        <Spinner
+            android:id="@+id/create_group_bank_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_expand_more">
+
+        </Spinner>
+
+    </LinearLayout>
 
     <EditText
-        android:id="@+id/bank_name_editTxt"
-        android:layout_width="200dp"
+        android:id="@+id/bank_account_editTxt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F0F0F0"/>
+        android:hint="계좌번호를 입력해주세요."
+        android:textCursorDrawable="@color/colorEdit"
+        android:textSize="14sp"
+        android:theme="@style/EditTheme"
+        android:layout_toRightOf="@id/create_group_groupImage_circleView"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/notosans_cjk_kr_regular"
+        android:includeFontPadding="false"
+        android:layout_centerVertical="true"
+        style="@style/EditTheme"/>
 
 </LinearLayout>
