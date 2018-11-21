@@ -21,7 +21,7 @@
             android:textColor="#1D1D1D"
             android:textSize="18sp"
             android:fontFamily="@font/notosans_cjk_kr_medium"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false" />
 
         <ImageButton
             android:id="@+id/write_board_complete_imgBtn"
@@ -42,12 +42,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:hint="공지 제목 작성하기"
-        android:textCursorDrawable="@color/colorEdit"
         android:textColor="#1D1D1D"
         android:textSize="18sp"
         android:fontFamily="@font/notosans_cjk_kr_medium"
         android:includeFontPadding="false"
-        style="@style/EditTheme"/>
+        style="@style/EditTheme"
+        android:theme="@style/EditTheme"
+        android:textCursorDrawable="@color/colorEdit"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -122,10 +123,11 @@
             android:hint="인당 송금요청 할 금액을 입력해주세요."
             android:textColor="#1D1D1D"
             android:textSize="14sp"
-            android:textCursorDrawable="@color/colorEdit"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit" />
 
     </LinearLayout>
 
@@ -168,10 +170,11 @@
             android:hint="장소를 입력해주세요."
             android:textSize="14sp"
             android:textColor="#1D1D1D"
-            android:textCursorDrawable="@color/colorEdit"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
     </RelativeLayout>
 
@@ -202,11 +205,12 @@
             android:layout_marginLeft="10dp"
             android:hint="날짜를 입력해주세요. (ex. 2018-11-19)"
             android:textSize="14sp"
-            android:textCursorDrawable="@color/colorEdit"
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
     </RelativeLayout>
 

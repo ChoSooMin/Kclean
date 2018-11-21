@@ -78,21 +78,26 @@ public class AnnounceActivity extends AppCompatActivity {
             }
         });
 
-        // 공지 리스트 데이터
-        announceList = new ArrayList<Notice>(); // 공지 리스트 객체 만들기
-        //
-
         // RecyclerView 설정
-        layoutManager = new LinearLayoutManager(getApplicationContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        notice_recycler_view.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
-        announceListAdapter = new AdapterAnnounceList(getApplicationContext(), announceList, user, user_position);
-        notice_recycler_view.setAdapter(announceListAdapter); // RecyclerView 어댑터 설정
+//        layoutManager = new LinearLayoutManager(getApplicationContext());
+//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+//        notice_recycler_view.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
+//        announceListAdapter = new AdapterAnnounceList(getApplicationContext(), announceList, user, user_position);
+//        notice_recycler_view.setAdapter(announceListAdapter); // RecyclerView 어댑터 설정
+
+        new AnnounceTask().execute();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         new AnnounceTask().execute();
     }
 
     private class AnnounceTask extends AsyncTask<String, String, String> {
+
+
 
         @Override
         protected String doInBackground(String... strings) {
@@ -125,6 +130,8 @@ public class AnnounceActivity extends AppCompatActivity {
             }
 
             super.onPostExecute(s);
+
+            announceList = new ArrayList<Notice>(); // 공지 리스트 객체 만들기
 
             if(jsonArray == null)
                 return;

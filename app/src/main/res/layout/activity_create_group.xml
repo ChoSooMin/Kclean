@@ -88,17 +88,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="동아리 이름을 입력해주세요."
-            android:textCursorDrawable="@color/colorEdit"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:theme="@style/EditTheme"
             android:layout_toRightOf="@id/create_group_groupImage_circleView"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:fontFamily="@font/notosans_cjk_kr_medium"
             android:includeFontPadding="false"
             android:layout_centerVertical="true"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
 
 

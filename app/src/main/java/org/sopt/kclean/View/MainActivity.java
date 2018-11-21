@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
@@ -85,31 +86,33 @@ public class MainActivity extends AppCompatActivity {
         user.setToken(intent.getStringExtra("token"));
 
         // 자동로그인할 때 유저 객체 잘 가져오냐,?
-        Log.v("loginlogin", user.getToken()); // 잘 가져오는군요,,,
+//        Log.v("loginlogin", user.getToken()); // 잘 가져오는군요,,,
 
         // 탭탭탭~~
         tabHost = (TabHost)findViewById(R.id.tabHost);
 
         tabHost.setup();
 
-        tab1 = tabHost.newTabSpec("1").setContent(R.id.content1).setIndicator("", getResources().getDrawable(R.drawable.ic_home));
-        tab2 = tabHost.newTabSpec("2").setContent(R.id.content2).setIndicator("", getResources().getDrawable(R.drawable.ic_alrm));
-        tab3 = tabHost.newTabSpec("3").setContent(R.id.content3).setIndicator("", getResources().getDrawable(R.drawable.ic_people));
+//        ImageView tabWidget01 = new ImageView(this);
+//        tabWidget01.setImageResource(R.drawable.tab_01);
+//
+//        ImageView tabWidget02 = new ImageView(this);
+//        tabWidget01.setImageResource(R.drawable.tab_02);
+//
+//        ImageView tabWidget03 = new ImageView(this);
+//        tabWidget01.setImageResource(R.drawable.tab_03);
+
+
+        tab1 = tabHost.newTabSpec("1").setContent(R.id.content1).setIndicator("", getDrawable(R.drawable.tab_01));
+        tab2 = tabHost.newTabSpec("2").setContent(R.id.content2).setIndicator("", getDrawable(R.drawable.tab_02));
+        tab3 = tabHost.newTabSpec("3").setContent(R.id.content3).setIndicator("", getDrawable(R.drawable.tab_02));
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
         tabHost.addTab(tab3);
-        // 요까지 탭탭탭~~
 
-        //
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                switch (tabId) {
-                    
-                }
-            }
-        });
+//        init();
+        // 요까지 탭탭탭~~
 
         // 마이페이지에서 세팅
         mypage_setting = (ImageButton) findViewById(R.id.mypage_setting);
@@ -152,27 +155,34 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        init();
     }
 
-    // tab 눌러질 때 처리
-    void init(){
-        frameLayout = (FrameLayout) findViewById(android.R.id.tabcontent);
-
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String number) {
-                switch (number) {
-                    case "1":
-                        break;
-
-                    case "2":
-                        break;
-                }
-            }
-        });
-    }
+//    // tab 눌러질 때 처리
+//    void init(){
+//        frameLayout = (FrameLayout) findViewById(android.R.id.tabcontent);
+//
+//
+//
+//        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+//
+//
+//            @Override
+//            public void onTabChanged(String number) {
+//                Log.v("tabtab", number);
+//                switch (number) {
+//                    case "1":
+//
+//                        break;
+//
+//                    case "2":
+//
+//                        break;
+//                    case "3" :
+//                        break;
+//                }
+//            }
+//        });
+//    }
 
     // 통신(내 동아리 리스트,,,)
     private class MainTask extends AsyncTask<String, String, String>{

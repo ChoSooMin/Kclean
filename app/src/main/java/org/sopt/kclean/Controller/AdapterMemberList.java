@@ -20,7 +20,9 @@ import org.sopt.kclean.R;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -64,10 +66,14 @@ public class AdapterMemberList extends RecyclerView.Adapter<RecyclerView.ViewHol
         SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
         try {
             Date timeDate = transFormat.parse(time);
-            int month = timeDate.getMonth();
-            int date = timeDate.getDate();
-            int hour = timeDate.getHours();
-            int minute = timeDate.getMinutes();
+
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(timeDate);
+
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int date = calendar.get(Calendar.DATE);
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int minute = calendar.get(Calendar.MINUTE);
 
             ((MemberListViewHolder) holder).member_card_memberTime_text.setText(month + "/" + date + " " + hour + ":" + minute);
         } catch (ParseException e) {

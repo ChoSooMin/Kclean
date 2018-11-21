@@ -160,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                     //user.setToken();
                     Intent intent;
                     if(goingSendMoney == 0)
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent = new Intent(LoginActivity.this, MainActivity.class);
                     else
                         intent = new Intent(LoginActivity.this, SendMoneyActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

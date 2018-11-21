@@ -315,61 +315,61 @@ public class GroupDetailActivity extends AppCompatActivity {
                 // 다가오는 일정 설정
                 group_detail_comingTitle_text.setText(noticeschedule.getString("notice_title"));
                 // 날짜
-                String dateString = noticeschedule.getString("notice_date"); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
-                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
-                if (dateString != null) {
-                    Date formatDate = transFormat.parse(dateString);
-
-                    Calendar comingCalendar = new GregorianCalendar();
-                    comingCalendar.setTime(formatDate);
-
-                    group_detail_comingMonth_text.setText((comingCalendar.get(Calendar.MONTH) + 1) +  ""); // 다가오는 일정 (월)
-                    group_detail_comingDay_text.setText(comingCalendar.get(Calendar.DATE) + ""); // 다가오는 일정 (일)
-                }
-
-
-                // 여기까지 날짜
-                group_detail_comingTime_text.setText(noticeschedule.getString("notice_time")); // 다가오는 일정 시간 설정
-
-                // 최신 공지 설정
-                // 최신 공지 타입 이미지 설정
-                int announceType;
-                try {
-                    announceType = totalNotice.getInt("notice_category");
-                }
-                catch (JSONException e)
-                {
-                    announceType = 2;
-
-                }
-                if (announceType == 0) {
-                    group_detail_type_image.setImageResource(R.drawable.ic_normal_notice);
-                }
-                else if (announceType == 1) {
-                    group_detail_type_image.setImageResource(R.drawable.ic_special_notice);
-                }
-
-                // 공지 작성 날짜 설정
-                String announceDateString = totalNotice.getString("write_time"); // 공지 작성한 날짜
-                Date announceDate = transFormat.parse(announceDateString);
-
-                Calendar calendar = new GregorianCalendar();
-                calendar.setTime(announceDate);
-
-                int announceMonth = calendar.get(Calendar.MONTH) + 1;
-                int announceDateInt = calendar.get(Calendar.DATE);
-                int announceHour = calendar.get(Calendar.HOUR_OF_DAY);
-                int announceMin = calendar.get(Calendar.MINUTE);
-
-                String finalDate = announceMonth + "/" + announceDateInt;
-                String finalTime = announceHour + ":" + announceMin;
-
-                if (announceMin == 0) {
-                    finalTime += "0";
-                }
-
-                group_detail_announceDate_text.setText(finalDate); // 공지 작성 날짜 설정
-                group_detail_announceTime_text.setText(finalTime); // 공지 작성 시간 설정
+//                String dateString = noticeschedule.getString("notice_date"); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
+//                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+//                if (dateString != null) {
+//                    Date formatDate = transFormat.parse(dateString);
+//
+//                    Calendar comingCalendar = new GregorianCalendar();
+//                    comingCalendar.setTime(formatDate);
+//
+//                    group_detail_comingMonth_text.setText((comingCalendar.get(Calendar.MONTH) + 1) +  ""); // 다가오는 일정 (월)
+//                    group_detail_comingDay_text.setText(comingCalendar.get(Calendar.DATE) + ""); // 다가오는 일정 (일)
+//                }
+//
+//
+//                // 여기까지 날짜
+//                group_detail_comingTime_text.setText(noticeschedule.getString("notice_time")); // 다가오는 일정 시간 설정
+//
+//                // 최신 공지 설정
+//                // 최신 공지 타입 이미지 설정
+//                int announceType;
+//                try {
+//                    announceType = totalNotice.getInt("notice_category");
+//                }
+//                catch (JSONException e)
+//                {
+//                    announceType = 2;
+//
+//                }
+//                if (announceType == 0) {
+//                    group_detail_type_image.setImageResource(R.drawable.ic_normal_notice);
+//                }
+//                else if (announceType == 1) {
+//                    group_detail_type_image.setImageResource(R.drawable.ic_special_notice);
+//                }
+//
+//                // 공지 작성 날짜 설정
+//                String announceDateString = totalNotice.getString("write_time"); // 공지 작성한 날짜
+//                Date announceDate = transFormat.parse(announceDateString);
+//
+//                Calendar calendar = new GregorianCalendar();
+//                calendar.setTime(announceDate);
+//
+//                int announceMonth = calendar.get(Calendar.MONTH) + 1;
+//                int announceDateInt = calendar.get(Calendar.DATE);
+//                int announceHour = calendar.get(Calendar.HOUR_OF_DAY);
+//                int announceMin = calendar.get(Calendar.MINUTE);
+//
+//                String finalDate = announceMonth + "/" + announceDateInt;
+//                String finalTime = announceHour + ":" + announceMin;
+//
+//                if (announceMin == 0) {
+//                    finalTime += "0";
+//                }
+//
+//                group_detail_announceDate_text.setText(finalDate); // 공지 작성 날짜 설정
+//                group_detail_announceTime_text.setText(finalTime); // 공지 작성 시간 설정
                 group_detail_announceTitle_text.setText(totalNotice.getString("notice_title")); // 공지 제목 설정
                 group_detail_announceContent_text.setText(totalNotice.getString("notice_content")); // 공지 내용 설정
 
@@ -404,12 +404,14 @@ public class GroupDetailActivity extends AppCompatActivity {
 
                 return;
             }
-            catch (ParseException e) {
-                Log.v("groupDetail", "ParseException!!");
-                e.printStackTrace();
+//            catch (ParseException e) {
+//                Log.v("groupDetail", "ParseException!!");
+//                e.printStackTrace();
+//
+//                return;
+//            }
 
-                return;
-            }
+            Log.v("clubclub", club_checking + "");
 
             // 버튼 리스너
             // 공지 버튼 리스너

@@ -91,7 +91,12 @@ public class SendMoneyActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                new SendMoneyTask().execute(notice_id, notice_price);
+//                new SendMoneyTask().execute(notice_id, notice_price);
+                Intent intent = new Intent(getApplicationContext(), SendMoneyFinishActivity.class);
+                intent.putExtra("position", 1);
+
+                Toast.makeText(getApplicationContext(), "송금 완료", Toast.LENGTH_LONG).show();
+                startActivity(intent);
             }
         });
     }

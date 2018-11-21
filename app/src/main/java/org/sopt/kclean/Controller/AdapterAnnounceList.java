@@ -22,7 +22,9 @@ import org.w3c.dom.Text;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -83,31 +85,17 @@ public class AdapterAnnounceList extends RecyclerView.Adapter<RecyclerView.ViewH
         SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
         try {
             formatDate = transFormat.parse(time);
-            month = formatDate.getMonth() + 1;
-            date = formatDate.getDate() + 1;
-            hour = formatDate.getHours();
-            minute = formatDate.getMinutes();
 
-            monthStr = month + "";
-            dateStr = date + "";
-            hourStr = hour + "";
-            minuteStr = minute + "";
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(formatDate);
 
-            if (month == 0) {
-                monthStr = month + "0";
-            }
-            if (date == 0){
-                dateStr = date + "0";
-            }
-            if (hour == 0) {
-                hourStr = hour + "0";
-            }
-            if (minute == 0) {
-                minuteStr = minute + "0";
-            }
+            month = calendar.get(Calendar.MONTH) + 1;
+            date = calendar.get(Calendar.DATE);
+            hour = calendar.get(Calendar.HOUR_OF_DAY);
+            minute = calendar.get(Calendar.MINUTE);
 
-            write_date = monthStr + "/" + dateStr + " ";
-            write_time = hourStr + ":" + minuteStr;
+            write_date = month + "/" + date + " ";
+            write_time = hour + ":" + minute;
 
         } catch (ParseException e) {
             e.printStackTrace();
