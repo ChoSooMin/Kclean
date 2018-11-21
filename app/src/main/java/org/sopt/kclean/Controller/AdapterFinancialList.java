@@ -87,7 +87,12 @@ public class AdapterFinancialList extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public int getItemCount()
     {
-        return tradesList.size();
+        if (tradesList == null) {
+            return 0;
+        }
+        else {
+            return tradesList.size();
+        }
     }
 
     @Override
@@ -132,7 +137,6 @@ public class AdapterFinancialList extends RecyclerView.Adapter<RecyclerView.View
             date_card_date_text = itemView.findViewById(R.id.date_card_date_text);
             date_card_month_text = itemView.findViewById(R.id.date_card_month_text);
             date_card_day_text = itemView.findViewById(R.id.date_card_day_text);
-
         }
     }
 }

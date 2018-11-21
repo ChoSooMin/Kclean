@@ -3,9 +3,7 @@ package org.sopt.kclean.Controller;
 //import android.support.v7.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +18,6 @@ import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 import org.sopt.kclean.View.GroupDetailActivity;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -52,8 +48,8 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         // 이건 임시
         Glide.with(context).load(groupList.get(position).getGroupImage()).asBitmap().centerCrop().into(((GroupListViewHolder) holder).group_card_image);
-        //((GroupListViewHolder) holder).group_card_image.setImageURI(uri); ;
-        ((GroupListViewHolder)holder).group_card_name_text.setText(groupList.get(position).getMasterName());
+
+        ((GroupListViewHolder)holder).group_card_managerName_text.setText(groupList.get(position).getClub_manager());
         ((GroupListViewHolder)holder).group_card_totalnumber_text.setText("" + groupList.get(position).getTotalMember());
         ((GroupListViewHolder)holder).group_card_group_name_text.setText(groupList.get(position).getGroupName());
 
@@ -63,6 +59,7 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
                 Intent intent = new Intent(context, GroupDetailActivity.class);
                 intent.putExtra("selectedGroup", groupList.get(position));
                 intent.putExtra("user",user);
+                intent.putExtra("totalNumber", groupList.get(position).getTotalMember() + "");
 
                 context.startActivity(intent);
             }
@@ -80,7 +77,7 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
         public ImageView group_card_image;
         public TextView group_card_group_name_text;
         public TextView group_card_totalnumber_text;
-        public TextView group_card_name_text;
+        public TextView group_card_managerName_text;
 
         public GroupListViewHolder(View itemView) {
             super(itemView);
@@ -89,7 +86,7 @@ public class AdapterGroupList extends RecyclerView.Adapter<RecyclerView.ViewHold
             group_card_image = (ImageView)itemView.findViewById(R.id.group_card_image);
             group_card_group_name_text = (TextView)itemView.findViewById(R.id.group_card_group_name_text);
             group_card_totalnumber_text = (TextView)itemView.findViewById(R.id.group_card_totalnumber_text);
-            group_card_name_text = (TextView)itemView.findViewById(R.id.group_card_group_name_text);
+            group_card_managerName_text = (TextView)itemView.findViewById(R.id.group_card_managerName_text);
         }
     }
 }

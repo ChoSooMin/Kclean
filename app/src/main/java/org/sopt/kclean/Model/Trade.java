@@ -4,10 +4,11 @@ public class Trade {
    final public static int TRADE_TYPE = 0;
    final public static int DATE_TYPE =1;
 
-    private  String  TradeLocation;
+    private  String tradeLocation;
     private  String  time;
     private  String  money;
     private  int     isIncoming;
+    private String coming;
 
     private String  imageUri;
 
@@ -17,6 +18,15 @@ public class Trade {
     private String date;
 
     private  int type;
+
+    public Trade(String tradeLocation, String time, String money, String coming) {
+        this.tradeLocation = tradeLocation;
+        this.time = time;
+        this.money = money;
+        this.coming = coming;
+    }
+
+
 
 
     public Trade(String TradeLocation, String time, String money, int isIncoming, String month, String imageUri )
@@ -33,6 +43,14 @@ public class Trade {
         this.month = month;
         this.date = date;
         this.day = day;
+    }
+
+    public String getComing() {
+        return coming;
+    }
+
+    public void setComing(String coming) {
+        this.coming = coming;
     }
 
     public String getImageUri() {
@@ -60,11 +78,11 @@ public class Trade {
     }
 
     public String getTradeLocation() {
-        return TradeLocation;
+        return tradeLocation;
     }
 
     public void setTradeLocation(String tradeLocation) {
-        TradeLocation = tradeLocation;
+        this.tradeLocation = tradeLocation;
     }
 
     public String getTime() {

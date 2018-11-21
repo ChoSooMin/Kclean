@@ -49,9 +49,11 @@ public class DialogCustom extends Dialog {
         notice_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cancel();
+                dismiss();
             }
         });
+
+
 
         // 커스텀 다이얼로그를 노출한다.
         dlg.show();

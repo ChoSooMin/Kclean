@@ -149,8 +149,10 @@
         android:orientation="horizontal"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp">
-        
+
+        <!--
         <TextView
+            android:id="@+id/bank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -158,13 +160,19 @@
             android:text="은행 선택"
             android:fontFamily="@font/notosans_cjk_kr_medium"
             android:includeFontPadding="false"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            />
+            -->
 
         <Spinner
             android:id="@+id/create_group_bank_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_expand_more">
+            android:entries="@array/bank"
+            android:textSize="14sp"
+            android:textColor="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:includeFontPadding="false">
 
         </Spinner>
 

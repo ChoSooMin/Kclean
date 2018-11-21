@@ -32,7 +32,9 @@ import java.lang.reflect.Member;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -92,6 +94,9 @@ public class GroupDetailActivity extends AppCompatActivity {
     private int club_checking;
     private String notice_id;
 
+    //
+    private String totalNumber = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +105,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         user = intent.getParcelableExtra("user"); // user 객체 받아옴
         group = getIntent().getParcelableExtra("selectedGroup"); // 앞에서 intent에 담아 보낸 Group 객체 가져오기
+        totalNumber = getIntent().getStringExtra("totalNumber");
 
         // xml 연결
         group_detail_announce_button = (ImageButton) findViewById(R.id.group_detail_announce_button); // 공지 버튼
@@ -139,7 +145,6 @@ public class GroupDetailActivity extends AppCompatActivity {
         group_detail_content_text2 = (TextView) findViewById(R.id.group_detail_content_text2); // 게시 내용
         group_detail_commentNumber_text2 = (TextView) findViewById(R.id.group_detail_commentNumber_text2); // 댓글수
         group_detail_likeNumber_text2 = (TextView) findViewById(R.id.group_detail_likeNumber_text2); // 좋아요수
-        group_detail_photoNumber_text2 = (TextView) findViewById(R.id.group_detail_photoNumber_text2); // 사진수
 
         //가입버튼
         group_detail_join_button = (Button) findViewById(R.id.group_detail_join_button);
@@ -310,13 +315,17 @@ public class GroupDetailActivity extends AppCompatActivity {
                 // 다가오는 일정 설정
                 group_detail_comingTitle_text.setText(noticeschedule.getString("notice_title"));
                 // 날짜
-//                String dateString = noticeschedule.getString("notice_date"); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
-//                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
-//                if (dateString != null) {
-//                    Date formatDate = transFormat.parse(dateString);
-//                    group_detail_comingMonth_text.setText((formatDate.getMonth() + 1) +  ""); // 다가오는 일정 (월)
-//                    group_detail_comingDay_text.setText(formatDate.getDate() + ""); // 다가오는 일정 (일)
-//                }
+                String dateString = noticeschedule.getString("notice_date"); // 다가오는 일정 날짜 (2018-10-02 이런식,,,)
+                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+                if (dateString != null) {
+                    Date formatDate = transFormat.parse(dateString);
+
+                    Calendar comingCalendar = new GregorianCalendar();
+                    comingCalendar.setTime(formatDate);
+
+                    group_detail_comingMonth_text.setText((comingCalendar.get(Calendar.MONTH) + 1) +  ""); // 다가오는 일정 (월)
+                    group_detail_comingDay_text.setText(comingCalendar.get(Calendar.DATE) + ""); // 다가오는 일정 (일)
+                }
 
 
                 // 여기까지 날짜
@@ -339,24 +348,28 @@ public class GroupDetailActivity extends AppCompatActivity {
                 else if (announceType == 1) {
                     group_detail_type_image.setImageResource(R.drawable.ic_special_notice);
                 }
-//                // 공지 작성 날짜 설정
-//                String announceDateString = totalNotice.getString("write_time"); // 공지 작성한 날짜
-//                Date announceDate = transFormat.parse(announceDateString);
-//                int announceMonth = announceDate.getMonth() + 1;
-//                int announceDateInt = announceDate.getDate();
-//                int announceHour = announceDate.getHours();
-//                int announceMin = announceDate.getMinutes();
-//
-//                String finalDate = announceMonth + "/" + announceDateInt;
-//                String finalTime = announceHour + ":" + announceMin;
-//
-//                if (announceMin == 0) {
-//                    finalTime += "0";
-//                }
-//
-//                group_detail_announceDate_text.setText(finalDate); // 공지 작성 날짜 설정
-//                group_detail_announceTime_text.setText(finalTime); // 공지 작성 시간 설정
-//                //
+
+                // 공지 작성 날짜 설정
+                String announceDateString = totalNotice.getString("write_time"); // 공지 작성한 날짜
+                Date announceDate = transFormat.parse(announceDateString);
+
+                Calendar calendar = new GregorianCalendar();
+                calendar.setTime(announceDate);
+
+                int announceMonth = calendar.get(Calendar.MONTH) + 1;
+                int announceDateInt = calendar.get(Calendar.DATE);
+                int announceHour = calendar.get(Calendar.HOUR_OF_DAY);
+                int announceMin = calendar.get(Calendar.MINUTE);
+
+                String finalDate = announceMonth + "/" + announceDateInt;
+                String finalTime = announceHour + ":" + announceMin;
+
+                if (announceMin == 0) {
+                    finalTime += "0";
+                }
+
+                group_detail_announceDate_text.setText(finalDate); // 공지 작성 날짜 설정
+                group_detail_announceTime_text.setText(finalTime); // 공지 작성 시간 설정
                 group_detail_announceTitle_text.setText(totalNotice.getString("notice_title")); // 공지 제목 설정
                 group_detail_announceContent_text.setText(totalNotice.getString("notice_content")); // 공지 내용 설정
 
@@ -391,12 +404,12 @@ public class GroupDetailActivity extends AppCompatActivity {
 
                 return;
             }
-//            catch (ParseException e) {
-//                Log.v("groupDetail", "ParseException!!");
-//                e.printStackTrace();
-//
-//                return;
-//            }
+            catch (ParseException e) {
+                Log.v("groupDetail", "ParseException!!");
+                e.printStackTrace();
+
+                return;
+            }
 
             // 버튼 리스너
             // 공지 버튼 리스너
@@ -417,6 +430,7 @@ public class GroupDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
+                        Log.v("groupgroup", "공지공지");
                         Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
                         intent.putExtra("user", user);
                         intent.putExtra("group", group);
@@ -432,6 +446,7 @@ public class GroupDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
+                        Log.v("groupgroup", "재정재정");
                         intent.putExtra("user", user);
                         intent.putExtra("selectedGroup", group);
                         startActivity(intent);
@@ -444,6 +459,7 @@ public class GroupDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
+                        Log.v("groupgroup", "게시게시");
                         intent.putExtra("user", user);
 
                         startActivity(intent);
@@ -456,7 +472,9 @@ public class GroupDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
+                        Log.v("groupgroup", "회원회원");
                         intent.putExtra("user", user);
+                        intent.putExtra("totalNumber", totalNumber);
 
                         startActivity(intent);
                     }

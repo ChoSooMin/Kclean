@@ -1,6 +1,5 @@
 package org.sopt.kclean.Model;
 
-import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -13,17 +12,17 @@ public class Group implements Parcelable {
     private String groupId;
     private String groupName;
     private int totalMember;
-    private String masterName;
+    private String club_manager;
     private String groupImage;
     private String  groupBackground;
     private String groupDetail;
 
-    public Group(String groupId, String groupName, String groupDetail, String groupImage, String masterName, int totalMember) {
+    public Group(String groupId, String groupName, String groupDetail, String groupImage, String club_manager, int totalMember) {
         this.groupId = groupId;
         this.groupName = groupName;
         this.groupDetail = groupDetail;
         this.groupImage = groupImage;
-        this.masterName = masterName;
+        this.club_manager = club_manager;
         this.totalMember = totalMember;
     }
 
@@ -35,12 +34,12 @@ public class Group implements Parcelable {
         this.groupBackground = groupBackground;
     }
 
-    public Group(String groupId,String groupName , String groupImage, String masterName, int totalMember )
+    public Group(String groupId, String groupName , String groupImage, String club_manager, int totalMember )
     {
         this.groupId = groupId;
         this.groupName = groupName;
         this.groupImage = groupImage;
-        this.masterName =masterName;
+        this.club_manager = club_manager;
         this.totalMember = totalMember;
     }
 
@@ -49,7 +48,7 @@ public class Group implements Parcelable {
         groupId = source.readString();
         groupName = source.readString();
         totalMember = source.readInt();
-        masterName = source.readString();
+        club_manager = source.readString();
         groupImage = source.readString();
         groupBackground = source.readString();
         groupDetail = source.readString();
@@ -79,12 +78,12 @@ public class Group implements Parcelable {
         this.totalMember = totalMember;
     }
 
-    public String getMasterName() {
-        return masterName;
+    public String getClub_manager() {
+        return club_manager;
     }
 
-    public void setMasterName(String masterName) {
-        this.masterName = masterName;
+    public void setClub_manager(String club_manager) {
+        this.club_manager = club_manager;
     }
 
     public String getGroupImage() {
@@ -121,7 +120,7 @@ public class Group implements Parcelable {
         parcel.writeString(groupId);
         parcel.writeString(groupName);
         parcel.writeInt(totalMember);
-        parcel.writeString(masterName);
+        parcel.writeString(club_manager);
         parcel.writeString(groupImage);
         parcel.writeString(groupBackground);
         parcel.writeString(groupDetail);

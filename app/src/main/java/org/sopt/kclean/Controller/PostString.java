@@ -88,6 +88,20 @@ public  class PostString {
         return jsonObject.toString();
     }
 
+    // 송금하기
+    public static String sendMoney(String notice_id, int notice_price) {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.accumulate("notice_id", notice_id);
+            jsonObject.accumulate("notice_price", notice_price);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return jsonObject.toString();
+    }
+
     // 공지 작성 (등록)
     public static String writeAnnounce(String club_id, String notice_title, int notice_category, String notice_place, String notice_date, String notice_time, String notice_content, String notice_cost) {
         JSONObject jsonObject = new JSONObject();

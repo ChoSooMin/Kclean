@@ -21,10 +21,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.sopt.kclean.Controller.AdapterGroupList;
+import org.sopt.kclean.Controller.AdapterMainNoticeList;
 import org.sopt.kclean.Controller.Get;
 import org.sopt.kclean.Controller.Post;
 import org.sopt.kclean.Controller.PostString;
 import org.sopt.kclean.Model.Group;
+import org.sopt.kclean.Model.Notice;
 import org.sopt.kclean.Model.User;
 import org.sopt.kclean.R;
 
@@ -41,14 +43,20 @@ public class MainActivity extends AppCompatActivity {
     private TabHost tabHost;
     private TabWidget tabWidget;
     private FrameLayout frameLayout;
+    private User user = new User();
+    private TabHost.TabSpec tab1, tab2, tab3;
 
     //
     private RecyclerView recyclerView;
     private AdapterGroupList groupListAdapter;
     private LinearLayoutManager layoutManager;
     private ArrayList<Group> groups;
-    private User user = new User();
-    private TabHost.TabSpec tab1, tab2, tab3;
+
+    // 알림
+    private RecyclerView main_notice_recycler_view; // 알림 RecyclerView
+    private AdapterMainNoticeList mainNoticeListAdapter;
+    private LinearLayoutManager noticeLayoutManager;
+    private ArrayList<Notice> noticeList;
 
     //
     private ImageButton mypage_setting;
@@ -61,25 +69,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        new MainTask().execute();
+        new AlarmTask().execute();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         user = new User();
         user.setToken(intent.getStringExtra("token"));
+
+        // 자동로그인할 때 유저 객체 잘 가져오냐,?
+        Log.v("loginlogin", user.getToken()); // 잘 가져오는군요,,,
+
         // 탭탭탭~~
         tabHost = (TabHost)findViewById(R.id.tabHost);
 
         tabHost.setup();
 
-        tab1 = tabHost.newTabSpec("1").setContent(R.id.content1).setIndicator("", getResources().getDrawable(R.drawable.ic_home_30));
-        tab2 = tabHost.newTabSpec("2").setContent(R.id.content2).setIndicator("", getResources().getDrawable(R.drawable.ic_alert_30));
-        tab3 = tabHost.newTabSpec("3").setContent(R.id.content3).setIndicator("", getResources().getDrawable(R.drawable.ic_profile_30));
+        tab1 = tabHost.newTabSpec("1").setContent(R.id.content1).setIndicator("", getResources().getDrawable(R.drawable.ic_home));
+        tab2 = tabHost.newTabSpec("2").setContent(R.id.content2).setIndicator("", getResources().getDrawable(R.drawable.ic_alrm));
+        tab3 = tabHost.newTabSpec("3").setContent(R.id.content3).setIndicator("", getResources().getDrawable(R.drawable.ic_people));
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
         tabHost.addTab(tab3);
         // 요까지 탭탭탭~~
+
+        //
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                switch (tabId) {
+                    
+                }
+            }
+        });
 
         // 마이페이지에서 세팅
         mypage_setting = (ImageButton) findViewById(R.id.mypage_setting);
@@ -95,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
         MainTask mainTask = new  MainTask();
         mainTask.execute();
+
+        new AlarmTask().execute();
+
         // 동아리 생성 버튼
         main_createGroupBtn = (ImageButton) findViewById(R.id.main_createGroupBtn);
         main_createGroupBtn.setOnClickListener(new View.OnClickListener() {
@@ -123,13 +156,6 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        new MainTask().execute();
-    }
-
     // tab 눌러질 때 처리
     void init(){
         frameLayout = (FrameLayout) findViewById(android.R.id.tabcontent);
@@ -144,9 +170,11 @@ public class MainActivity extends AppCompatActivity {
                     case "2":
                         break;
                 }
+            }
+        });
     }
-});
-    }
+
+    // 통신(내 동아리 리스트,,,)
     private class MainTask extends AsyncTask<String, String, String>{
         @Override
         protected String doInBackground(String... strings) {
@@ -200,6 +228,64 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
             groupListAdapter = new AdapterGroupList(getApplicationContext(), groups, user);
             recyclerView.setAdapter(groupListAdapter);
+        }
+    }
+
+    // 통신(알림 리스트)
+    private class AlarmTask extends AsyncTask<String, String, String>{
+        @Override
+        protected String doInBackground(String... strings) {
+            Get get = new Get(user.getToken());
+
+            String response = null;
+            try {
+                response = get.run("https://klean.apps.dev.clayon.io/api/alram","application/x-www-form-urlencoded");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.v("ssss", s + "");
+
+            JSONArray jsonArray = null;
+
+            if(s == null)
+                return;
+
+            try {
+                JSONObject jsonObject= new JSONObject(s);
+                jsonArray = jsonObject.getJSONArray("data");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            noticeList = new ArrayList<Notice>(); // 알림 리스트 객체 생성
+            if(jsonArray == null)
+                return;
+
+            for(int i = 0;  i <jsonArray.length() ;i++) {
+                try {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    Notice notice = new Notice(jsonObject.getString("club_logo"), jsonObject.getString("club_name"), jsonObject.getString("club_manager"), jsonObject.getString("write_time"), jsonObject.getString("notice_id"), jsonObject.getString("notice_title"), jsonObject.getString("notice_content"), jsonObject.getInt("account_check"));
+                    noticeList.add(notice);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            main_notice_recycler_view =  (RecyclerView)findViewById(R.id.main_notice_recycler_view);
+            noticeLayoutManager = new LinearLayoutManager(getApplicationContext());
+            noticeLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            main_notice_recycler_view.setLayoutManager(noticeLayoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
+            mainNoticeListAdapter = new AdapterMainNoticeList(getApplicationContext(), noticeList, user);
+            main_notice_recycler_view.setAdapter(mainNoticeListAdapter);
         }
     }
 }

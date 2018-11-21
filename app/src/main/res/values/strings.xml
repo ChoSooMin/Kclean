@@ -3,7 +3,7 @@
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 
     <string-array name="bank">
-        <item></item>
+        <item>은행 선택</item>
         <item>국민은행</item>
         <item>하나은행</item>
         <item>우리은행</item>

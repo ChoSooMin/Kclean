@@ -85,7 +85,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="최효진"
+                                android:text="김리브"
                                 android:textSize="18sp"
                                 android:textColor="#1D1D1D"
                                 android:fontFamily="@font/notosans_cjk_kr_bold"
@@ -113,89 +113,155 @@
                             android:background="@drawable/ic_my"/>
                     </RelativeLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="130dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/img_myp_bg"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="16dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginRight="10.5dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="내 계좌"
-                                android:textColor="#FFFFFF"
-                                android:fontFamily="@font/notosans_cjk_kr_medium"
-                                android:includeFontPadding="false"/>
-
-                            <TextView
-                                android:id="@+id/main_myPage_myBank_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:text="국민은행 67070204087002"
-                                android:textColor="#FFFFFF"
-                                android:textSize="14sp"
-                                android:fontFamily="@font/notosans_cjk_kr_medium"
-                                android:includeFontPadding="false"/>
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="230,500원"
-                            android:textSize="32sp"
-                            android:textColor="#FFFFFF"
-                            android:fontFamily="@font/notosans_cjk_kr_bold"
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="30dp"
-                            android:includeFontPadding="false"/>
-
-                        <ImageButton
-                            android:layout_width="12dp"
-                            android:layout_height="24dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginBottom="13dp"
-                            android:background="@drawable/ic_more_vert"/>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp">
+                        android:layout_marginTop="16dp">
 
-                        <ImageButton
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:background="@drawable/ic_myp_moneyout" />
+                            android:orientation="vertical">
 
-                        <ImageButton
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="328dp"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/img_myp_bg"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/mymy"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="10dp">
+
+                                    <TextView
+                                        android:id="@+id/my"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="내 계좌"
+                                        android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/notosans_cjk_kr_medium"
+                                        android:includeFontPadding="false"
+                                        android:layout_marginLeft="12dp"/>
+
+                                    <TextView
+                                        android:id="@+id/main_myPage_myBank_text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="국민은행 67070204087002"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp"
+                                        android:fontFamily="@font/notosans_cjk_kr_medium"
+                                        android:includeFontPadding="false"
+                                        android:layout_toRightOf="@id/my"
+                                        android:layout_marginLeft="90dp"/>
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/money"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="230,500원"
+                                    android:textSize="32sp"
+                                    android:textColor="#FFFFFF"
+                                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                                    android:layout_marginTop="30dp"
+                                    android:includeFontPadding="false"
+                                    android:layout_centerVertical="true"
+                                    android:layout_centerHorizontal="true"/>
+                            </RelativeLayout>
+
+                            <!-- 카드 버튼 부분 -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/main_myPage_send_imgBtn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_myp_moneyout" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_line_white_48"/>
+
+                                <ImageButton
+                                    android:id="@+id/main_myPage_request_imgBtn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_myp_plzgivemoney" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:background="@drawable/ic_myp_plzgivemoney"/>
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
 
-                    </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/img_myp_bg_2"/>
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="10dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="내 계좌"
+                                        android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/notosans_cjk_kr_medium"
+                                        android:includeFontPadding="false"
+                                        android:layout_marginLeft="12dp"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="국민은행 67070204087002"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp"
+                                        android:fontFamily="@font/notosans_cjk_kr_medium"
+                                        android:includeFontPadding="false"
+                                        android:layout_marginLeft="90dp"/>
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:layout_width="90dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/rounded_card_bottom" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
 
                     <TextView
                         android:layout_width="wrap_content"

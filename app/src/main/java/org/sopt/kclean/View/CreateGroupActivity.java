@@ -17,12 +17,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import okhttp3.MediaType;
@@ -58,8 +62,10 @@ public class CreateGroupActivity extends AppCompatActivity {
     private EditText create_group_groupName_editTxt;
     private CircleImageView create_group_groupImage_circleView;
     private EditText create_group_groupDetail_editTxt;
+    private TextView create_group_text;
     private EditText bank_name_editTxt;
     private EditText bank_accout_editTxt;
+    private Spinner create_group_bank_spinner;
     private User user;
     private String backgroundUri = "";
     private String groupUri = "";
@@ -84,8 +90,14 @@ public class CreateGroupActivity extends AppCompatActivity {
         create_group_groupImage_circleView = (CircleImageView) findViewById(R.id.create_group_groupImage_circleView);
         create_group_groupDetail_editTxt = (EditText) findViewById(R.id.create_group_groupDetail_editTxt);
         bank_accout_editTxt = (EditText)findViewById(R.id.bank_account_editTxt);
+        create_group_text = (TextView) findViewById(R.id.create_group_text);
 //        bank_name_editTxt = (EditText)findViewById(R.id.bank_name_editTxt);
+        create_group_bank_spinner = (Spinner) findViewById(R.id.create_group_bank_spinner);
 
+        // 은행 선택 spinner 설정
+        final String[] bankList = getResources().getStringArray(R.array.bank);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, bankList);
+        create_group_bank_spinner.setAdapter(arrayAdapter);
 
         //배경 사진 고르기
         create_group_groupBackground_button.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +159,7 @@ public class CreateGroupActivity extends AppCompatActivity {
                 //서버랑 통신해서 동아리 정보 보냄 api 확정시 코드 추가
                 // 통신
                 CreateGroupTask createGroupTask = new CreateGroupTask();
+                String bank = create_group_bank_spinner.getSelectedItem().toString();
 
                 if (create_group_groupName_editTxt.getText().toString().equals("") || create_group_groupDetail_editTxt.getText().toString().equals("")) {
                     // 다이얼로그 바디
@@ -161,11 +174,29 @@ public class CreateGroupActivity extends AppCompatActivity {
 //                     alert.setIcon(R.drawable.ic_launcher);
                     // 다이얼로그 타이틀
                     // 다이얼로그 보기
+
+                    alert.show();
+                }
+                else if (bank.equals( "은행 선택")) {
+                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(CreateGroupActivity.this, R.style.MyAlertDialogStyle);
+                    // 메세지
+                    alert_confirm.setMessage("은행을 선택해주세요.");
+                    // 확인 버튼 리스너
+                    alert_confirm.setPositiveButton("확인", null);
+                    // 다이얼로그 생성
+                    AlertDialog alert = alert_confirm.create();
+                    // 아이콘
+//                     alert.setIcon(R.drawable.ic_launcher);
+                    // 다이얼로그 타이틀
+                    // 다이얼로그 보기
+
                     alert.show();
                 }
                 else {
+                    Log.v("soomincc", "아앙?");
+
                     //Toast.makeText(CreateGroupActivity.this,"gUri : "+groupUri+" bUri"+backgroundUri,Toast.LENGTH_LONG).show();
-                    createGroupTask.execute(create_group_groupName_editTxt.getText().toString(), groupUri, create_group_groupDetail_editTxt.getText().toString(), backgroundUri,bank_name_editTxt.getText().toString(),bank_accout_editTxt.getText().toString());
+                    createGroupTask.execute(create_group_groupName_editTxt.getText().toString(), groupUri, create_group_groupDetail_editTxt.getText().toString(), backgroundUri, bank,bank_accout_editTxt.getText().toString());
                 }
 
                 Log.v("soomincc", "buttonClick2");
@@ -185,6 +216,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         String imgName;
         Toast.makeText(this, "" + requestCode, Toast.LENGTH_SHORT).show();
         if (resultCode == Activity.RESULT_OK) {
+
+            create_group_text.setVisibility(View.GONE);
             switch (requestCode) {
                 case PICK_BACKGROUND_FROM_ALBUM:
                     Toast.makeText(this, "" + data.getData(), Toast.LENGTH_SHORT).show();
@@ -247,6 +280,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         }
     }
 
+    // 통신(동아리 만들기)
     private class CreateGroupTask extends AsyncTask<String, String, String> {
 
         @Override
@@ -270,6 +304,8 @@ public class CreateGroupActivity extends AppCompatActivity {
             if(s != null) { //응답 성공시
                 try {
                     jsonObject = new JSONObject(s);
+                    String message = jsonObject.getString("message");
+                    Log.v("createcreate", message);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -277,7 +313,7 @@ public class CreateGroupActivity extends AppCompatActivity {
                 // 다이얼로그 바디
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(CreateGroupActivity.this, R.style.MyAlertDialogStyle);
                 // 메세지
-                alert_confirm.setMessage("동아리 가입이 성공적으로 완료 되었습니다");
+                alert_confirm.setMessage("동아리 생성이 성공적으로 완료 되었습니다");
                 // 확인 버튼 리스너
                 alert_confirm.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override

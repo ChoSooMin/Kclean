@@ -71,14 +71,14 @@
                 android:id="@+id/group_card_grade_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회장 "
+                android:text="총무 "
                 android:textSize="11sp"
                 android:fontFamily="@font/notosans_cjk_kr_medium"
                 android:textColor="#1D1D1D"
                 android:includeFontPadding="false"/>
 
             <TextView
-                android:id="@+id/group_card_name_text"
+                android:id="@+id/group_card_managerName_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="류지훈"

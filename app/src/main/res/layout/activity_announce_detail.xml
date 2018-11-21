@@ -345,23 +345,13 @@
             android:id="@+id/announce_detail_join_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/announce_detail_join_list">
+            android:layout_below="@id/announce_detail_join_list"
+            android:layout_above="@id/announce_detail_member_button">
 
         </android.support.v7.widget.RecyclerView>
 
         <!-- '일반공지'일 때는 버튼 안보임 -->
         <!-- '총무&행사공지'일 때 나타나는 버튼 -->
-        <Button
-            android:id="@+id/announce_detail_manager_button"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:text="송금요청"
-            android:textColor="#FFFFFF"
-            android:background="#3b3a99"
-            android:fontFamily="@font/notosans_cjk_kr_medium"
-            android:textSize="16sp"
-            android:includeFontPadding="false"
-            android:layout_alignParentBottom="true"/>
 
         <!-- '일반회원&행사공지'일 때 나타나는 버튼 -->
         <Button
@@ -375,6 +365,20 @@
             android:fontFamily="@font/notosans_cjk_kr_medium"
             android:textSize="16sp"
             android:includeFontPadding="false"/>
+        <Button
+            android:id="@+id/announce_detail_manager_button"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="송금요청"
+            android:textColor="#FFFFFF"
+            android:background="#3b3a99"
+            android:fontFamily="@font/notosans_cjk_kr_medium"
+            android:textSize="16sp"
+            android:includeFontPadding="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@id/announce_detail_member_button"/>
+
+
 
     </RelativeLayout>
 

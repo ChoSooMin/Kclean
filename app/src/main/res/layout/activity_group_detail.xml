@@ -372,7 +372,7 @@
                         android:id="@+id/group_detail_writer_text1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="구설원"
+                        android:text="박국민"
                         android:textSize="14sp"
                         android:fontFamily="@font/notosans_cjk_kr_medium"
                         android:includeFontPadding="false"
@@ -387,7 +387,7 @@
                             android:id="@+id/group_detail_date_text1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="11/03"
+                            android:text="11/12"
                             android:textColor="#8c8c8c"
                             android:textSize="12sp"
                             android:fontFamily="@font/notosans_cjk_kr_regular"
@@ -406,7 +406,7 @@
                             android:id="@+id/group_detail_time_text1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="18:30"
+                            android:text="18:28"
                             android:textColor="#8c8c8c"
                             android:textSize="12sp"
                             android:fontFamily="@font/notosans_cjk_kr_regular"
@@ -436,13 +436,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="right"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_favorite_black_20"
-                    android:layout_gravity="center"/>
+                    android:src="@drawable/ic_favorite_black_20"/>
 
                 <TextView
                     android:id="@+id/group_detail_commentNumber_text1"
@@ -453,15 +453,13 @@
                     android:textColor="#1D1D1D"
                     android:fontFamily="@font/notosans_cjk_kr_regular"
                     android:includeFontPadding="false"
-                    android:layout_marginLeft="3dp"
-                    android:layout_gravity="center"/>
+                    android:layout_marginLeft="3dp"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="13dp"
-                    android:src="@drawable/ic_message"
-                    android:layout_gravity="center"/>
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_message"/>
 
                 <TextView
                     android:id="@+id/group_detail_likeNumber_text1"
@@ -472,8 +470,8 @@
                     android:textColor="#1D1D1D"
                     android:fontFamily="@font/notosans_cjk_kr_regular"
                     android:includeFontPadding="false"
-                    android:layout_marginRight="19.5dp"
-                    android:layout_gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="10dp"
                     />
 
                 <LinearLayout
@@ -497,6 +495,7 @@
                         android:textColor="#1D1D1D"
                         android:fontFamily="@font/notosans_cjk_kr_regular"
                         android:includeFontPadding="false"
+                        android:layout_marginLeft="3dp"
                         android:layout_marginRight="10dp"
                         android:layout_gravity="center"/>
 
@@ -541,7 +540,7 @@
                         android:id="@+id/group_detail_writer_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="구설원"
+                        android:text="김리브"
                         android:textSize="14sp"
                         android:fontFamily="@font/notosans_cjk_kr_medium"
                         android:includeFontPadding="false"
@@ -575,7 +574,7 @@
                             android:id="@+id/group_detail_time_text2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="18:30"
+                            android:text="12:24"
                             android:textColor="#8c8c8c"
                             android:textSize="12sp"
                             android:fontFamily="@font/notosans_cjk_kr_regular"
@@ -591,7 +590,7 @@
                 android:id="@+id/group_detail_content_text2"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="컨퍼런스 후기 올립니다 ! 덕분에 즐겁고 보람찬 경험 많이 할수 있었습니다. 다음에도 또 이런 행사 열어주세요!"
+                android:text="번개 너무 재밌었어용!!"
                 android:textSize="14sp"
                 android:textColor="#1D1D1D"
                 android:fontFamily="@font/notosans_cjk_kr_regular"
@@ -628,7 +627,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="13dp"
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_message"
                     android:layout_gravity="center"/>
 
@@ -641,34 +640,9 @@
                     android:textColor="#1D1D1D"
                     android:fontFamily="@font/notosans_cjk_kr_regular"
                     android:includeFontPadding="false"
-                    android:layout_marginRight="19.5dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="10dp"
                     android:layout_gravity="center"/>
-
-                <LinearLayout
-                    android:id="@+id/group_detail_photo_linear2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_img_15"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/group_detail_photoNumber_text2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5"
-                        android:textSize="12sp"
-                        android:textColor="#1D1D1D"
-                        android:fontFamily="@font/notosans_cjk_kr_regular"
-                        android:includeFontPadding="false"
-                        android:layout_marginRight="10dp"
-                        android:layout_gravity="center"/>
-
-                </LinearLayout>
 
             </LinearLayout>
 

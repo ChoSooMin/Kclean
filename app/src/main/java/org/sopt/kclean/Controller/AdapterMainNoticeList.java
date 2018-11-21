@@ -1,8 +1,11 @@
 package org.sopt.kclean.Controller;
 
 import android.content.Context;
+import android.content.Intent;
+import android.nfc.FormatException;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +14,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.sopt.kclean.Model.Notice;
-import org.sopt.kclean.R;
+import com.bumptech.glide.Glide;
 
+import org.sopt.kclean.Model.Notice;
+import org.sopt.kclean.Model.User;
+import org.sopt.kclean.R;
+import org.sopt.kclean.View.AnnounceDetailActivity;
+import org.sopt.kclean.View.GroupDetailActivity;
+import org.sopt.kclean.View.SendMoneyActivity;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -22,10 +36,16 @@ public class AdapterMainNoticeList extends RecyclerView.Adapter<RecyclerView.Vie
 
     ArrayList<Notice> noticeList;
     Context context;
+    User user;
 
-    public AdapterMainNoticeList(Context context, ArrayList<Notice> noticeList) {
+    //
+    Notice notice;
+    String notice_id;
+
+    public AdapterMainNoticeList(Context context, ArrayList<Notice> noticeList, User user) {
         this.noticeList = noticeList;
         this.context = context;
+        this.user = user;
     }
 
 
@@ -39,30 +59,58 @@ public class AdapterMainNoticeList extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        // 임시
-        ((NoticeListViewHolder)holder).main_notice_card_group_circleImage.setImageResource(R.drawable.sopt);
-        ((NoticeListViewHolder)holder).main_notice_card_noticeTitle_text.setText("컨퍼런스 기획단 모집");
-        ((NoticeListViewHolder)holder).main_notice_card_noticeContent_text.setText("컨퍼런스 기획단 모집합니다. 기획/디자인 관심있는 분들 많은 지원 부탁드립니다...");
-        ((NoticeListViewHolder)holder).main_notice_card_noticeDate_text.setText("11/05");
-        ((NoticeListViewHolder)holder).main_notice_card_noticeTime_text.setText("18:30");
-        ((NoticeListViewHolder)holder).main_notice_card_groupName_text.setText("S.O.P.T 23기");
-        ((NoticeListViewHolder)holder).main_notice_card_managerName_text.setText("강지희");
+        notice = noticeList.get(position);
+        notice_id = noticeList.get(position).getNotice_id();
 
-        // 알림 누르면
-        ((NoticeListViewHolder)holder).main_notice_card_linear.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // 알림 상세보기로 이동
-            }
-        });
+        String club_logo = noticeList.get(position).getClub_logo();
+
+        // 동아리 사진 설정
+        if (club_logo == null) {
+            ((NoticeListViewHolder)holder).main_notice_card_group_circleImage.setImageResource(R.drawable.sopt);
+        }
+        else {
+            Glide.with(context).load(club_logo).asBitmap().centerCrop().into(((NoticeListViewHolder)holder).main_notice_card_group_circleImage);
+        }
+
+        ((NoticeListViewHolder)holder).main_notice_card_groupName_text.setText(noticeList.get(position).getClub_name());
+        ((NoticeListViewHolder)holder).main_notice_card_managerName_text.setText(noticeList.get(position).getClub_manager()); // 이건 api 고치고
+
+        // 시간 설정
+        String write_time = noticeList.get(position).getWrite_time();
+        try {
+            SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+            Date date = transFormat.parse(write_time);
+
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(date);
+
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int dateInt = calendar.get(Calendar.DATE);
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int minute = calendar.get(Calendar.MINUTE);
+
+            ((NoticeListViewHolder)holder).main_notice_card_noticeDate_text.setText(month + "/" + dateInt);
+            ((NoticeListViewHolder)holder).main_notice_card_noticeTime_text.setText(hour + ":" + minute);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        ((NoticeListViewHolder)holder).main_notice_card_noticeTitle_text.setText(noticeList.get(position).getNotice_title());
+        ((NoticeListViewHolder)holder).main_notice_card_noticeContent_text.setText(noticeList.get(position).getNotice_content());
 
         // 송금하기 버튼 리스너
         ((NoticeListViewHolder)holder).main_notice_card_send_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                Log.v("noticenotice", "송금하기 눌렀당");
+                Intent intent = new Intent(context, SendMoneyActivity.class);
+                intent.putExtra("notice", notice);
+                intent.putExtra("user", user);
+                intent.putExtra("notice_id", notice_id);
 
+                context.startActivity(intent);
             }
         });
     }

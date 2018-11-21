@@ -44,7 +44,7 @@ public class AdapterSearchGroupList extends RecyclerView.Adapter<RecyclerView.Vi
         Glide.with(context).load(searchGroupList.get(position).getGroupImage()).asBitmap().centerCrop().into(((SearchGroupListViewHolder) holder).search_group_group_circleImage);
         ((SearchGroupListViewHolder)holder).search_group_groupName_text.setText(searchGroupList.get(position).getGroupName());
         ((SearchGroupListViewHolder)holder).search_group_totalMember_text.setText("" + searchGroupList.get(position).getTotalMember());
-        ((SearchGroupListViewHolder)holder).search_group_managerName_text.setText(searchGroupList.get(position).getMasterName());
+        ((SearchGroupListViewHolder)holder).search_group_managerName_text.setText(searchGroupList.get(position).getClub_manager());
         ((SearchGroupListViewHolder)holder).search_group_groupDetail_text.setText(searchGroupList.get(position).getGroupDetail());
         ((SearchGroupListViewHolder)holder).search_group_card_linear.setOnClickListener(new View.OnClickListener() {
             @Override

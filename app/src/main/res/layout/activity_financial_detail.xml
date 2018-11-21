@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/notosans_cjk_kr_bold"
                     android:includeFontPadding="false"
-                    android:text="73,567,788"
+                    android:text="890,972"
                     android:textColor="#ffffff"
                     android:textSize="24sp" />
 
@@ -177,11 +177,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="년 "
-                                android:textSize="16sp"
-                                android:textColor="#1D1D1D"
                                 android:fontFamily="@font/notosans_cjk_kr_medium"
-                                android:includeFontPadding="false"/>
+                                android:includeFontPadding="false"
+                                android:text="년 "
+                                android:textColor="#1D1D1D"
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/financial_detail_month_txt"
@@ -189,7 +189,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/notosans_cjk_kr_medium"
                                 android:includeFontPadding="false"
-                                android:text="10"
+                                android:text="11"
                                 android:textColor="#1D1D1D"
                                 android:textSize="16sp" />
 
@@ -215,13 +215,471 @@
 
                     </RelativeLayout>
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id = "@+id/financial_detail_list"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:background="#f2f2f8">
 
+                        <TextView
+                            android:id="@+id/date_card_month_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_marginLeft="16dp"
+                            android:layout_gravity="center"/>
 
-                    </android.support.v7.widget.RecyclerView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="."
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/date_card_date_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" ("
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/date_card_day_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="월"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=")"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f1effc"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="71dp"
+                        android:orientation="horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/trade_info_memberCircle_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_profile_40"
+                            android:layout_gravity="center"/>
+
+                        <LinearLayout
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="45dp"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:id="@+id/trade_info_tradeName_txt"
+                                android:layout_width="200dp"
+                                android:layout_height="20dp"
+                                android:textSize="14sp"
+                                android:text="서울시 행복구 돼지고기"
+                                android:fontFamily="@font/notosans_cjk_kr_medium"
+                                android:textColor="#1D1D1D"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:id="@+id/trade_info_tradeTime_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="11/12 13:08"
+                                android:textColor="#8c8c8c"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/notosans_cjk_kr_regular"
+                                android:includeFontPadding="false"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="18dp"
+                            android:layout_gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" "
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"
+                                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                                    android:includeFontPadding="false"/>
+
+                                <TextView
+                                    android:id="@+id/trade_info_tradePrice_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="25,000"
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"
+                                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                                    android:includeFontPadding="false"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="원"
+                                    android:textColor="#ff5050"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                                    android:includeFontPadding="false" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="결제"
+                                android:layout_gravity="right"
+                                android:textSize="12sp"
+                                android:textColor="#ff5050"
+                                android:fontFamily="@font/notosans_cjk_kr_medium"
+                                android:includeFontPadding="false"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f1effc"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="71dp"
+                        android:orientation="horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_profile_40"
+                            android:layout_gravity="center"/>
+
+                        <LinearLayout
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="45dp"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="20dp"
+                                android:textSize="14sp"
+                                android:text="보쌈왕 조보쌈"
+                                android:fontFamily="@font/notosans_cjk_kr_medium"
+                                android:textColor="#1D1D1D"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="11/12 20:17"
+                                android:textColor="#8c8c8c"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/notosans_cjk_kr_regular"
+                                android:includeFontPadding="false"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/trade_info_money_linear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="18dp"
+                            android:layout_gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/trade_info_isPlus_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" "
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"
+                                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                                    android:includeFontPadding="false"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="32,000"
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"
+                                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                                    android:includeFontPadding="false"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="원"
+                                    android:textColor="#ff5050"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                                    android:includeFontPadding="false" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/trade_info_isIncome_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="결제"
+                                android:layout_gravity="right"
+                                android:textSize="12sp"
+                                android:textColor="#ff5050"
+                                android:fontFamily="@font/notosans_cjk_kr_medium"
+                                android:includeFontPadding="false"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:background="#f2f2f8">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_marginLeft="16dp"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="."
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="04"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" ("
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="일"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=")"
+                            android:textColor="#8C8C8C"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/notosans_cjk_kr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f1effc"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="71dp"
+                        android:orientation="horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/ic_profile_40"
+                            android:layout_gravity="center"/>
+
+                        <LinearLayout
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="45dp"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="20dp"
+                                android:textSize="14sp"
+                                android:text="맛생맛사"
+                                android:fontFamily="@font/notosans_cjk_kr_medium"
+                                android:textColor="#1D1D1D"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="11/04 22:28"
+                                android:textColor="#8c8c8c"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/notosans_cjk_kr_regular"
+                                android:includeFontPadding="false"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="18dp"
+                            android:layout_gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" "
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"
+                                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                                    android:includeFontPadding="false"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="97,200"
+                                    android:textSize="18sp"
+                                    android:textColor="#ff5050"
+                                    android:fontFamily="@font/notosans_cjk_kr_bold"
+                                    android:includeFontPadding="false"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="원"
+                                    android:textColor="#ff5050"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/notosans_cjk_kr_medium"
+                                    android:includeFontPadding="false" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="결제"
+                                android:layout_gravity="right"
+                                android:textSize="12sp"
+                                android:textColor="#ff5050"
+                                android:fontFamily="@font/notosans_cjk_kr_medium"
+                                android:includeFontPadding="false"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

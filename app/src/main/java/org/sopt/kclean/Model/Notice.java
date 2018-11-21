@@ -18,6 +18,29 @@ public class Notice implements Parcelable {
     String notice_date;
     int notice_participant;
     ArrayList<User> notice_people;
+    String club_logo;
+    String club_name;
+    int account_check;
+
+    public Notice(String club_logo, String club_name, String write_time, String notice_title, String notice_content, int account_check) {
+        this.club_logo = club_logo;
+        this.club_name = club_name;
+        this.write_time = write_time;
+        this.notice_title = notice_title;
+        this.notice_content = notice_content;
+        this.account_check = account_check;
+    }
+
+    public Notice(String club_logo, String club_name, String club_manager, String write_time, String notice_id, String notice_title, String notice_content, int account_check) {
+        this.club_logo = club_logo;
+        this.club_name = club_name;
+        this.club_manager = club_manager;
+        this.write_time = write_time;
+        this.notice_id = notice_id;
+        this.notice_title = notice_title;
+        this.notice_content = notice_content;
+        this.account_check = account_check;
+    }
 
     public Notice(String notice_id, String write_time, String notice_title, int notice_category, String notice_content) {
         this.notice_id = notice_id;
@@ -40,6 +63,9 @@ public class Notice implements Parcelable {
         notice_date = source.readString();
         notice_participant = source.readInt();
         notice_people = source.readArrayList(ArrayList.class.getClassLoader());
+        club_logo = source.readString();
+        club_name = source.readString();
+        account_check = source.readInt();
     }
 
     public String getNotice_id() {
@@ -130,6 +156,22 @@ public class Notice implements Parcelable {
         this.notice_participant = notice_participant;
     }
 
+    public String getClub_logo() {
+        return club_logo;
+    }
+
+    public void setClub_logo(String club_logo) {
+        this.club_logo = club_logo;
+    }
+
+    public String getClub_name() {
+        return club_name;
+    }
+
+    public void setClub_name(String club_name) {
+        this.club_name = club_name;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -148,6 +190,9 @@ public class Notice implements Parcelable {
         parcel.writeString(notice_date);
         parcel.writeInt(notice_participant);
         parcel.writeList(notice_people);
+        parcel.writeString(club_logo);
+        parcel.writeString(club_name);
+        parcel.writeInt(account_check);
     }
 
     public static Parcelable.Creator<Notice> CREATOR = new Parcelable.Creator<Notice>() {

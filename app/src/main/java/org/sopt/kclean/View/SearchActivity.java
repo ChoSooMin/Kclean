@@ -65,7 +65,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 통신
-                Toast.makeText(getApplicationContext(), "버튼 눌러써 ㅋ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "버튼 눌러써 ㅋ", Toast.LENGTH_SHORT).show();
                 word = search_search_text.getText().toString();
 
 
@@ -118,6 +118,10 @@ public class SearchActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+
+            if (searchGroupList.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "검색된 동아리가 없습니다.", Toast.LENGTH_LONG).show();
             }
 
             // RecyclerView 관련 설정

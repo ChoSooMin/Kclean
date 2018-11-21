@@ -19,24 +19,57 @@ public class SplashActivity extends AppCompatActivity {
 
         int result = getIntent().getIntExtra("result", 0);
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
+        if(bundle != null) { // 포그라운드일때,,?
             int temp = bundle.getInt("result");
-            Log.d("TEMP", "TEMP : " + temp);
-        }
-        Log.v("하하", result + "");
+            Log.d("TEMP", "TEMP : " + temp); // result값 받아짐
 
-        if (result == 0) { // 푸쉬알림 안눌
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }, 2000);
-        } else if (result == 1) { // 푸쉬알림 눌렀을 때
-            Log.v("하하", "조수민 최고");
+            if (temp == 1) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), SendMoneyActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 0);
+            }
+            else {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 2000);
+            }
+        }
+        else {
+            if (result == 0) { // 푸쉬알림 안눌
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 2000);
+            } else if (result == 1) { // 푸쉬알림 눌렀을 때
+                Log.v("하하", "조수민 최고");
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), SendMoneyActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 2000);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ package org.sopt.kclean.View;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -43,5 +44,13 @@ public class SendMoneyFinishActivity extends AppCompatActivity {
         else if (position == 1) { // 일반회원일 때
             send_money_finish_type_text.setText("완료");
         }
+
+        send_money_finish_success_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

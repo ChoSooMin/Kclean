@@ -35,7 +35,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -162,6 +164,8 @@ public class AnnounceDetailActivity extends AppCompatActivity {
             JSONObject jsonObject = null;
             String message = "";
 
+            super.onPostExecute(s);
+
             if(s != null) { //응답 성공시
                 try {
                     jsonObject = new JSONObject(s);
@@ -190,8 +194,6 @@ public class AnnounceDetailActivity extends AppCompatActivity {
 
                 }
             }
-
-            super.onPostExecute(s);
         }
     }
 
@@ -302,49 +304,38 @@ public class AnnounceDetailActivity extends AppCompatActivity {
                 announce_detail_managerName_text.setText(dataObject.getString("club_manager"));
 
                 String dateString = dataObject.getString("write_time");
+                Log.v("writewrite", dateString);
                 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
                 Date dateDD = transFormat.parse(dateString);
-                int month = dateDD.getMonth();
-                int date = dateDD.getDate();
-                int hour = dateDD.getHours();
-                int minute = dateDD.getMinutes();
 
-                String monthStr = month + "";
-                String dateStr = date + "";
-                String hourStr = hour + "";
+                Calendar calendar = new GregorianCalendar();
+                calendar.setTime(dateDD);
+                int month = calendar.get(Calendar.MONTH) + 1;
+                int date = calendar.get(Calendar.DATE);
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);
+
                 String minuteStr = minute + "";
 
-                if (month == 0) {
-                    monthStr += "0";
-                }
-                if (date == 0) {
-                    dateStr += "0";
-                }
-                if (hour == 0) {
-                    hourStr += "0";
-                }
                 if (minute == 0) {
                     minuteStr += "0";
                 }
 
-                announce_detail_announceTime_text.setText(monthStr + "/" + dateStr + " " + hourStr + ":" + minuteStr);
+                //
+                announce_detail_announceTime_text.setText(month + "/" + date + " " + hour + ":" + minuteStr);
 
                 String noticeDateStr = dataObject.getString("notice_date");
+                Log.v("noticenotice", noticeDateStr);
                 Date dateDD2 = transFormat.parse(noticeDateStr);
-                int noticeMonth = dateDD2.getMonth();
-                int noticeDate = dateDD2.getDate();
-                int noticeYear = dateDD2.getYear();
 
-                String noticeMonthStr = month + "";
-                String noticeDayStr = date + "";
+                Calendar calendar2 = new GregorianCalendar();
+                calendar2.setTime(dateDD2);
 
-                if (noticeMonth == 0) {
-                    noticeMonthStr += "0";
-                }
-                if (noticeDate == 0) {
-                    noticeDayStr += "0";
-                }
-                announce_detail_date_text.setText(noticeYear + "." + noticeMonthStr + "." + noticeDayStr);
+                int noticeMonth = calendar2.get(Calendar.MONTH) + 1;
+                int noticeDate = calendar2.get(Calendar.DATE);
+                int noticeYear = calendar2.get(Calendar.YEAR);
+
+                announce_detail_date_text.setText(noticeYear + "." + noticeMonth + "." + noticeDate);
                 announce_detail_time_text.setText(dataObject.getString("notice_time"));
                 announce_detail_place_text.setText(dataObject.getString("notice_place"));
                 announce_detail_announceContent_text.setText(dataObject.getString("notice_content"));
