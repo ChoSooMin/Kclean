@@ -324,7 +324,15 @@ public class GroupDetailActivity extends AppCompatActivity {
 
                 // 최신 공지 설정
                 // 최신 공지 타입 이미지 설정
-                int announceType = totalNotice.getInt("notice_category");
+                int announceType;
+                try {
+                    announceType = totalNotice.getInt("notice_category");
+                }
+                catch (JSONException e)
+                {
+                    announceType = 2;
+
+                }
                 if (announceType == 0) {
                     group_detail_type_image.setImageResource(R.drawable.ic_normal_notice);
                 }
@@ -404,9 +412,7 @@ public class GroupDetailActivity extends AppCompatActivity {
                     }
                 });
 
-
-
-
+                // 공지 버튼 리스너
                 group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
 
                     @Override
@@ -414,6 +420,7 @@ public class GroupDetailActivity extends AppCompatActivity {
                         Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
                         intent.putExtra("user", user);
                         intent.putExtra("group", group);
+                        intent.putExtra("user_position", user_position);
 
                         startActivity(intent);
                     }

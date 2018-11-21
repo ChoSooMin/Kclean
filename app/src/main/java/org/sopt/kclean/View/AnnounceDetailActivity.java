@@ -133,6 +133,12 @@ public class AnnounceDetailActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
     // 참석하기
     private class AttendTask extends AsyncTask<String, String, String> {
 
@@ -220,6 +226,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                Log.v("송송금금", message);
                 if (message.equals("Success to send push alram")) {
                     Intent intent = new Intent(AnnounceDetailActivity.this, SendMoneyFinishActivity.class);
                     intent.putExtra("position", 0); // 0이면 총무

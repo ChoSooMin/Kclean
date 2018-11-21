@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -15,10 +16,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.sopt.kclean.R;
-import org.sopt.kclean.View.JoinActivity;
-import org.sopt.kclean.View.LoginActivity;
-import org.sopt.kclean.View.MainActivity;
-import org.sopt.kclean.View.SendMoneyActivity;
+import org.sopt.kclean.View.*;
 
 import java.util.Map;
 
@@ -41,8 +39,46 @@ import java.util.Map;
 
 
     public class MyFirebaseMessagingService extends FirebaseMessagingService {
+    @Override
+    public void handleIntent(Intent intent) {
+        super.handleIntent(intent);
 
-        private static final String TAG = "MyFirebaseMsgService";
+        Intent intent2 = new Intent(getApplicationContext(), SplashActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("result", 1);
+        intent2.putExtras(bundle);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, intent2, PendingIntent.FLAG_CANCEL_CURRENT);
+        try {
+            pendingIntent.send();
+        } catch (PendingIntent.CanceledException e) {
+            e.printStackTrace();
+        }
+
+        try
+        {
+            if (intent.getExtras() != null)
+            {
+                RemoteMessage.Builder builder = new RemoteMessage.Builder("MyFirebaseMessagingService");
+
+                for (String key : intent.getExtras().keySet())
+                {
+                    builder.addData(key, intent.getExtras().get(key).toString());
+                }
+
+                onMessageReceived(builder.build());
+            }
+            else
+            {
+                super.handleIntent(intent);
+            }
+        }
+        catch (Exception e)
+        {
+            super.handleIntent(intent);
+        }
+    }
+
+    private static final String TAG = "MyFirebaseMsgService";
 
         /**
          * Called when message is received.
@@ -61,12 +97,16 @@ import java.util.Map;
             // and data payloads are treated as notification messages. The Firebase console always sends notification
             // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
             // [END_EXCLUDE]
+
             Log.d("ok",remoteMessage.getNotification().getBody());
              System.out.println(remoteMessage.getNotification());
             // TODO(developer): Handle FCM messages here.
             // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
             Log.d(TAG, "From: " + remoteMessage.getFrom());
             // Check if message contains a data payload.
+
+//            Log.d(TAG, "OKOKOK" + remoteMessage.getNotification().getBody() + "data size : " + remoteMessage.getNotification().getBody().toString());
+//            if (!remoteMessage.getNotification().getBody().isEmpty()) {
             if (remoteMessage.getData().size() > 0) {
                 Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 
@@ -77,6 +117,8 @@ import java.util.Map;
 //                    // Handle message within 10 seconds
 //                    handleNow();
 //                }
+               //String click_action =  remoteMessage.getNotification().getClickAction();
+
                 sendNotification(remoteMessage.getData());
 
             }
@@ -118,11 +160,17 @@ import java.util.Map;
          * @param messageBody FCM message body received.
          */
         private void sendNotification(Map<String,String> messageBody) {
-            Intent intent = new Intent(this, SendMoneyActivity.class);
-            intent.putExtra("result",1);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                    PendingIntent.FLAG_ONE_SHOT);
+            Intent intent = new Intent(this, SplashActivity.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("result", 1);
+            intent.putExtras(bundle);
+            intent.putExtra("result", 1);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+            PendingIntent pendingIntent = PendingIntent.getActivity(this,
+                    0 /* Request code */, intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
 
             String channelId = getString(R.string.default_notification_channel_id);
             Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -133,8 +181,7 @@ import java.util.Map;
                             .setContentText(messageBody.get("body")) //내용 필수
                             .setAutoCancel(true)
                             .setSound(defaultSoundUri)
-                            .setContentIntent(pendingIntent)
-                                ;
+                            .setContentIntent(pendingIntent);
 
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -148,7 +195,8 @@ import java.util.Map;
             }
 
             notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
-            startActivity(intent);
+            Log.d("1234",""+1234);
+//            startActivity(intent);
 
         }
    }

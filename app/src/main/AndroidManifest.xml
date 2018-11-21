@@ -21,7 +21,13 @@
         <activity android:name=".View.MainActivity" />
         <activity android:name=".View.GroupDetailActivity" />
         <activity android:name=".View.CreateGroupActivity" />
-        <activity android:name=".View.LoginActivity" />
+        <activity android:name=".View.LoginActivity">
+        <intent-filter>
+            <action android:name="OPEN_ACTIVITY"/>
+            <action android:name=".Activities.CustomerRebateConfirmation" />
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter></activity>
+
         <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,7 +55,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".View.SendMoneyActivity" />
+        <activity android:name=".View.SendMoneyActivity">
+        </activity>
         <activity android:name=".View.SendMoneyFinishActivity" />
         <activity android:name=".View.AccountRegisterActivity"></activity>
     </application>

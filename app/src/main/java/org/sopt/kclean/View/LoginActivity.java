@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.sopt.kclean.Firebase.FireBaseHandler;
@@ -39,17 +40,27 @@ public class LoginActivity extends AppCompatActivity {
     private int goingSendMoney ; //1이면 바로 송금
     SharedPreferences pref;
 
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent(intent);
+//        goingSendMoney = intent.getIntExtra("result",0);
+//    }
+
+
     @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
         goingSendMoney = intent.getIntExtra("result",0);
+        Log.d("result",""+goingSendMoney);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+//        Intent intent = getIntent();
+//        goingSendMoney = intent.getIntExtra("result",0);
         login_id_editTxt = (EditText) findViewById(R.id.login_id_editTxt); // 아이디
         login_pw_editTxt = (EditText) findViewById(R.id.login_pw_editTxt); // 비밀번호
         login_login_button = (Button) findViewById(R.id.login_login_button); // 로그인 버튼
@@ -164,6 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent = new Intent(LoginActivity.this, MainActivity.class);
                     else
                         intent = new Intent(LoginActivity.this, SendMoneyActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("token", jsonObject.getString("token"));
                     Log.v("toktok", jsonObject.getString("token"));
                     startActivity(intent);
@@ -187,5 +199,6 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(s);
         }
     }
+
 
 }

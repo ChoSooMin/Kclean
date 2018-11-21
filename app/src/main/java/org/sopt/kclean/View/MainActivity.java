@@ -123,6 +123,13 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new MainTask().execute();
+    }
+
     // tab 눌러질 때 처리
     void init(){
         frameLayout = (FrameLayout) findViewById(android.R.id.tabcontent);

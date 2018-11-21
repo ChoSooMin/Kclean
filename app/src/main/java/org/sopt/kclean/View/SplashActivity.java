@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
+import com.google.firebase.messaging.RemoteMessage;
 import org.sopt.kclean.R;
 
 
@@ -15,14 +17,26 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, 2000);
+        int result = getIntent().getIntExtra("result", 0);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            int temp = bundle.getInt("result");
+            Log.d("TEMP", "TEMP : " + temp);
+        }
+        Log.v("하하", result + "");
+
+        if (result == 0) { // 푸쉬알림 안눌
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 2000);
+        } else if (result == 1) { // 푸쉬알림 눌렀을 때
+            Log.v("하하", "조수민 최고");
+        }
     }
 }
