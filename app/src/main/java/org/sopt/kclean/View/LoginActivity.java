@@ -68,19 +68,6 @@ public class LoginActivity extends AppCompatActivity {
         login_auto_toggleBtn = (ToggleButton)findViewById(R.id.login_auto_toggleBtn); //토글 버튼
 
         user = new User();
-        //자동로그인 저장 정보
-        pref = getSharedPreferences("user_info", MODE_PRIVATE);
-        user.setId(pref.getString("id",""));
-        user.setPassword(pref.getString("password",""));
-        Log.d("save",user.getId()+"    "+user.getPassword());
-
-        if(user.getId() != "" && user.getPassword() != "")
-        {
-            LoginTask loginTask = new LoginTask();
-            user.setToken(FireBaseHandler.passPushTokenToServer(user.getId()));
-            loginTask.execute(user.getId(),user.getToken(),user.getPassword());
-            return;
-        }
 
 
         // 로그인 리스너
@@ -121,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, JoinActivity.class);
 
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -179,6 +167,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("token", jsonObject.getString("token"));
                     Log.v("toktok", jsonObject.getString("token"));
                     startActivity(intent);
+                    finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
