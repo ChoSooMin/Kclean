@@ -95,9 +95,8 @@ public class AnnounceActivity extends AppCompatActivity {
         new AnnounceTask().execute();
     }
 
+    // 통신(공지 화면)
     private class AnnounceTask extends AsyncTask<String, String, String> {
-
-
 
         @Override
         protected String doInBackground(String... strings) {

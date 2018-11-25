@@ -63,7 +63,6 @@ public class CreateGroupActivity extends AppCompatActivity {
     private CircleImageView create_group_groupImage_circleView;
     private EditText create_group_groupDetail_editTxt;
     private TextView create_group_text;
-    private EditText bank_name_editTxt;
     private EditText bank_accout_editTxt;
     private Spinner create_group_bank_spinner;
     private User user;
@@ -214,13 +213,13 @@ public class CreateGroupActivity extends AppCompatActivity {
         int column_index;
         String imgPath;
         String imgName;
-        Toast.makeText(this, "" + requestCode, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "" + requestCode, Toast.LENGTH_SHORT).show();
         if (resultCode == Activity.RESULT_OK) {
 
             create_group_text.setVisibility(View.GONE);
             switch (requestCode) {
                 case PICK_BACKGROUND_FROM_ALBUM:
-                    Toast.makeText(this, "" + data.getData(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this, "" + data.getData(), Toast.LENGTH_SHORT).show();
 
 //                    String[] proj = {MediaStore.Images.Media.DATA};
 //                    Cursor c = managedQuery(data.getData(), proj, null, null, null);
@@ -236,7 +235,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
                     break;
                 case PICK_GROUP_FROM_ALBUM:
-                    Toast.makeText(this, "" + data.getData(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this, "" + data.getData(), Toast.LENGTH_SHORT).show();
                     cursor = managedQuery(data.getData(), proj, null, null, null);
                      column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                     cursor.moveToFirst();

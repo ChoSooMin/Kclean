@@ -2,6 +2,7 @@ package org.sopt.kclean.Controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.nfc.FormatException;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -39,8 +40,8 @@ public class AdapterMainNoticeList extends RecyclerView.Adapter<RecyclerView.Vie
     User user;
 
     //
-    Notice notice;
-    String notice_id;
+
+    LinearLayout linear;
 
     public AdapterMainNoticeList(Context context, ArrayList<Notice> noticeList, User user) {
         this.noticeList = noticeList;
@@ -59,9 +60,10 @@ public class AdapterMainNoticeList extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        notice = noticeList.get(position);
-        notice_id = noticeList.get(position).getNotice_id();
+        final Notice notice = noticeList.get(position);
+        final String notice_id = noticeList.get(position).getNotice_id();
 
+        Log.v("noticeListnoticeList", "notice_id || " + notice_id);
 
         String club_logo = noticeList.get(position).getClub_logo();
 
@@ -99,16 +101,23 @@ public class AdapterMainNoticeList extends RecyclerView.Adapter<RecyclerView.Vie
         ((NoticeListViewHolder)holder).main_notice_card_noticeTitle_text.setText(noticeList.get(position).getNotice_title());
         ((NoticeListViewHolder)holder).main_notice_card_noticeContent_text.setText(noticeList.get(position).getNotice_content());
 
+        linear = ((NoticeListViewHolder)holder).main_notice_card_linear;
+
         // 송금하기 버튼 리스너
         ((NoticeListViewHolder)holder).main_notice_card_send_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Log.v("noticenotice", "송금하기 눌렀당");
+
+                linear.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
                 Intent intent = new Intent(context, SendMoneyActivity.class);
                 intent.putExtra("notice", notice);
                 intent.putExtra("user", user);
                 intent.putExtra("notice_id", notice_id);
+
+                Log.v("noticenotice(송금하기 가기 전)", "notice_id || " + notice_id);
 
                 context.startActivity(intent);
             }

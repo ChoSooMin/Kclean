@@ -21,6 +21,15 @@ public class Notice implements Parcelable {
     String club_logo;
     String club_name;
     int account_check;
+    String notice_time;
+
+    public Notice(int notice_cost, String notice_title, String notice_date, String notice_time, int notice_participant) {
+        this.notice_cost = notice_cost;
+        this.notice_title = notice_title;
+        this.notice_date = notice_date;
+        this.notice_time = notice_time;
+        this.notice_participant = notice_participant;
+    }
 
     public Notice(String club_logo, String club_name, String write_time, String notice_title, String notice_content, int account_check) {
         this.club_logo = club_logo;
@@ -66,6 +75,7 @@ public class Notice implements Parcelable {
         club_logo = source.readString();
         club_name = source.readString();
         account_check = source.readInt();
+        notice_time = source.readString();
     }
 
     public String getNotice_id() {
@@ -82,6 +92,22 @@ public class Notice implements Parcelable {
 
     public void setNotice_people(ArrayList<User> notice_people) {
         this.notice_people = notice_people;
+    }
+
+    public int getAccount_check() {
+        return account_check;
+    }
+
+    public void setAccount_check(int account_check) {
+        this.account_check = account_check;
+    }
+
+    public String getNotice_time() {
+        return notice_time;
+    }
+
+    public void setNotice_time(String notice_time) {
+        this.notice_time = notice_time;
     }
 
     public String getNotice_title() {
@@ -193,6 +219,7 @@ public class Notice implements Parcelable {
         parcel.writeString(club_logo);
         parcel.writeString(club_name);
         parcel.writeInt(account_check);
+        parcel.writeString(notice_time);
     }
 
     public static Parcelable.Creator<Notice> CREATOR = new Parcelable.Creator<Notice>() {

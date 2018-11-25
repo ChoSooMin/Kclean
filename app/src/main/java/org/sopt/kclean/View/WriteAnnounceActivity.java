@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -39,6 +41,7 @@ public class WriteAnnounceActivity extends AppCompatActivity {
     private EditText write_board_time_editTxt; // 시간
     private EditText write_board_content_editTxt; // 공지 내용
     private ImageButton write_board_complete_imgBtn; // 완료 버튼
+    private LinearLayout write_board_requestMoney_linear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,20 @@ public class WriteAnnounceActivity extends AppCompatActivity {
         write_board_time_editTxt = (EditText) findViewById(R.id.write_board_time_editTxt);
         write_board_content_editTxt = (EditText) findViewById(R.id.write_board_content_editTxt);
         write_board_complete_imgBtn = (ImageButton) findViewById(R.id.write_board_complete_imgBtn);
+        write_board_requestMoney_linear = (LinearLayout) findViewById(R.id.write_board_requestMoney_linear);
+
+        write_board_type_normal_radioBtn.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    write_board_requestMoney_linear.setVisibility(View.GONE);
+                }
+                else {
+                    write_board_requestMoney_linear.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         // 완료 버튼 리스너
         write_board_complete_imgBtn.setOnClickListener(new View.OnClickListener() {

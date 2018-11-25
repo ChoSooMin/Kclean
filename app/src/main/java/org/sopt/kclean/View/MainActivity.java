@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -93,25 +94,18 @@ public class MainActivity extends AppCompatActivity {
 
         tabHost.setup();
 
-//        ImageView tabWidget01 = new ImageView(this);
-//        tabWidget01.setImageResource(R.drawable.tab_01);
-//
-//        ImageView tabWidget02 = new ImageView(this);
-//        tabWidget01.setImageResource(R.drawable.tab_02);
-//
-//        ImageView tabWidget03 = new ImageView(this);
-//        tabWidget01.setImageResource(R.drawable.tab_03);
+//        View tab1View = LayoutInflater.from(MainActivity.this).inflate(R.layout.selector_layout1, null);
+//        View tab2View = LayoutInflater.from(MainActivity.this).inflate(R.layout.selector_layout1, null);
+//        View tab3View = LayoutInflater.from(MainActivity.this).inflate(R.layout.selector_layout1, null);
 
 
         tab1 = tabHost.newTabSpec("1").setContent(R.id.content1).setIndicator("", getDrawable(R.drawable.tab_01));
         tab2 = tabHost.newTabSpec("2").setContent(R.id.content2).setIndicator("", getDrawable(R.drawable.tab_02));
-        tab3 = tabHost.newTabSpec("3").setContent(R.id.content3).setIndicator("", getDrawable(R.drawable.tab_02));
+        tab3 = tabHost.newTabSpec("3").setContent(R.id.content3).setIndicator("", getDrawable(R.drawable.tab_03));
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
         tabHost.addTab(tab3);
-
-//        init();
         // 요까지 탭탭탭~~
 
         // 마이페이지에서 세팅
@@ -156,33 +150,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-//    // tab 눌러질 때 처리
-//    void init(){
-//        frameLayout = (FrameLayout) findViewById(android.R.id.tabcontent);
-//
-//
-//
-//        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-//
-//
-//            @Override
-//            public void onTabChanged(String number) {
-//                Log.v("tabtab", number);
-//                switch (number) {
-//                    case "1":
-//
-//                        break;
-//
-//                    case "2":
-//
-//                        break;
-//                    case "3" :
-//                        break;
-//                }
-//            }
-//        });
-//    }
 
     // 통신(내 동아리 리스트,,,)
     private class MainTask extends AsyncTask<String, String, String>{

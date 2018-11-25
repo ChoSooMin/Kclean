@@ -246,7 +246,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
         }
     }
 
-    // 통신
+    // 통신 (공지 상세보기)
     private class AnnounceDetailTask extends AsyncTask<String, String, String> {
 
         @Override

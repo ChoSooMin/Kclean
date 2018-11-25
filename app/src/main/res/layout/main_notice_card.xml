@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="161.5dp"
     android:orientation="horizontal"
-    android:id="@+id/main_notice_card_linear">
+    android:id="@+id/main_notice_card_linear"
+    android:background="#f2f2f8">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/main_notice_card_group_circleImage"

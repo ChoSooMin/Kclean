@@ -85,7 +85,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="이솝트"
+                                android:text="김리브"
                                 android:textSize="18sp"
                                 android:textColor="#1D1D1D"
                                 android:fontFamily="@font/notosans_cjk_kr_bold"
@@ -94,7 +94,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="sopt@kookmin.com"
+                                android:text="liiv@kookmin.com"
                                 android:textColor="#707070"
                                 android:textSize="12sp"
                                 android:layout_marginTop="3dp"
@@ -221,7 +221,7 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/img_myp_bg_2"/>
+                                    android:background="@drawable/img_myp_bg"/>
 
                                 <RelativeLayout
                                     android:layout_width="wrap_content"

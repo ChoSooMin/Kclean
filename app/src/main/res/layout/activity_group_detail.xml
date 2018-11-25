@@ -657,7 +657,7 @@
         android:id="@+id/group_detail_join_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#ff5050"
+        android:background="#3b3a99"
         android:text="가입하기"
         android:visibility="gone"
         android:textColor="#FFFFFF"

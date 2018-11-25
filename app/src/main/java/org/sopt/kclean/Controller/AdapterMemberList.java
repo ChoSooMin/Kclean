@@ -3,6 +3,7 @@ package org.sopt.kclean.Controller;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,9 +84,11 @@ public class AdapterMemberList extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
         int account_check = memberList.get(position).getAccount_check();
+
+        Log.v("checkcheck", account_check + "");
+
         if (account_check == 0) { // 입금 안함
             ((MemberListViewHolder) holder).member_card_sendCheck_text.setText("입금 X");
-//            ((MemberListViewHolder) holder).member_card_sendCheck_text.setTextColor("#ff5050");
         }
         else if (account_check == 1) { // 입금 함
             ((MemberListViewHolder) holder).member_card_sendCheck_text.setText("입금 O");

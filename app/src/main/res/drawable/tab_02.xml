@@ -3,9 +3,9 @@
 
     <!-- When selected, use grey -->
     <item android:drawable="@drawable/ic_non_alrm"
-        android:state_checked="false" />
+        android:state_selected="false" />
     <!-- When not selected, use white-->
     <item android:drawable="@drawable/ic_alrm"
-        android:state_checked="true"/>
+        android:state_selected="true"/>
 
 </selector>
