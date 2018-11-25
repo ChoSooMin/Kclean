@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.JoinActivity">
+    tools:context=".View.JoinActivity"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +48,9 @@
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,7 +75,9 @@
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,7 +102,9 @@
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <RelativeLayout
             android:id="@+id/join_pwCheck_layout"
@@ -150,7 +157,9 @@
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -178,7 +187,9 @@
             android:includeFontPadding="false"
             android:inputType="numberSigned"
             android:digits="0123456789-"
-            style="@style/EditTheme"/>
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -237,9 +248,11 @@
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
             android:includeFontPadding="false"
-            style="@style/EditTheme"
             android:inputType="numberSigned"
-            android:digits="0123456789-"/>
+            android:digits="0123456789-"
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -261,11 +274,13 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="10dp"
             android:hint="univ"
-            style="@style/EditTheme"
             android:textSize="14sp"
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false"
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -286,11 +301,13 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="10dp"
             android:hint="major"
-            style="@style/EditTheme"
             android:textSize="14sp"
             android:textColor="#1D1D1D"
             android:fontFamily="@font/notosans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
+            android:includeFontPadding="false"
+            style="@style/EditTheme"
+            android:theme="@style/EditTheme"
+            android:textCursorDrawable="@color/colorEdit"/>
 
         <Button
             android:layout_gravity="center"
@@ -301,7 +318,7 @@
             android:background="@drawable/rounded_purple"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="다음"
+            android:text="확인"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:fontFamily="@font/notosans_cjk_kr_bold"

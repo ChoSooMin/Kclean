@@ -98,6 +98,7 @@ public class SendMoneyActivity extends AppCompatActivity {
         notice = getIntent().getParcelableExtra("notice");
 
         Log.v("noticenotice", "notice_id || " + notice_id);
+        Log.v("최은행씨", "최은행씨 price || " + price + "");
 
 
         // 송금하기

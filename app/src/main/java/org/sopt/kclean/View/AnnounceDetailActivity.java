@@ -70,6 +70,8 @@ public class AnnounceDetailActivity extends AppCompatActivity {
     private int managerBtn = 0; // 0이면 "송금요청"
     private int memberBtn = 0; // 0이면 "참석하기" (참석 안한 상태), 1이면 "참석취소" (참석한 상태)
 
+    private Notice notice;
+
 
     // RecyclerView
     private AdapterMemberList memberListAdapter;
@@ -231,6 +233,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
                 Log.v("송송금금", message);
                 if (message.equals("Success to send push alram")) {
                     Intent intent = new Intent(AnnounceDetailActivity.this, SendMoneyFinishActivity.class);
+                    intent.putExtra("notice", notice);
                     intent.putExtra("position", 0); // 0이면 총무
 
                     startActivity(intent);
@@ -342,6 +345,9 @@ public class AnnounceDetailActivity extends AppCompatActivity {
 
                 int notice_cost = dataObject.getInt("notice_cost");
                 announce_detail_money_text.setText(notice_cost + "");
+
+                notice = new Notice(dataObject.getInt("notice_cost"), dataObject.getString("notice_title"), dataObject.getString("notice_date"), dataObject.getString("notice_time"), dataObject.getInt("notice_participant"));
+
 
 
             } catch (JSONException e) {

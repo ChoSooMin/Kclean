@@ -5,7 +5,8 @@
     android:layout_height="71dp"
     android:orientation="horizontal"
     android:id="@+id/member_card_relative"
-    android:weightSum="10">
+    android:weightSum="10"
+    android:background="#FFFFFF">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/member_card_member_image"

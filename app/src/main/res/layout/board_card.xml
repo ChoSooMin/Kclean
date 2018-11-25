@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="165dp"
     android:orientation="vertical"
-    android:id="@+id/board_card_linear">
+    android:id="@+id/board_card_linear"
+    android:background="#FFFFFF">
 
     <RelativeLayout
         android:layout_width="match_parent"

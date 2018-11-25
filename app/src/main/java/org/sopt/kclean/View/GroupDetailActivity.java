@@ -150,101 +150,6 @@ public class GroupDetailActivity extends AppCompatActivity {
         group_detail_join_button = (Button) findViewById(R.id.group_detail_join_button);
 
         new GroupDetailTask().execute(); // 통신
-
-//        Log.v("groupDetaildd", "user_positiokn ||" + user_position); // 우엥
-//
-//
-//        // 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
-//        if (club_checking == 0) { //
-//            group_detail_join_button.setVisibility(View.VISIBLE);
-//            group_detail_join_button.setOnClickListener(new View.OnClickListener() {
-//
-//                //가입버튼
-//                @Override
-//                public void onClick(View v) {
-//                    //가입 통신 필요
-//                    new GroupJoinTask().execute();
-//                    //다이얼로그하고
-//                    finish();
-//                }
-//            });
-//        }
-//        else if (club_checking == 1) {
-//            group_detail_join_button.setVisibility(View.GONE);
-//        }
-//        //
-//
-//        // 요놈도 내가 옮겨봤다ㅡ,, 이거 삭제하구 아래에 똑같은 코드 주석처리 된 거 풀면 된댱
-//        //최신공지로 이동
-//        group_detail_notice_linear.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(GroupDetailActivity.this,AnnounceDetailActivity.class);
-//                intent.putExtra("notice_id",notice_id);
-//                startActivity(intent);
-//            }
-//        });
-//
-//
-//
-//        // 공지버튼
-//        group_detail_announce_button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(GroupDetailActivity.this, AnnounceActivity.class);
-//                intent.putExtra("user", user);
-//                intent.putExtra("group", group);
-//                intent.putExtra("user_position", user_position);
-//
-//                startActivity(intent);
-//            }
-//        });
-//
-//        // 재정 버튼 리스너
-//        group_detail_finance_button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(GroupDetailActivity.this, FinancialDetailActivity.class);
-//                intent.putExtra("user", user);
-//                intent.putExtra("selectedGroup", group);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        // 게시판 버튼 리스너
-//        group_detail_board_button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(GroupDetailActivity.this, BoardActivity.class);
-//                intent.putExtra("user", user);
-//
-//                startActivity(intent);
-//            }
-//        });
-//
-//        // 회원 버튼 리스너
-//        group_detail_member_button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(GroupDetailActivity.this, MemberActivity.class);
-//                intent.putExtra("user", user);
-//
-//                startActivity(intent);
-//            }
-//        });
-//
-//        Log.v("groupCheckingaa", club_checking + "");
-//        if (club_checking == 0) {
-//            group_detail_join_button.setVisibility(View.GONE);
-//        }
-//        else if(club_checking == 1) {
-//            group_detail_join_button.setVisibility(View.VISIBLE );
-//        }
-
     }
 
     private class GroupDetailTask extends AsyncTask<String, String, String> {
@@ -404,12 +309,6 @@ public class GroupDetailActivity extends AppCompatActivity {
 
                 return;
             }
-//            catch (ParseException e) {
-//                Log.v("groupDetail", "ParseException!!");
-//                e.printStackTrace();
-//
-//                return;
-//            }
 
             Log.v("clubclub", club_checking + "");
 

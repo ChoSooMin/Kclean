@@ -119,19 +119,8 @@ public class JoinActivity extends AppCompatActivity {
                 JoinTask joinTask = new JoinTask();
 
                 if (join_id_editTxt.getText().toString().equals("") || join_name_editTxt.getText().toString().equals("") || join_pw_editTxt.getText().toString().equals("") || join_phone_editTxt.getText().toString().equals("") || join_birth_editTxt.getText().toString().equals("") || join_univ_editTxt.getText().toString().equals("") || join_major_editTxt.getText().toString().equals("")) {
-                    // 다이얼로그 바디
-                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(JoinActivity.this, R.style.MyAlertDialogStyle);
-                    // 메세지
-                    alert_confirm.setMessage("정보를 모두 입력해주세요.");
-                    // 확인 버튼 리스너
-                    alert_confirm.setPositiveButton("확인", null);
-                    // 다이얼로그 생성
-                    AlertDialog alert = alert_confirm.create();
-                    // 아이콘
-//                     alert.setIcon(R.drawable.ic_launcher);
-                    // 다이얼로그 타이틀
-                    // 다이얼로그 보기
-                    alert.show();
+                    DialogCustom customDialog = new DialogCustom(JoinActivity.this, "정보를 모두 입력해주세요.");
+                    customDialog.show();
                 }
                 else {
 
@@ -139,34 +128,12 @@ public class JoinActivity extends AppCompatActivity {
                     Matcher birthMatcher = birthPattern.matcher(join_birth_editTxt.getText().toString());
 
                     if (!phoneMatcher.matches()) {
-                        // 다이얼로그 바디
-                        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(JoinActivity.this, R.style.MyAlertDialogStyle);
-                        // 메세지
-                        alert_confirm.setMessage("전화번호 형식이 맞지 않습니다.");
-                        // 확인 버튼 리스너
-                        alert_confirm.setPositiveButton("확인", null);
-                        // 다이얼로그 생성
-                        AlertDialog alert = alert_confirm.create();
-                        // 아이콘
-//                     alert.setIcon(R.drawable.ic_launcher);
-                        // 다이얼로그 타이틀
-                        // 다이얼로그 보기
-                        alert.show();
+                        DialogCustom customDialog = new DialogCustom(JoinActivity.this, "전화번호 형식이 맞지 않습니다.");
+                        customDialog.show();
                     }
                     else if (!birthMatcher.matches()) {
-                        // 다이얼로그 바디
-                        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(JoinActivity.this, R.style.MyAlertDialogStyle);
-                        // 메세지
-                        alert_confirm.setMessage("생년월일 형식이 맞지 않습니다.");
-                        // 확인 버튼 리스너
-                        alert_confirm.setPositiveButton("확인", null);
-                        // 다이얼로그 생성
-                        AlertDialog alert = alert_confirm.create();
-                        // 아이콘
-//                     alert.setIcon(R.drawable.ic_launcher);
-                        // 다이얼로그 타이틀
-                        // 다이얼로그 보기
-                        alert.show();
+                        DialogCustom customDialog = new DialogCustom(JoinActivity.this, "생년월일 형식이 맞지 않습니다.");
+                        customDialog.show();
                     }
                     else {
                         joinTask.execute(join_id_editTxt.getText().toString(), join_pw_editTxt.getText().toString(), join_name_editTxt.getText().toString(), join_birth_editTxt.getText().toString(), "" + gender, join_phone_editTxt.getText().toString(), join_univ_editTxt.getText().toString(), join_major_editTxt.getText().toString());
@@ -207,10 +174,8 @@ public class JoinActivity extends AppCompatActivity {
                 }
 
                 // 회원가입 성공하면 로그인 화면으로 보내깅 ㅋ
-                Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
-
-                startActivity(intent);
+                SuccessJoinDialog dialog = new SuccessJoinDialog(JoinActivity.this);
+                dialog.show();
             }
             else
             {

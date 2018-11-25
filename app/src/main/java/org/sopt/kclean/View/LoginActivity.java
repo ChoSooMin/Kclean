@@ -77,16 +77,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(login_id_editTxt.getText().toString().equals(""))
                 {
-                    DialogCustom customDialog = new DialogCustom(LoginActivity.this);
-                    // 커스텀 다이얼로그를 호출한다.
-                    // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
-                    customDialog.callFunction("아이디를 입력해주세요.");
+                    DialogCustom customDialog = new DialogCustom(LoginActivity.this, "아이디를 입력해주세요.");
+                    customDialog.show();
                 }
                 else if(login_pw_editTxt.getText().toString().equals("")){
-                    DialogCustom customDialog = new DialogCustom(LoginActivity.this);
-                    // 커스텀 다이얼로그를 호출한다.
-                    // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
-                    customDialog.callFunction("비밀번호를 입력해주세요.");
+                    DialogCustom customDialog = new DialogCustom(LoginActivity.this, "비밀번호를 입력해주세요.");
+                    customDialog.show();
                 }
                 else
                 {
@@ -178,11 +174,8 @@ public class LoginActivity extends AppCompatActivity {
                 login_id_editTxt.setText("");
                 login_pw_editTxt.setText("");
 
-                DialogCustom customDialog = new DialogCustom(LoginActivity.this);
-                // 커스텀 다이얼로그를 호출한다.
-                // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
-                customDialog.callFunction("아이디 또는 비밀번호가 맞지 않습니다.");
-
+                DialogCustom customDialog = new DialogCustom(LoginActivity.this, "아이디 또는 비밀번호가 맞지 않습니다.");
+                customDialog.show();
             }
 
             super.onPostExecute(s);

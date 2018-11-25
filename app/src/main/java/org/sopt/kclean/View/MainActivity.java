@@ -1,10 +1,17 @@
 package org.sopt.kclean.View;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,8 +23,10 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
     //
     private ImageButton mypage_setting;
+    private ImageButton main_myBtn_imgBtn;
+
+    SharedPreferences pref;
 
     @Override
     protected void onStart() {
@@ -147,6 +159,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
+            }
+        });
+
+        // My 버튼
+        main_myBtn_imgBtn = (ImageButton) findViewById(R.id.main_myBtn_imgBtn);
+        main_myBtn_imgBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                LogoutDialog dialog = new LogoutDialog(MainActivity.this);
+                dialog.show();
             }
         });
     }
