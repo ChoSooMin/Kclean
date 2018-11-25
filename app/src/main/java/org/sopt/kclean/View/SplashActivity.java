@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
     int result;
     private User user; //로그인 성공시 정보 받기
     SharedPreferences pref;
-
+    private String  notice_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class SplashActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             result = bundle.getInt("result");
+            notice_id = bundle.getString("notice_id");
         }
         user = new User();
         //자동로그인 저장 정보
@@ -86,8 +87,11 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent;
                 if (result == 0)
                     intent = new Intent(SplashActivity.this, MainActivity.class);
-                else
+                else {
                     intent = new Intent(SplashActivity.this, SendMoneyActivity.class);
+                    intent.putExtra("notice_id",notice_id);
+                    intent.putExtra("user",user);
+                }
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 try {
                     intent.putExtra("token", jsonObject.getString("token"));

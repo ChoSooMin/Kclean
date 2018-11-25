@@ -423,6 +423,8 @@ public class GroupDetailActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(GroupDetailActivity.this,AnnounceDetailActivity.class);
                         intent.putExtra("notice_id",notice_id);
+                        intent.putExtra("group", group);
+                        intent.putExtra("user_position", user_position);
                         startActivity(intent);
                     }
                 });

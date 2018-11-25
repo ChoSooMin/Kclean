@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -66,29 +67,29 @@ public class FinancialDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Intent intent = getIntent();
-//        user = intent.getParcelableExtra("user");
-//        group = intent.getParcelableExtra("selectedGroup");
-//        oCalendar = Calendar.getInstance( );
-//        search_year =oCalendar.get(Calendar.YEAR);
-//        search_month = oCalendar.get(oCalendar.get(Calendar.MONTH) + 1);
+        Intent intent = getIntent();
+        user = intent.getParcelableExtra("user");
+        group = intent.getParcelableExtra("selectedGroup");
+        oCalendar = Calendar.getInstance( );
+        search_year =oCalendar.get(Calendar.YEAR);
+        search_month = oCalendar.get(oCalendar.get(Calendar.MONTH) + 1);
 //
         setContentView(R.layout.activity_financial_detail);
-//        financial_detail_account_balance_txt = (TextView)findViewById(R.id.financial_detail_account_balance_txt);
-//        financial_detail_bank_txt = (TextView)findViewById(R.id.financial_detail_bank_txt);
-//        financial_detail_account_number_txt = (TextView)findViewById(R.id.financial_detail_account_number_txt);
-//        financial_detail_year_txt = (TextView)findViewById(R.id.financial_detail_year_txt);
-//        financial_detail_month_txt = (TextView)findViewById(R.id.financial_detail_month_txt);
-//        financial_detail_left_button = (ImageButton) findViewById(R.id.financial_detail_left_button);
-//        financial_detail_right_button = (ImageButton)findViewById(R.id.financial_detail_right_button);
+        financial_detail_account_balance_txt = (TextView)findViewById(R.id.financial_detail_account_balance_txt);
+        financial_detail_bank_txt = (TextView)findViewById(R.id.financial_detail_bank_txt);
+        financial_detail_account_number_txt = (TextView)findViewById(R.id.financial_detail_account_number_txt);
+        financial_detail_year_txt = (TextView)findViewById(R.id.financial_detail_year_txt);
+        financial_detail_month_txt = (TextView)findViewById(R.id.financial_detail_month_txt);
+        financial_detail_left_button = (ImageButton) findViewById(R.id.financial_detail_left_button);
+        financial_detail_right_button = (ImageButton)findViewById(R.id.financial_detail_right_button);
 //
-//        tradeList.add(new Trade("돈돈 삼겹살", "11/03 18:23", "-23,000", "결제"));
-//        tradeList.add(new Trade("컨퍼런스 회의", "11/01 12:10", "-240,000", "결제"));
-//
-//        //동아리 재정 내역
-//        FinancialDetailTask financialDetailTask = new FinancialDetailTask();
-//        financialDetailTask.execute();
-//
+        tradeList.add(new Trade("돈돈 삼겹살", "11/03 18:23", "-23,000", "결제"));
+        tradeList.add(new Trade("컨퍼런스 회의", "11/01 12:10", "-240,000", "결제"));
+
+        //동아리 재정 내역
+        FinancialDetailTask financialDetailTask = new FinancialDetailTask();
+        financialDetailTask.execute();
+
 //                // 탭탭탭~~
         tabHost = (TabHost)findViewById(R.id.tabHost);
 
@@ -125,120 +126,123 @@ public class FinancialDetailActivity extends AppCompatActivity {
         });
     }
 
-//    private class FinancialDetailListTask extends AsyncTask<String, String, String>
-//    {
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            Get get = new Get(user.getToken(),"club_id",group.getGroupId(),"search_year",search_year.toString(),"search_month",search_month.toString());
-//            String respone = null;
-//            try{
-//                respone = get.run("https://klean.apps.dev.clayon.io/api/finance", "application/x-www-form-urlencoded");
-//            }catch(IOException e){
-//                  e.printStackTrace();
-//            }
-//            return respone;
-//        }
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//            JSONObject jsonObject= null;
-//            JSONArray jsonArray =null;
-//            ArrayList<Trade> trades =null;
-//            trades = new ArrayList<>();
-//            Trade trade;
-//            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-//            Date d;
-//            //JSON 파싱
-//            try {
-//                jsonObject = new JSONObject(s);
-//                jsonArray = new JSONArray(jsonObject.get("data"));
-//                for(int i =  0 ; i < jsonArray.length()-1 ; i++) {
-//                    d = df.parse(jsonArray.getJSONObject(i).get("write_time").toString());
-//                    Calendar calendar = new GregorianCalendar();
-//                    calendar.setTime(d);
-//
-//                    if(i==0)
-//                    {
-//                        trade = new Trade(""+(calendar.get(Calendar.MONTH) + 1),""+calendar.get(Calendar.DATE),""+calendar.get(Calendar.DAY_OF_WEEK));
-//                        trades.add(trade);
-//
-//                    }
-//                   else if(d.getMonth() != df.parse(jsonArray.getJSONObject(i+1).get("write_time").toString()).getMonth())
-//                    {
-//                        trade = new Trade(""+(calendar.get(Calendar.MONTH) + 1),""+calendar.get(Calendar.DATE),""+calendar.get(Calendar.DAY_OF_WEEK));
-//                        trades.add(trade);
-//                    }
-//                    trade = new Trade(jsonArray.getJSONObject(i).get("account_content").toString(),String.valueOf(d.getTime()),jsonArray.getJSONObject(i).get("price").toString(),jsonArray.getJSONObject(i).getInt("checking"),String.valueOf(calendar.get(Calendar.MONTH) + 1),jsonArray.getJSONObject(i).getString("image_uri"));
-//                    trades.add(trade);
-//                }
-//                d = df.parse(jsonArray.getJSONObject(jsonArray.length()-1).get("write_time").toString());
-//                Calendar ddCalendar = new GregorianCalendar();
-//                ddCalendar.setTime(d);
-//
-//                trade = new Trade(jsonArray.getJSONObject(jsonArray.length()-1).get("account_content").toString(),String.valueOf(d.getTime()),jsonArray.getJSONObject(jsonArray.length()-1).get("price").toString(),jsonArray.getJSONObject(jsonArray.length()-1).getInt("checking"),String.valueOf(ddCalendar.get(Calendar.MONTH) + 1),jsonArray.getJSONObject(jsonArray.length()-1).getString("image_uri"));
-//                trades.add(trade);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//
-//            if (trades == null) {
-//                trades.add(new Trade("보쌈", "18:30", "24000", 0, "11", "https://kleanbucket.s3.ap-northeast-2.amazonaws.com/club/1541798852700.KakaoTalk_20181103_024853213.png"));
-//                trades.add(new Trade("삼겹살", "14:30", "30000", 0, "11", "https://kleanbucket.s3.ap-northeast-2.amazonaws.com/club/1541798852700.KakaoTalk_20181103_024853213.png"));
-//            }
-//
-//            //recyclerView 구현
-//            recyclerView =  (RecyclerView)findViewById(R.id.financial_detail_list);
-//            layoutManager = new LinearLayoutManager(getApplicationContext());
-//            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//            recyclerView.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
-//            adapterFinancialList = new AdapterFinancialList(getApplicationContext(),trades);
-//            recyclerView.setAdapter(adapterFinancialList);
-//        }
-//    }
-//    private  class FinancialDetailTask extends  AsyncTask<String, String, String> {
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            Get get = new Get(user.getToken(), "club_id", group.getGroupId());
-//            String respone = null;
-//            try {
-//                respone = get.run("https://klean.apps.dev.clayon.io/api/finance/info", "application/x-www-form-urlencoded");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return respone;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//            if(s == null)
-//                return ;
-//            JSONObject jsonObject = null;
-//            try {
-//                jsonObject = new JSONObject(s);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            try {
-//                financial_detail_account_balance_txt.setText(jsonObject.getString("price"));
-//                financial_detail_bank_txt .setText(jsonObject.getString("account_bank"));
-//                financial_detail_account_number_txt.setText(jsonObject.getString("account_number"));
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            catch (NullPointerException e){
-//                e.printStackTrace();
-//                return;
-//            }
-//        }
-//    }
+    private class FinancialDetailListTask extends AsyncTask<String, String, String>
+    {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            Get get = new Get(user.getToken(),"club_id",group.getGroupId(),"search_year",search_year.toString(),"search_month",search_month.toString());
+            String respone = null;
+            try{
+                respone = get.run("https://klean.apps.dev.clayon.io/api/finance", "application/x-www-form-urlencoded");
+            }catch(IOException e){
+                  e.printStackTrace();
+            }
+            return respone;
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            JSONObject jsonObject= null;
+            JSONArray jsonArray =null;
+            ArrayList<Trade> trades =null;
+            trades = new ArrayList<>();
+            Trade trade;
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+            Date d;
+            //JSON 파싱
+            try {
+                jsonObject = new JSONObject(s);
+                jsonArray = new JSONArray(jsonObject.get("data"));
+                for(int i =  0 ; i < jsonArray.length()-1 ; i++) {
+                    d = df.parse(jsonArray.getJSONObject(i).get("write_time").toString());
+                    Calendar calendar = new GregorianCalendar();
+                    calendar.setTime(d);
+
+                    if(i==0)
+                    {
+                        trade = new Trade(""+(calendar.get(Calendar.MONTH) + 1),""+calendar.get(Calendar.DATE),""+calendar.get(Calendar.DAY_OF_WEEK));
+                        trades.add(trade);
+
+                    }
+                   else if(d.getMonth() != df.parse(jsonArray.getJSONObject(i+1).get("write_time").toString()).getMonth())
+                    {
+                        trade = new Trade(""+(calendar.get(Calendar.MONTH) + 1),""+calendar.get(Calendar.DATE),""+calendar.get(Calendar.DAY_OF_WEEK));
+                        trades.add(trade);
+                    }
+                    trade = new Trade(jsonArray.getJSONObject(i).get("account_content").toString(),String.valueOf(d.getTime()),jsonArray.getJSONObject(i).get("price").toString(),jsonArray.getJSONObject(i).getInt("checking"),String.valueOf(calendar.get(Calendar.MONTH) + 1),jsonArray.getJSONObject(i).getString("image_uri"));
+                    trades.add(trade);
+                }
+                d = df.parse(jsonArray.getJSONObject(jsonArray.length()-1).get("write_time").toString());
+                Calendar ddCalendar = new GregorianCalendar();
+                ddCalendar.setTime(d);
+
+                trade = new Trade(jsonArray.getJSONObject(jsonArray.length()-1).get("account_content").toString(),String.valueOf(d.getTime()),jsonArray.getJSONObject(jsonArray.length()-1).get("price").toString(),jsonArray.getJSONObject(jsonArray.length()-1).getInt("checking"),String.valueOf(ddCalendar.get(Calendar.MONTH) + 1),jsonArray.getJSONObject(jsonArray.length()-1).getString("image_uri"));
+                trades.add(trade);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if (trades == null) {
+                trades.add(new Trade("보쌈", "18:30", "24000", 0, "11", "https://kleanbucket.s3.ap-northeast-2.amazonaws.com/club/1541798852700.KakaoTalk_20181103_024853213.png"));
+                trades.add(new Trade("삼겹살", "14:30", "30000", 0, "11", "https://kleanbucket.s3.ap-northeast-2.amazonaws.com/club/1541798852700.KakaoTalk_20181103_024853213.png"));
+            }
+
+            //recyclerView 구현
+            recyclerView =  (RecyclerView)findViewById(R.id.financial_detail_list);
+            layoutManager = new LinearLayoutManager(getApplicationContext());
+            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(layoutManager); // RecyclerView의 레이아웃 매니저 설정,,,
+            adapterFinancialList = new AdapterFinancialList(getApplicationContext(),trades);
+            recyclerView.setAdapter(adapterFinancialList);
+        }
+    }
+    private  class FinancialDetailTask extends  AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            Get get = new Get(user.getToken(), "club_id", group.getGroupId());
+            String respone = null;
+            Log.d("TAG","token :"+user.getToken()+"\n club_id:"+group.getGroupId());
+            try {
+                respone = get.run("https://klean.apps.dev.clayon.io/api/finance/info", "application/x-www-form-urlencoded");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return respone;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(s == null)
+                return ;
+            JSONObject jsonObject = null;
+            JSONObject data = null;
+            try {
+                jsonObject = new JSONObject(s);
+            data = jsonObject.getJSONObject("data");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                financial_detail_account_balance_txt.setText(data.getString("price")+"");
+                financial_detail_bank_txt .setText(data.getString("account_bank"));
+                financial_detail_account_number_txt.setText(data.getString("account_number"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            catch (NullPointerException e){
+                e.printStackTrace();
+                return;
+            }
+        }
+    }
 }

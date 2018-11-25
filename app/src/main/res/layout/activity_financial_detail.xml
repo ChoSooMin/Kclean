@@ -232,7 +232,7 @@
                     android:orientation="vertical">
 
                     <android.support.v7.widget.RecyclerView
-                        android:id = "@+id/financial_detail_list2"
+                        android:id = "@+id/financial_detail_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 

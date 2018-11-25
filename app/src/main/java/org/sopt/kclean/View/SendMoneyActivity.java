@@ -147,7 +147,7 @@ public class SendMoneyActivity extends AppCompatActivity {
 
                 // 설정
                 send_money_title_text.setText(notice.getNotice_title());
-                if (notice_category == 0) { // 0이면 일반공지
+                if (notice_category == 0) {// 0이면 일반공지
                     send_money_type_image.setImageResource(R.drawable.ic_normal_notice);
                 }
                 else if (notice_category == 1) { // 1이면 행사공지
