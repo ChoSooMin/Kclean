@@ -12,6 +12,12 @@ import android.widget.TextView;
 import org.sopt.kclean.Model.Notice;
 import org.sopt.kclean.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class SendMoneyFinishActivity extends AppCompatActivity {
 
     private int position;
@@ -26,7 +32,7 @@ public class SendMoneyFinishActivity extends AppCompatActivity {
     private TextView send_money_finish_money_text;
     private RelativeLayout relative3;
 
-    private Notice notice;
+    Notice notice;
 
 
     @Override
@@ -35,6 +41,7 @@ public class SendMoneyFinishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_money_finish);
 
         notice = getIntent().getParcelableExtra("notice");
+        Log.v("sendmoney", notice.toString());
         position = getIntent().getIntExtra("position", -1);
         Log.v("sendmoney", position + "" );
 
@@ -49,11 +56,30 @@ public class SendMoneyFinishActivity extends AppCompatActivity {
         relative3 = (RelativeLayout) findViewById(R.id.relative3);
         // xml
 
-        send_money_finish_money_text.setText(notice.getNotice_cost());
+        send_money_finish_money_text.setText(notice.getNotice_cost() + "");
         send_money_finish_title_text.setText(notice.getNotice_title());
-        send_money_finish_date_text.setText(notice.getNotice_date());
+
+        // 날짜
+        String dateString = notice.getNotice_date();
+        SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+        try {
+            Date dateObject = transFormat.parse(dateString);
+
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(dateObject);
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int date = calendar.get(Calendar.DATE);
+
+            send_money_finish_date_text.setText(year + "." + month + "." + date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+//        send_money_finish_date_text.setText(notice.getNotice_date());
         send_money_finish_time_text.setText(notice.getNotice_time());
-        send_money_finish_number_text.setText(notice.getNotice_participant());
+        send_money_finish_number_text.setText(notice.getNotice_participant() + "");
 
         if (position == 0) { // 총무일 때
             send_money_finish_type_text.setText("요청");

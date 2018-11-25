@@ -57,7 +57,6 @@ public class SendMoneyActivity extends AppCompatActivity {
 
     private User user;
     private String notice_id;
-    private String notice_price;
     private Notice notice;
 
     String response = "";
@@ -67,16 +66,6 @@ public class SendMoneyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_money);
-
-
-        user = getIntent().getParcelableExtra("user");
-        notice_id = getIntent().getStringExtra("notice_id");
-//        int price = getIntent().getIntExtra("notice_price", -1);
-        notice_price = price + "";
-        notice = getIntent().getParcelableExtra("notice");
-
-        Log.v("noticenotice", "notice_id || " + notice_id);
-        Log.v("noticenotice", "notice_price || " + notice_price);
 
         // xml
         send_money_title_text = (TextView) findViewById(R.id.send_money_title_text);
@@ -101,7 +90,15 @@ public class SendMoneyActivity extends AppCompatActivity {
             }
         }); // 닫기 버튼,,
 
+        notice_id = getIntent().getStringExtra("notice_id"); // 앞에서 notice_id 가져오기
+
         new AnnounceDetailTask().execute(notice_id);
+
+        user = getIntent().getParcelableExtra("user");
+        notice = getIntent().getParcelableExtra("notice");
+
+        Log.v("noticenotice", "notice_id || " + notice_id);
+
 
         // 송금하기
         send_money_send_btn.setOnClickListener(new View.OnClickListener() {
@@ -109,12 +106,6 @@ public class SendMoneyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new SendMoneyTask().execute(notice_id, price + "");
-
-                Intent intent = new Intent(getApplicationContext(), SendMoneyFinishActivity.class);
-                intent.putExtra("position", 1);
-
-                Toast.makeText(getApplicationContext(), "송금 완료", Toast.LENGTH_LONG).show();
-                startActivity(intent);
             }
         });
     }
@@ -245,6 +236,7 @@ public class SendMoneyActivity extends AppCompatActivity {
             try {
                 response =  post.post();
             } catch (IOException e) {
+                Log.v("도대체", "무엇이 문제일까용2");
                 e.printStackTrace();
             }
 
@@ -259,6 +251,7 @@ public class SendMoneyActivity extends AppCompatActivity {
                 try {
                     jsonObject = new JSONObject(s);
                 } catch (JSONException e) {
+                    Log.v("도대체", "무엇이 문제일까용");
                     e.printStackTrace();
                 }
 
